@@ -1,0 +1,22 @@
+# Grid
+
+```jsx live
+<Grid
+  gap="1rem"
+  color="white"
+  bg="whitesmoke"
+  columns={{
+    $: 2,
+    $md: 4,
+  }}
+  theme={{
+    breakpoints: {
+      $: null,
+      $md: '(min-width: 600px)',
+    },
+  }}
+>
+  <Box bg="blue">1</Box>
+  <Box bg="red">2</Box>
+</Grid>
+```

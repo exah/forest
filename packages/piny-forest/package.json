@@ -1,0 +1,35 @@
+{
+  "name": "piny-forest",
+  "version": "0.0.0",
+  "description": "Component library and design system for Piny",
+  "main": "esm/index.js",
+  "type": "module",
+  "files": [
+    "esm",
+    "types"
+  ],
+  "types": "types/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "npm run build:esm && npm run build:types",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:types": "tsc -p tsconfig.types.json",
+    "prebuild": "rm -rf cjs esm types",
+    "test": "jest",
+    "release": "np",
+    "preversion": "npm run build"
+  },
+  "keywords": [],
+  "author": "John Grishin <hi@johngrish.in>",
+  "license": "MIT",
+  "jest": {
+    "preset": "ts-jest",
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-dom"
+    ]
+  },
+  "dependencies": {
+    "@emotion/react": "^11.1.4",
+    "@emotion/styled": "^11.0.0"
+  }
+}

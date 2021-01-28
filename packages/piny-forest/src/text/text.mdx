@@ -1,0 +1,43 @@
+# Text
+
+```jsx live
+<Text
+  as="p"
+  fontSize="1.5rem"
+  lineHeight={1.1}
+  fontFamily="sans-serif"
+  textAlign="center"
+  variant="primary"
+  theme={{
+    breakpoints: {
+      $: null,
+      $md: '(min-width: 600px)',
+    },
+    space: [0, 8, 16, 32],
+    colors: {
+      primary: 'blue',
+    },
+    textStyles: {
+      primary: {
+        color: 'primary',
+        textDecoration: 'underline',
+        $md: {
+          color: 'orange',
+        },
+      },
+    },
+  }}
+  pss={{
+    color: 'black',
+    ':hover': {
+      textDecoration: 'none',
+    },
+  }}
+  color={{
+    ':hover': 'magenta',
+  }}
+  p={3}
+>
+  Hello World
+</Text>
+```
