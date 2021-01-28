@@ -2,19 +2,14 @@
   "name": "piny-forest",
   "version": "0.0.0",
   "description": "Component library and design system for Piny",
-  "main": "esm/index.js",
+  "main": "out/index.js",
   "type": "module",
   "files": [
-    "esm",
-    "types"
+    "out"
   ],
-  "types": "types/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "npm run build:esm && npm run build:types",
-    "build:esm": "tsc -p tsconfig.esm.json",
-    "build:types": "tsc -p tsconfig.types.json",
-    "prebuild": "rm -rf cjs esm types",
+    "build": "rm -rf out && tsc --outDir out",
     "test": "jest",
     "release": "np",
     "preversion": "npm run build"
