@@ -13,7 +13,7 @@ interface Props {
 function Code({ live, children, ...rest }: Props) {
   if (!live) {
     return (
-      <Box as="pre" bg="black" color="white">
+      <Box as="pre" bg="black" fg="white">
         <Box as="code">{children}</Box>
       </Box>
     )
