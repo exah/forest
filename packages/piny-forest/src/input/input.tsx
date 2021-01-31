@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
-import { ThemeKey, Variant } from '../constants'
+import * as ThemeKey from '../constants/theme-key'
+import { ThemeVariantProp } from '../constants/theme-variant-prop'
 import { Text, TextProps } from '../text'
 
 export interface InputProps<E extends keyof React.ReactHTML = 'input'>
@@ -15,5 +16,5 @@ export const Input = styled(Text)<InputInnerProps>({
 
 Input.defaultProps = {
   as: 'input',
-  [ThemeKey]: Variant.INPUT,
+  [ThemeVariantProp]: ThemeKey.INPUT_VARIANTS,
 }

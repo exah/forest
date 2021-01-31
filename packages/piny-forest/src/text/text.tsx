@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
-import { ThemeKey, Variant } from '../constants'
+import * as ThemeKey from '../constants/theme-key'
+import { ThemeVariantProp } from '../constants/theme-variant-prop'
 import { style, StyleProps } from '../utils'
 import { Box, BoxProps } from '../box'
 
@@ -34,5 +35,5 @@ export const Text = styled(Box)<TextInnerProps>(
 
 Text.defaultProps = {
   as: 'span',
-  [ThemeKey]: Variant.TEXT,
+  [ThemeVariantProp]: ThemeKey.TEXT_VARIANTS,
 }

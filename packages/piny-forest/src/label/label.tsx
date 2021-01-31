@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
-import { ThemeKey, Variant } from '../constants'
+import * as ThemeKey from '../constants/theme-key'
+import { ThemeVariantProp } from '../constants/theme-variant-prop'
 import { Text, TextProps } from '../text'
 
 export interface LabelProps<E extends keyof React.ReactHTML = 'label'>
@@ -14,5 +15,5 @@ export const Label = styled(Text)<LabelInnerProps>({
 
 Label.defaultProps = {
   as: 'label',
-  [ThemeKey]: Variant.TEXT,
+  [ThemeVariantProp]: ThemeKey.TEXT_VARIANTS,
 }

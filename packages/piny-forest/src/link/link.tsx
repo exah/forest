@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
-import { ThemeKey, Variant } from '../constants'
+import * as ThemeKey from '../constants/theme-key'
+import { ThemeVariantProp } from '../constants/theme-variant-prop'
 import { Text, TextProps } from '../text'
 
 export interface LinkProps<E extends keyof React.ReactHTML = 'a'>
@@ -12,5 +13,5 @@ export const Link = styled(Text)<LinkInnerProps>()
 
 Link.defaultProps = {
   as: 'a',
-  [ThemeKey]: Variant.LINK,
+  [ThemeVariantProp]: ThemeKey.LINK_VARIANTS,
 }

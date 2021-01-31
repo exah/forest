@@ -1,4 +1,6 @@
 import styled from '@emotion/styled'
+import * as ThemeKey from '../constants/theme-key'
+import { ThemeVariantProp } from '../constants/theme-variant-prop'
 import { Box, BoxProps } from '../box'
 import { style, StyleProps } from '../utils'
 
@@ -29,3 +31,8 @@ export const Grid = styled(Box)<GridInnerProps>(
   style('placeItems'),
   style('placeContent')
 )
+
+Grid.defaultProps = {
+  as: 'div',
+  [ThemeVariantProp]: ThemeKey.GRID_VARIANTS,
+}

@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
-import { ThemeKey, Variant } from '../constants'
+import * as ThemeKey from '../constants/theme-key'
+import { ThemeVariantProp } from '../constants/theme-variant-prop'
 import { Reset, ResetProps } from '../reset'
 import {
   pss,
@@ -13,10 +14,10 @@ import {
 } from '../utils'
 
 interface VariantKeyProps {
-  [ThemeKey]?: string
+  [ThemeVariantProp]?: string
 }
 
-function key({ [ThemeKey]: key }: VariantKeyProps) {
+function key({ [ThemeVariantProp]: key }: VariantKeyProps) {
   return key ? variant(key) : null
 }
 
@@ -26,7 +27,7 @@ export interface BoxProps<E extends keyof React.ReactHTML = 'div'>
 
 export interface BoxInnerProps
   extends VariantKeyProps,
-    VariantProps<Variant>,
+    VariantProps<string>,
     PSS,
     SpaceStyleProps<'margin', 'm'>,
     SpaceStyleProps<'padding', 'p'>,
@@ -69,5 +70,5 @@ export const Box = styled(Reset)<BoxInnerProps>(
 )
 
 Box.defaultProps = {
-  [ThemeKey]: Variant.BOX,
+  [ThemeVariantProp]: ThemeKey.BOX_VARIANTS,
 }
