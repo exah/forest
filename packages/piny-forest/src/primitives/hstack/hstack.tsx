@@ -14,7 +14,7 @@ export interface HStackInnerProps
 export interface HStackComponent<E extends keyof React.ReactHTML = 'div'>
   extends BoxComponent<E, HStackInnerProps> {}
 
-export const HStackComponent = styled(Box)<HStackInnerProps>(
+export const HStack: HStackComponent = styled(Box)<HStackInnerProps>(
   { display: 'flex', flexDirection: 'row' },
   style('gap'),
   style('alignItems', 'align')
