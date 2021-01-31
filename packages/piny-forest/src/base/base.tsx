@@ -1,6 +1,4 @@
-import isPropValid from '@emotion/is-prop-valid'
-import { forwardRef } from 'react'
-import { isObject } from '../utils'
+import styled, { ComponentSelector } from '@emotion/styled'
 
 type Cast<X, Y> = X extends Y ? X : Y
 
@@ -10,31 +8,36 @@ type ElementType<
   ? Cast<T, Element>
   : any
 
+interface HTMLProps<E extends keyof React.ReactHTML>
+  extends Omit<React.AllHTMLAttributes<ElementType<E>>, 'as' | 'ref'> {}
+
 export interface BaseProps<E extends keyof React.ReactHTML>
-  extends Omit<React.AllHTMLAttributes<ElementType<E>>, 'as'> {
+  extends HTMLProps<E> {
   as?: E | React.ComponentType
   ref?: React.Ref<ElementType<E>>
 }
 
-export interface Base<E extends keyof React.ReactHTML>
-  extends React.ForwardRefExoticComponent<Omit<BaseProps<E>, 'as'>> {
-  <T extends keyof React.ReactHTML = E>(
-    props: BaseProps<T>
+/** @private */
+export interface BaseComponent<
+  Element extends keyof React.ReactHTML = 'div',
+  Props extends {} = {}
+> extends React.VFC<BaseProps<keyof React.ReactHTML> & Props>,
+    ComponentSelector {
+  <T extends keyof React.ReactHTML = Element>(
+    props: BaseProps<T> & Props
   ): React.ReactElement | null
 }
 
-function omit<E extends keyof React.ReactHTML>(props: BaseProps<E>) {
-  return Object.fromEntries(
-    Object.entries(props).filter(
-      ([key, value]) => isPropValid(key) && !isObject(value)
-    )
-  )
-}
-
-export const Base: Base<'div'> = forwardRef(
-  ({ as: Comp = 'div', children, ...rest }, ref) => (
-    <Comp ref={ref} {...omit(rest)}>
-      {children}
-    </Comp>
-  )
-)
+/** @ts-expect-error */
+export const Base: BaseComponent = styled.div({
+  margin: 0,
+  padding: 0,
+  border: 0,
+  minWidth: 0,
+  borderRadius: 0,
+  background: 'none',
+  font: 'inherit',
+  color: 'inherit',
+  textAlign: 'inherit',
+  textDecoration: 'none',
+})

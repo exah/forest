@@ -17,3 +17,31 @@ test('change element with "as" prop', () => {
 
   expect(ref.mock.calls[0][0]).toBeInstanceOf(HTMLButtonElement)
 })
+
+test('using correct default styles', () => {
+  render(<Base>Base</Base>)
+
+  expect(screen.getByText('Base')).toHaveStyle({
+    margin: 0,
+    padding: 0,
+    border: 0,
+    borderRadius: 0,
+    background: 'none',
+    font: 'inherit',
+    color: 'inherit',
+    textAlign: 'inherit',
+    textDecoration: 'none',
+  })
+})
+
+test('using correct default styles for a link', () => {
+  render(
+    <Base as="a" href="https://google.com">
+      Base
+    </Base>
+  )
+
+  expect(screen.getByText('Base')).toHaveStyle({
+    textDecoration: 'none',
+  })
+})

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import * as ThemeKey from '../constants/theme-key'
 import { ThemeVariantProp } from '../constants/theme-variant-prop'
-import { Reset, ResetProps } from '../reset'
+import { Base, BaseComponent, BaseProps } from '../base'
 import {
   pss,
   PSS,
@@ -22,7 +22,7 @@ function key({ [ThemeVariantProp]: key }: VariantKeyProps) {
 }
 
 export interface BoxProps<E extends keyof React.ReactHTML = 'div'>
-  extends Omit<ResetProps<E>, 'width' | 'height' | 'size'>,
+  extends Omit<BaseProps<E>, keyof BoxInnerProps>,
     BoxInnerProps {}
 
 export interface BoxInnerProps
@@ -45,7 +45,13 @@ export interface BoxInnerProps
     StyleProps<'flex'>,
     StyleProps<'order'> {}
 
-export const Box = styled(Reset)<BoxInnerProps>(
+/** @private */
+export interface BoxComponent<
+  E extends keyof React.ReactHTML = 'div',
+  Props extends {} = {}
+> extends BaseComponent<E, BoxInnerProps & Props> {}
+
+export const Box: BoxComponent = styled(Base)<BoxInnerProps>(
   {
     boxSizing: 'border-box',
     '&::before, &::after': { boxSizing: 'inherit' },
@@ -70,5 +76,6 @@ export const Box = styled(Reset)<BoxInnerProps>(
 )
 
 Box.defaultProps = {
+  as: 'div',
   [ThemeVariantProp]: ThemeKey.BOX_VARIANTS,
 }
