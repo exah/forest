@@ -31,19 +31,11 @@ export interface BoxInnerProps
     PSS,
     SpaceStyleProps<'margin', 'm'>,
     SpaceStyleProps<'padding', 'p'>,
-    StyleProps<'size'>,
-    StyleProps<'width'>,
-    StyleProps<'maxWidth'>,
-    StyleProps<'minWidth'>,
-    StyleProps<'height'>,
-    StyleProps<'minHeight'>,
-    StyleProps<'maxHeight'>,
+    StyleProps<'size', 's'>,
+    StyleProps<'width', 'w'>,
+    StyleProps<'height', 'h'>,
     StyleProps<'color', 'fg'>,
-    StyleProps<'backgroundColor', 'bg'>,
-    StyleProps<'gridArea'>,
-    StyleProps<'placeSelf'>,
-    StyleProps<'flex'>,
-    StyleProps<'order'> {}
+    StyleProps<'backgroundColor', 'bg'> {}
 
 /** @private */
 export interface BoxComponent<
@@ -60,19 +52,11 @@ export const Box: BoxComponent = styled(Base)<BoxInnerProps>(
   pss,
   ...spaceStyle('margin', 'm'),
   ...spaceStyle('padding', 'p'),
-  style('size'),
-  style('width'),
-  style('maxWidth'),
-  style('minWidth'),
-  style('height'),
-  style('minHeight'),
-  style('maxHeight'),
+  style('size', 's'),
+  style('width', 'w'),
+  style('height', 'h'),
   style('color', 'fg'),
-  style('backgroundColor', 'bg'),
-  style('gridArea'),
-  style('placeSelf'),
-  style('flex'),
-  style('order')
+  style('backgroundColor', 'bg')
 )
 
 Box.defaultProps = {

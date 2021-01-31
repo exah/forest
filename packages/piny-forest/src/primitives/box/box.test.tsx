@@ -53,7 +53,7 @@ test('set margin with "m" prop and take value from theme', () => {
   }
 
   render(
-    <Box theme={theme} mx={{ $: 's-8', $md: 's-16' }} width={100}>
+    <Box theme={theme} mx={{ $: 's-8', $md: 's-16' }} w={100}>
       Box
     </Box>
   )

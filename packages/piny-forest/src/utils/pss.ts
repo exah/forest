@@ -8,13 +8,14 @@ import { get, isObject, isPrimitive, isPropertyKey } from './helpers'
 const AXIS = /^(\w+)(X|Y)(\w+)?$/
 type CSSProperties = BaseCSSProperties<(string & {}) | number>
 
+export type Value<Prop extends string> = Prop extends keyof CSSProperties
+  ? CSSProperties[Prop]
+  : (string & {}) | number | null | undefined
+
 export type ResponsiveValue<
   Prop extends string,
-  Theme extends BaseTheme = BaseTheme,
-  Value = Prop extends keyof CSSProperties
-    ? CSSProperties[Prop]
-    : string | number | null | undefined
-> = Value | Record<keyof Theme['breakpoints'], Value>
+  Theme extends BaseTheme = BaseTheme
+> = Value<Prop> | Record<keyof Theme['breakpoints'], Value<Prop>>
 
 interface CoreOptions<Theme extends BaseTheme = BaseTheme, Scale = unknown> {
   input?: CSSInterpolation | null
