@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Box, BoxProps } from '../box'
+import { Box, BoxComponent, BoxProps } from '../box'
 import { style, StyleProps } from '../utils'
 
 export interface HStackProps<E extends keyof React.ReactHTML = 'div'>
@@ -10,7 +10,11 @@ export interface HStackInnerProps
   extends StyleProps<'gap'>,
     StyleProps<'alignItems', 'align'> {}
 
-export const HStack = styled(Box)<HStackInnerProps>(
+/** @private */
+export interface HStackComponent<E extends keyof React.ReactHTML = 'div'>
+  extends BoxComponent<E, HStackInnerProps> {}
+
+export const HStackComponent = styled(Box)<HStackInnerProps>(
   { display: 'flex', flexDirection: 'row' },
   style('gap'),
   style('alignItems', 'align')

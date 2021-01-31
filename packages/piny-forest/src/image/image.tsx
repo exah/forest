@@ -1,15 +1,20 @@
 import styled from '@emotion/styled'
 import * as ThemeKey from '../constants/theme-key'
 import { ThemeVariantProp } from '../constants/theme-variant-prop'
-import { Box, BoxProps } from '../box'
+import { Box, BoxComponent, BoxProps } from '../box'
 
 export interface ImageProps<E extends keyof React.ReactHTML = 'img'>
-  extends BoxProps<E>,
-    ImageInnerProps {}
+  extends BoxProps<E> {}
 
 export interface ImageInnerProps {}
 
-export const Image = styled(Box)<ImageInnerProps>({ display: 'block' })
+/** @private */
+export interface ImageComponent<E extends keyof React.ReactHTML = 'img'>
+  extends BoxComponent<E, ImageInnerProps> {}
+
+export const Image: ImageComponent = styled(Box)<ImageInnerProps>({
+  display: 'block',
+})
 
 Image.defaultProps = {
   as: 'img',

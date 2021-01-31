@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import * as ThemeKey from '../constants/theme-key'
 import { ThemeVariantProp } from '../constants/theme-variant-prop'
-import { Text, TextProps } from '../text'
+import { Text, TextComponent, TextProps } from '../text'
 
 export interface LabelProps<E extends keyof React.ReactHTML = 'label'>
   extends TextProps<E>,
@@ -9,7 +9,11 @@ export interface LabelProps<E extends keyof React.ReactHTML = 'label'>
 
 export interface LabelInnerProps {}
 
-export const Label = styled(Text)<LabelInnerProps>({
+/** @private */
+export interface LabelComponent<E extends keyof React.ReactHTML = 'label'>
+  extends TextComponent<E, LabelInnerProps> {}
+
+export const Label: LabelComponent = styled(Text)<LabelInnerProps>({
   display: 'block',
 })
 

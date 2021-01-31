@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Box, BoxProps } from '../box'
+import { Box, BoxComponent, BoxProps } from '../box'
 
 export interface ScrollProps<E extends keyof React.ReactHTML = 'div'>
   extends BoxProps<E>,
@@ -7,6 +7,10 @@ export interface ScrollProps<E extends keyof React.ReactHTML = 'div'>
 
 export interface ScrollInnerProps {}
 
-export const Scroll = styled(Box)<ScrollInnerProps>({
+/** @private */
+export interface ScrollComponent<E extends keyof React.ReactHTML = 'div'>
+  extends BoxComponent<E, ScrollInnerProps> {}
+
+export const Scroll: ScrollComponent = styled(Box)<ScrollInnerProps>({
   overflow: 'auto',
 })
