@@ -1,5 +1,5 @@
 import { ThemeProvider } from '@emotion/react'
-import { THEME } from '../constants/theme'
+import { THEME } from '../../constants/theme'
 
 interface ProviderProps {
   children?: React.ReactNode

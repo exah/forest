@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
-import * as ThemeKey from '../constants/theme-key'
-import { ThemeVariantProp } from '../constants/theme-variant-prop'
+import * as ThemeKey from '../../constants/theme-key'
+import { ThemeVariantProp } from '../../constants/theme-variant-prop'
 import { Input, InputComponent, InputProps } from '../input'
 
 export interface ButtonProps<E extends keyof React.ReactHTML = 'button'>

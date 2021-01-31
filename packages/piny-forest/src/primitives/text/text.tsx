@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
-import * as ThemeKey from '../constants/theme-key'
-import { ThemeVariantProp } from '../constants/theme-variant-prop'
-import { style, StyleProps } from '../utils'
+import * as ThemeKey from '../../constants/theme-key'
+import { ThemeVariantProp } from '../../constants/theme-variant-prop'
+import { style, StyleProps } from '../../utils'
 import { Box, BoxComponent, BoxProps } from '../box'
 
 export interface TextProps<E extends keyof React.ReactHTML = 'span'>

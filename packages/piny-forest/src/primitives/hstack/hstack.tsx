@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { Box, BoxComponent, BoxProps } from '../box'
-import { style, StyleProps } from '../utils'
+import { style, StyleProps } from '../../utils'
 
 export interface HStackProps<E extends keyof React.ReactHTML = 'div'>
   extends BoxProps<E>,
