@@ -32,7 +32,8 @@
   ],
   "peerDependencies": {
     "react": "^17.0.0",
-    "@emotion/react": "^11.1.4",
+    "@emotion/is-prop-valid": "^11.0.0",
+    "@emotion/react": "^11.0.0",
     "@emotion/styled": "^11.0.0"
   }
 }
