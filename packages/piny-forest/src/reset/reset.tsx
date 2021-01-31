@@ -1,7 +1,13 @@
 import styled from '@emotion/styled'
-import { Base } from '../base'
+import { Base, BaseProps } from '../base'
 
-export const Reset = styled(Base)({
+export interface ResetProps<E extends keyof React.ReactHTML = 'div'>
+  extends BaseProps<E>,
+    ResetInnerProps {}
+
+export interface ResetInnerProps {}
+
+export const Reset = styled(Base)<ResetInnerProps>({
   margin: 0,
   padding: 0,
   border: 0,

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { ThemeKey, Variant } from '../constants'
-import { Reset } from '../reset'
+import { Reset, ResetProps } from '../reset'
 import {
   pss,
   PSS,
@@ -20,7 +20,11 @@ function key({ [ThemeKey]: key }: VariantKeyProps) {
   return key ? variant(key) : null
 }
 
-export interface BoxProps
+export interface BoxProps<E extends keyof React.ReactHTML = 'div'>
+  extends Omit<ResetProps<E>, 'width' | 'height' | 'size'>,
+    BoxInnerProps {}
+
+export interface BoxInnerProps
   extends VariantKeyProps,
     VariantProps<Variant>,
     PSS,
@@ -40,7 +44,7 @@ export interface BoxProps
     StyleProps<'flex'>,
     StyleProps<'order'> {}
 
-export const Box = styled(Reset)<BoxProps>(
+export const Box = styled(Reset)<BoxInnerProps>(
   {
     boxSizing: 'border-box',
     '&::before, &::after': { boxSizing: 'inherit' },

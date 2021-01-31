@@ -1,10 +1,14 @@
 import styled from '@emotion/styled'
 import { ThemeKey, Variant } from '../constants'
-import { Text } from '../text'
+import { Text, TextProps } from '../text'
 
-export interface LabelProps {}
+export interface LabelProps<E extends keyof React.ReactHTML = 'label'>
+  extends TextProps<E>,
+    LabelInnerProps {}
 
-export const Label = styled(Text)<LabelProps>({
+export interface LabelInnerProps {}
+
+export const Label = styled(Text)<LabelInnerProps>({
   display: 'block',
 })
 

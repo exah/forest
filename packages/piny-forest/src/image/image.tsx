@@ -1,10 +1,14 @@
 import styled from '@emotion/styled'
 import { ThemeKey, Variant } from '../constants'
-import { Box } from '../box'
+import { Box, BoxProps } from '../box'
 
-export interface ImageProps {}
+export interface ImageProps<E extends keyof React.ReactHTML = 'img'>
+  extends BoxProps<E>,
+    ImageInnerProps {}
 
-export const Image = styled(Box)<ImageProps>({ display: 'block' })
+export interface ImageInnerProps {}
+
+export const Image = styled(Box)<ImageInnerProps>({ display: 'block' })
 
 Image.defaultProps = {
   as: 'img',

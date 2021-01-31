@@ -1,9 +1,13 @@
 import styled from '@emotion/styled'
 import { ThemeKey, Variant } from '../constants'
 import { style, StyleProps } from '../utils'
-import { Box } from '../box'
+import { Box, BoxProps } from '../box'
 
-export interface TextProps
+export interface TextProps<E extends keyof React.ReactHTML = 'span'>
+  extends BoxProps<E>,
+    TextInnerProps {}
+
+export interface TextInnerProps
   extends StyleProps<'fontFamily'>,
     StyleProps<'fontSize'>,
     StyleProps<'fontWeight'>,
@@ -15,7 +19,7 @@ export interface TextProps
     StyleProps<'textTransform'>,
     StyleProps<'whiteSpace'> {}
 
-export const Text = styled(Box)<TextProps>(
+export const Text = styled(Box)<TextInnerProps>(
   style('fontFamily'),
   style('fontSize'),
   style('fontWeight'),

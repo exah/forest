@@ -1,10 +1,14 @@
 import styled from '@emotion/styled'
 import { ThemeKey, Variant } from '../constants'
-import { Text } from '../text'
+import { Text, TextProps } from '../text'
 
-export interface InputProps {}
+export interface InputProps<E extends keyof React.ReactHTML = 'input'>
+  extends TextProps<E>,
+    InputInnerProps {}
 
-export const Input = styled(Text)<InputProps>({
+export interface InputInnerProps {}
+
+export const Input = styled(Text)<InputInnerProps>({
   appearance: 'none',
   display: 'block',
 })

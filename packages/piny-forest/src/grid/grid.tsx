@@ -1,8 +1,12 @@
 import styled from '@emotion/styled'
-import { Box } from '../box'
+import { Box, BoxProps } from '../box'
 import { style, StyleProps } from '../utils'
 
-export interface GridProps
+export interface GridProps<E extends keyof React.ReactHTML = 'div'>
+  extends Omit<BoxProps<E>, 'rows' | 'columns'>,
+    GridInnerProps {}
+
+export interface GridInnerProps
   extends StyleProps<'gap'>,
     StyleProps<'gridTemplate', 'template'>,
     StyleProps<'gridTemplateColumns', 'columns'>,
@@ -14,7 +18,7 @@ function autoTemplate<S>(input: S) {
   return typeof input === 'number' ? `repeat(${input}, 1fr)` : input
 }
 
-export const Grid = styled(Box)<GridProps>(
+export const Grid = styled(Box)<GridInnerProps>(
   { display: 'grid' },
   style('gap'),
   style('rowGap'),

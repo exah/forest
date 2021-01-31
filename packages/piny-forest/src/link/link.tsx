@@ -1,10 +1,14 @@
 import styled from '@emotion/styled'
 import { ThemeKey, Variant } from '../constants'
-import { Text } from '../text'
+import { Text, TextProps } from '../text'
 
-export interface LinkProps {}
+export interface LinkProps<E extends keyof React.ReactHTML = 'a'>
+  extends TextProps<E>,
+    LinkInnerProps {}
 
-export const Link = styled(Text)<LinkProps>()
+export interface LinkInnerProps {}
+
+export const Link = styled(Text)<LinkInnerProps>()
 
 Link.defaultProps = {
   as: 'a',

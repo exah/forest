@@ -1,10 +1,14 @@
 import styled from '@emotion/styled'
 import { ThemeKey, Variant } from '../constants'
-import { Text } from '../text'
+import { Text, TextProps } from '../text'
 
-export interface ListProps {}
+export interface ListProps<E extends keyof React.ReactHTML = 'ul'>
+  extends TextProps<E>,
+    ListInnerProps {}
 
-export const List = styled(Text)<ListProps>({
+export interface ListInnerProps {}
+
+export const List = styled(Text)<ListInnerProps>({
   listStyle: 'none',
 })
 
@@ -13,9 +17,13 @@ List.defaultProps = {
   [ThemeKey]: Variant.LIST,
 }
 
-export interface ListItemProps {}
+export interface ListItemProps<E extends keyof React.ReactHTML = 'li'>
+  extends TextProps<E>,
+    ListItemInnerProps {}
 
-export const ListItem = styled(Text)<ListItemProps>()
+export interface ListItemInnerProps {}
+
+export const ListItem = styled(Text)<ListItemInnerProps>()
 
 ListItem.defaultProps = {
   as: 'li',

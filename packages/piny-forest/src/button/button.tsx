@@ -1,10 +1,14 @@
 import styled from '@emotion/styled'
 import { ThemeKey, Variant } from '../constants'
-import { Input } from '../input'
+import { Input, InputProps } from '../input'
 
-export interface ButtonProps {}
+export interface ButtonProps<E extends keyof React.ReactHTML = 'button'>
+  extends InputProps<E>,
+    ButtonInnerProps {}
 
-export const Button = styled(Input)<ButtonProps>()
+export interface ButtonInnerProps {}
+
+export const Button = styled(Input)<ButtonInnerProps>()
 
 Button.defaultProps = {
   as: 'button',
