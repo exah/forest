@@ -5,7 +5,7 @@ import { style, StyleProps } from '../../utils'
 import { Box, BoxComponent, BoxProps } from '../box'
 
 export interface TextProps<E extends keyof React.ReactHTML = 'span'>
-  extends BoxProps<E>,
+  extends Omit<BoxProps<E>, keyof TextInnerProps>,
     TextInnerProps {}
 
 export interface TextInnerProps

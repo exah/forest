@@ -5,7 +5,7 @@ import { Box, BoxComponent, BoxProps } from '../box'
 import { style, StyleProps } from '../../utils'
 
 export interface GridProps<E extends keyof React.ReactHTML = 'div'>
-  extends Omit<BoxProps<E>, 'rows' | 'columns'>,
+  extends Omit<BoxProps<E>, keyof GridInnerProps>,
     GridInnerProps {}
 
 export interface GridInnerProps

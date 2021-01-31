@@ -3,7 +3,7 @@ import { Box, BoxComponent, BoxProps } from '../box'
 import { style, StyleProps } from '../../utils'
 
 export interface HStackProps<E extends keyof React.ReactHTML = 'div'>
-  extends BoxProps<E>,
+  extends Omit<BoxProps<E>, keyof HStackInnerProps>,
     HStackInnerProps {}
 
 export interface HStackInnerProps

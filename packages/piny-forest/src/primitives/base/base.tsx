@@ -1,18 +1,14 @@
 import styled, { ComponentSelector } from '@emotion/styled'
+import { ElementType } from '../../utils'
 
-type Cast<X, Y> = X extends Y ? X : Y
-
-type ElementType<
-  E extends keyof React.ReactHTML
-> = React.ReactHTML[E] extends React.DetailedHTMLFactory<any, infer T>
-  ? Cast<T, Element>
-  : any
-
-interface HTMLProps<E extends keyof React.ReactHTML>
+export interface HTMLProps<E extends keyof React.ReactHTML>
   extends Omit<React.AllHTMLAttributes<ElementType<E>>, 'as' | 'ref'> {}
 
 export interface BaseProps<E extends keyof React.ReactHTML>
-  extends HTMLProps<E> {
+  extends HTMLProps<E>,
+    BaseInnerProps<E> {}
+
+export interface BaseInnerProps<E extends keyof React.ReactHTML> {
   as?: E | React.ComponentType
   ref?: React.Ref<ElementType<E>>
 }

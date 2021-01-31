@@ -1,10 +1,4 @@
-export type Get<Path, Input> = Path extends `${infer Key}.${infer Rest}`
-  ? Key extends keyof Input
-    ? Get<Rest, Input[Key]>
-    : undefined
-  : Path extends keyof Input
-  ? Input[Path]
-  : undefined
+import { Get } from './utility-types'
 
 export const get = <Path extends string | number, Input>(
   path?: Path,
