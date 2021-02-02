@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src",
+    "module": "esnext",
+    "target": "es2019",
+    "moduleResolution": "node",
+    "strict": true,
+    "lib": ["dom", "dom.iterable", "es2019"],
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "noUnusedLocals": true,
+    "declaration": true
+  },
+  "include": ["./src"],
+  "exclude": ["node_modules"]
+}

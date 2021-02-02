@@ -5,7 +5,8 @@
   "main": "out/index.js",
   "type": "module",
   "files": [
-    "out"
+    "out",
+    "ref"
   ],
   "sideEffects": false,
   "scripts": {

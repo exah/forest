@@ -4,8 +4,10 @@ import { ThemeVariantProp } from '../../constants/theme-variant-prop'
 import { Box, BoxComponent, BoxProps } from '../box'
 import { style, StyleProps } from '../../utils'
 
-export interface GridProps<E extends keyof React.ReactHTML = 'div'>
-  extends Omit<BoxProps<E>, keyof GridInnerProps>,
+export interface GridProps<
+  E extends keyof React.ReactHTML = 'div',
+  V extends string = ThemeKey.GRID_VARIANTS
+> extends Omit<BoxProps<E, V>, keyof GridInnerProps>,
     GridInnerProps {}
 
 export interface GridInnerProps
@@ -16,13 +18,11 @@ export interface GridInnerProps
     StyleProps<'placeItems'>,
     StyleProps<'placeContent'> {}
 
-function autoTemplate<S>(input: S) {
-  return typeof input === 'number' ? `repeat(${input}, 1fr)` : input
-}
-
 /** @private */
-export interface GridComponent<E extends keyof React.ReactHTML = 'div'>
-  extends BoxComponent<E, GridInnerProps> {}
+export interface GridComponent<
+  E extends keyof React.ReactHTML = 'div',
+  V extends string = ThemeKey.GRID_VARIANTS
+> extends BoxComponent<E, V, GridInnerProps> {}
 
 export const Grid: GridComponent = styled(Box)<GridInnerProps>(
   { display: 'grid' },
@@ -30,8 +30,8 @@ export const Grid: GridComponent = styled(Box)<GridInnerProps>(
   style('rowGap'),
   style('columnGap'),
   style('gridTemplate', 'template'),
-  style('gridTemplateColumns', 'columns', autoTemplate),
-  style('gridTemplateRows', 'rows', autoTemplate),
+  style('gridTemplateColumns', 'columns'),
+  style('gridTemplateRows', 'rows'),
   style('placeItems'),
   style('placeContent')
 )

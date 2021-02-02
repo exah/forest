@@ -1,27 +1,32 @@
-import { Properties as BaseCSSProperties } from 'csstype'
 import { CSSObject, CSSInterpolation } from '@emotion/serialize'
 
 import { SCALES } from '../constants/scales'
-import { Theme as BaseTheme } from '../types'
+import {
+  Responsive,
+  StyleValue,
+  VariantValue,
+  SystemTheme,
+  BreakpointsSystemTheme,
+} from '../types'
 import { get, isObject, isPrimitive, isPropertyKey } from './helpers'
 
 const AXIS = /^(\w+)(X|Y)(\w+)?$/
-type CSSProperties = BaseCSSProperties<(string & {}) | number>
 
-export type Value<Prop extends string> = Prop extends keyof CSSProperties
-  ? CSSProperties[Prop]
-  : (string & {}) | number | null | undefined
+function responsive<I>(
+  input: I | Record<string, I> | undefined,
+  transform: (input: I | undefined) => CSSInterpolation
+): CSSInterpolation {
+  if (isObject(input)) {
+    return Object.entries(input).reduce<Record<string, CSSInterpolation>>(
+      (acc, [key, value]) => {
+        acc[key] = transform(value)
+        return acc
+      },
+      {}
+    )
+  }
 
-export type ResponsiveValue<
-  Prop extends string,
-  Theme extends BaseTheme = BaseTheme
-> = Value<Prop> | Record<keyof Theme['breakpoints'], Value<Prop>>
-
-interface CoreOptions<Theme extends BaseTheme = BaseTheme, Scale = unknown> {
-  input?: CSSInterpolation | null
-  theme?: Theme
-  getValue?<V>(value: V, scale: Scale | undefined): V
-  getScale?(key: string, theme?: Theme): Scale
+  return transform(input)
 }
 
 function rule(key: string, value: CSSInterpolation): CSSInterpolation {
@@ -50,49 +55,62 @@ function rule(key: string, value: CSSInterpolation): CSSInterpolation {
   }
 }
 
-function core<Theme extends BaseTheme = BaseTheme>({
+function hasBreakpoints<T>(theme?: T): theme is T & BreakpointsSystemTheme {
+  // @ts-expect-error
+  return isObject(theme?.breakpoints)
+}
+
+interface CoreOptions<Scale = unknown> {
+  input?: CSSInterpolation | null
+  theme?: SystemTheme
+  getValue?<V>(value: V, scale?: Scale): V
+  getScale?(key: string, theme?: SystemTheme): Scale
+}
+
+function core({
   input,
   theme,
   getValue = (value, scale) =>
     isPropertyKey(value) ? get(value, scale) ?? value : value,
   getScale = (key) => get(get(key, SCALES), theme),
-}: CoreOptions<Theme>): CSSInterpolation[] {
+}: CoreOptions): CSSInterpolation[] {
   if (!isObject(input)) return []
 
   return Object.entries(input).flatMap(([key, value]) => {
-    const result = isObject(value)
+    const style = isObject(value)
       ? core({ input: value, theme, getValue, getScale })
       : getValue(value, getScale(key, theme))
 
-    if (theme?.breakpoints && key in theme.breakpoints) {
+    if (hasBreakpoints(theme) && key in theme.breakpoints) {
       const query = theme.breakpoints[key]
-      return query ? { [`@media ${query}`]: result } : result
+      return query ? { [`@media ${query}`]: style } : style
     }
 
-    return rule(key, result)
+    return rule(key, style)
   })
 }
 
-export interface PSS<Theme extends BaseTheme = BaseTheme> {
+export interface PSS {
   pss?: CSSObject
-  theme?: Theme
+  theme?: SystemTheme
 }
 
-export const pss = <
-  Theme extends BaseTheme = BaseTheme,
-  Props extends PSS<Theme> = PSS<Theme>
->(
-  props: Props
-) =>
+export const pss = <Props extends PSS>(props: Props) =>
   core({
     input: props.pss,
     theme: props.theme,
   })
 
-export interface Style<Prop extends string, Alias extends string = Prop> {
+interface CreateStyleOptions<Prop extends string, Alias extends string = Prop> {
   prop: Prop
   alias?: Alias
   transform?: <V>(value: V) => V | string | number | null
+}
+
+export type StyleProps<Prop extends string, Alias extends string = Prop> = {
+  theme?: SystemTheme
+} & {
+  [P in Alias]?: Responsive<StyleValue<Prop>>
 }
 
 const createStyle = <Prop extends string, Alias extends string = Prop>({
@@ -110,52 +128,33 @@ const createStyle = <Prop extends string, Alias extends string = Prop>({
         return typeof input === 'number' && input >= 0 && input <= 1
           ? `${input * 100}%`
           : input
+      case 'gridTemplateColumns':
+      case 'gridTemplateRows':
+        return typeof input === 'number' ? `repeat(${input}, 1fr)` : input
       default:
         return input
     }
   },
-}: Style<Prop, Alias>) => <
-  Theme extends BaseTheme,
-  Props extends { theme?: Theme } & StyleProps<Prop, Alias, Theme>
->(
+}: CreateStyleOptions<Prop, Alias>) => <Props extends StyleProps<Prop, Alias>>(
   props: Props
-): CSSInterpolation[] => {
-  const propValue = props[alias]
-
-  let input: CSSInterpolation
-  if (isObject(propValue)) {
-    input = Object.entries(propValue).reduce<Record<string, CSSInterpolation>>(
-      (acc, [key, value]) => {
-        if (isPrimitive(value)) {
-          acc[key] = { [prop]: transform(value) }
+): CSSInterpolation[] =>
+  core({
+    input: responsive(props[alias], (result) => {
+      if (isPrimitive(result)) {
+        return {
+          [prop]: transform(result),
         }
-        return acc
-      },
-      {}
-    )
-  } else {
-    input = { [prop]: transform(propValue) }
-  }
+      }
 
-  return core({
-    input: input,
+      return null
+    }),
     theme: props.theme,
   })
-}
-
-export type StyleProps<
-  Prop extends string,
-  Alias extends string = Prop,
-  Theme extends BaseTheme = BaseTheme
-> = {
-  [P in Alias]?: ResponsiveValue<Prop, Theme>
-}
 
 export const style = <Prop extends string, Alias extends string = Prop>(
   prop: Prop,
-  alias?: Alias,
-  transform?: <V>(value: V) => V | string | number | null
-) => createStyle<Prop, Alias>({ prop, alias, transform })
+  alias?: Alias
+) => createStyle<Prop, Alias>({ prop, alias })
 
 type PropDirection<Base extends string> =
   | Base
@@ -167,12 +166,11 @@ type AliasDirection<Base extends string> =
 
 export type SpaceStyleProps<
   Prop extends 'margin' | 'padding',
-  Alias extends string = Prop,
-  Theme extends BaseTheme = BaseTheme
+  Alias extends string = Prop
 > = {
   [K in Alias extends Prop
     ? PropDirection<Prop>
-    : AliasDirection<Alias>]?: ResponsiveValue<Prop, Theme>
+    : AliasDirection<Alias>]?: Responsive<StyleValue<Prop>>
 }
 
 export const spaceStyle = <
@@ -191,22 +189,18 @@ export const spaceStyle = <
   style(prop + 'Y', alias && alias + 'y'),
 ]
 
-export interface VariantProps<
-  Key extends string,
-  Theme extends BaseTheme = BaseTheme
-> {
-  variant?: (Key extends keyof Theme ? keyof Theme[Key] : string) | 'default'
+export interface VariantProps<Key extends string> {
+  theme?: SystemTheme
+  variant?: Responsive<VariantValue<Key>>
 }
 
 export const variant = <Key extends string>(key: Key) => <
-  Theme extends BaseTheme,
-  Props extends { theme?: Theme }
+  Props extends VariantProps<Key>
 >({
   theme,
   variant = 'default',
-}: Props & VariantProps<Key, Theme>) =>
+}: Props) =>
   core({
-    // @ts-expect-error
-    input: get(`${key}.${variant}`, theme),
+    input: responsive(variant, (result) => get(`${key}.${result}`, theme)),
     theme,
   })

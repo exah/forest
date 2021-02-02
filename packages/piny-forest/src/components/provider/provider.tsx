@@ -1,10 +1,10 @@
 import { ThemeProvider } from '@emotion/react'
-import { THEME } from '../../constants/theme'
 
-interface ProviderProps {
+interface ProviderProps<T> {
+  theme: T
   children?: React.ReactNode
 }
 
-export const Provider = (props: ProviderProps) => (
-  <ThemeProvider theme={THEME} {...props} />
-)
+export function Provider<T>(props: ProviderProps<T>) {
+  return <ThemeProvider {...props} />
+}

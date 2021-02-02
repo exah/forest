@@ -134,3 +134,5 @@ export const SCALES = {
   fill: ThemeKey.COLORS,
   stroke: ThemeKey.COLORS,
 } as const
+
+export type SCALES = typeof SCALES

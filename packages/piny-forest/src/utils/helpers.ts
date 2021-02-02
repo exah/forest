@@ -27,3 +27,5 @@ export const isPrimitive = (
 
 export const px = (input: number | string) =>
   typeof input === 'number' ? `${input}px` : input
+
+export const rem = (input: number, base: number = 16) => `${input / base}rem`

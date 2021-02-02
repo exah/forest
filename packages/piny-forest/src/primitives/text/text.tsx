@@ -4,8 +4,10 @@ import { ThemeVariantProp } from '../../constants/theme-variant-prop'
 import { style, StyleProps } from '../../utils'
 import { Box, BoxComponent, BoxProps } from '../box'
 
-export interface TextProps<E extends keyof React.ReactHTML = 'span'>
-  extends Omit<BoxProps<E>, keyof TextInnerProps>,
+export interface TextProps<
+  E extends keyof React.ReactHTML = 'span',
+  V extends string = ThemeKey.TEXT_VARIANTS
+> extends Omit<BoxProps<E, V>, keyof TextInnerProps>,
     TextInnerProps {}
 
 export interface TextInnerProps
@@ -23,8 +25,9 @@ export interface TextInnerProps
 /** @private */
 export interface TextComponent<
   E extends keyof React.ReactHTML = 'span',
-  Props extends {} = {}
-> extends BoxComponent<E, TextInnerProps & Props> {}
+  V extends string = ThemeKey.TEXT_VARIANTS,
+  P extends {} = {}
+> extends BoxComponent<E, V, TextInnerProps & P> {}
 
 export const Text: TextComponent = styled(Box)<TextInnerProps>(
   style('fontFamily'),

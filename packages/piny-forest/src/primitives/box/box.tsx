@@ -21,13 +21,15 @@ function key({ [ThemeVariantProp]: key }: VariantKeyProps) {
   return key ? variant(key) : null
 }
 
-export interface BoxProps<E extends keyof React.ReactHTML = 'div'>
-  extends Omit<BaseProps<E>, keyof BoxInnerProps>,
-    BoxInnerProps {}
+export interface BoxProps<
+  E extends keyof React.ReactHTML = 'div',
+  V extends string = ThemeKey.BOX_VARIANTS
+> extends Omit<BaseProps<E>, keyof BoxInnerProps>,
+    BoxInnerProps<V> {}
 
-export interface BoxInnerProps
+export interface BoxInnerProps<V extends string = ThemeKey.BOX_VARIANTS>
   extends VariantKeyProps,
-    VariantProps<string>,
+    VariantProps<V>,
     PSS,
     SpaceStyleProps<'margin', 'm'>,
     SpaceStyleProps<'padding', 'p'>,
@@ -40,8 +42,9 @@ export interface BoxInnerProps
 /** @private */
 export interface BoxComponent<
   E extends keyof React.ReactHTML = 'div',
+  V extends string = ThemeKey.BOX_VARIANTS,
   Props extends {} = {}
-> extends BaseComponent<E, BoxInnerProps & Props> {}
+> extends BaseComponent<E, BoxInnerProps<V> & Props> {}
 
 export const Box: BoxComponent = styled(Base)<BoxInnerProps>(
   {
