@@ -1,2 +1,2 @@
 export * from './mdx'
-export * from './playground'
+export * from './code-playground'
