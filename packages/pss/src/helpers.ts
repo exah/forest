@@ -1,4 +1,4 @@
-import { Get } from './utility-types'
+import type { Get } from './types'
 
 export const get = <Path extends string | number, Input>(
   path?: Path,
@@ -25,7 +25,7 @@ export const isPrimitive = (
 ): input is string | number | boolean | null | undefined =>
   isPropertyKey(input) || typeof input === 'boolean' || input == null
 
-export const px = (input: number | string) =>
+export const px = (input: number | `${number}px`) =>
   typeof input === 'number' ? `${input}px` : input
 
 export const rem = (input: number, base: number = 16) => `${input / base}rem`

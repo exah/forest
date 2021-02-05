@@ -1,13 +1,13 @@
 import { CSSObject, CSSInterpolation } from '@emotion/serialize'
 
-import { SCALES } from '../constants/scales'
+import SCALES from './scales'
 import {
   Responsive,
   StyleValue,
   VariantValue,
   SystemTheme,
   BreakpointsSystemTheme,
-} from '../types'
+} from './types'
 import { get, isObject, isPrimitive, isPropertyKey } from './helpers'
 
 const AXIS = /^(\w+)(X|Y)(\w+)?$/

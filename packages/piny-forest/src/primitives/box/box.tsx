@@ -1,7 +1,3 @@
-import styled from '@emotion/styled'
-import * as ThemeKey from '../../constants/theme-key'
-import { ThemeVariantProp } from '../../constants/theme-variant-prop'
-import { Base, BaseComponent, BaseProps } from '../base'
 import {
   pss,
   PSS,
@@ -11,7 +7,11 @@ import {
   StyleProps,
   variant,
   VariantProps,
-} from '../../utils'
+} from 'pss'
+import styled from '@emotion/styled'
+import * as ThemeKey from '../../constants/theme-key'
+import { ThemeVariantProp } from '../../constants/theme-variant-prop'
+import { Base, BaseComponent, BaseProps } from '../base'
 
 interface VariantKeyProps {
   [ThemeVariantProp]?: string

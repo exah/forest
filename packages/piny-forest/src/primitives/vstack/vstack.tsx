@@ -1,8 +1,8 @@
+import { style, StyleProps } from 'pss'
 import styled from '@emotion/styled'
 import * as ThemeKey from '../../constants/theme-key'
 import { ThemeVariantProp } from '../../constants/theme-variant-prop'
 import { Box, BoxComponent, BoxProps } from '../box'
-import { style, StyleProps } from '../../utils'
 
 export interface VStackProps<
   E extends keyof React.ReactHTML = 'div',

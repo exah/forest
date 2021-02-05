@@ -1,10 +1,10 @@
 {
   "name": "piny-forest-project",
-  "private": "true",
+  "private": true,
   "workspaces": [
     "packages/piny-forest",
     "packages/piny-forest-docs",
-    "packages/piny-theme"
+    "packages/pss"
   ],
   "prettier": {
     "arrowParens": "always",
@@ -14,6 +14,9 @@
     "printWidth": 80
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.12.13",
+    "@babel/preset-react": "^7.12.13",
+    "@babel/preset-typescript": "^7.12.13",
     "@emotion/jest": "^11.1.0",
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",

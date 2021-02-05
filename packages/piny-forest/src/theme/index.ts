@@ -1,16 +1,16 @@
-import { rem, px } from 'piny-forest'
+import { rem, px } from 'pss'
 
-const Theme = {
+export const Theme = {
   breakpoints: {
     /** all screens */
     $: null,
-    /** mobile devices */
-    $sm: '(min-width: 375px)',
-    /** tablet */
+    /** \> 375px (~mobile) */
+    $sm: '(min-width: 320px)',
+    /** \> 768px  (~tablet) */
     $md: '(min-width: 768px)',
-    /** laptop */
+    /** \> 1024px (~laptop) */
     $lg: '(min-width: 1024px)',
-    /** desktop */
+    /** \> 1280px (~desktop) */
     $xl: '(min-width: 1280px)',
   },
   borderStyles: {},
@@ -113,6 +113,4 @@ const Theme = {
   zIndices: {},
 }
 
-type Theme = typeof Theme
-
-export default Theme
+export type Theme = typeof Theme

@@ -1,5 +1,5 @@
 import * as CSS from 'csstype'
-import { SCALES } from '../constants/scales'
+import SCALES from './scales'
 
 export interface SystemTheme {}
 
@@ -32,3 +32,11 @@ export type Responsive<Value> =
   | Value
   | Record<string, Value>
   | BreakpointsRecord<Value>
+
+export type Get<Path, Input> = Path extends `${infer Key}.${infer Rest}`
+  ? Key extends keyof Input
+    ? Get<Rest, Input[Key]>
+    : undefined
+  : Path extends keyof Input
+  ? Input[Path]
+  : undefined

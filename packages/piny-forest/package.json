@@ -11,7 +11,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "rm -rf out && tsc --outDir out",
-    "test": "jest",
+    "test": "TS_JEST_DISABLE_VER_CHECKER=true jest",
     "size": "size-limit",
     "release": "np",
     "preversion": "npm run build"
@@ -20,20 +20,24 @@
   "author": "John Grishin <hi@johngrish.in>",
   "license": "MIT",
   "jest": {
-    "preset": "ts-jest",
+    "testEnvironment": "jsdom",
     "setupFilesAfterEnv": [
       "@testing-library/jest-dom"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!pss)"
     ]
   },
   "size-limit": [
     {
       "path": "./out/index.js",
-      "limit": "5 KB"
+      "limit": "2 KB"
     }
   ],
   "peerDependencies": {
-    "react": "^17.0.0",
     "@emotion/react": "^11.0.0",
-    "@emotion/styled": "^11.0.0"
+    "@emotion/styled": "^11.0.0",
+    "pss": "^6.0.0",
+    "react": "^17.0.0"
   }
 }

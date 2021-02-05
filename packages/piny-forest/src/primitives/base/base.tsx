@@ -1,5 +1,5 @@
 import styled, { ComponentSelector } from '@emotion/styled'
-import { ElementType } from '../../utils'
+import { ElementType } from './types'
 
 export interface HTMLProps<E extends keyof React.ReactHTML>
   extends Omit<React.AllHTMLAttributes<ElementType<E>>, 'as' | 'ref'> {}
