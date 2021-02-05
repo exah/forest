@@ -14,7 +14,9 @@ export function CodePlayground(props: PlaygroundProps) {
   return (
     <LiveProvider
       scope={{ mdx, ...components, ...lib }}
-      transformCode={(input) => `<>${input}</>`}
+      transformCode={(input) =>
+        /^(function|class)/.test(input) ? input : `<>${input}</>`
+      }
       {...props}
     >
       <HStack gap={4} my={8}>

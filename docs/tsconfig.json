@@ -1,5 +1,4 @@
 {
-  "extends": "../piny-forest/tsconfig",
   "compilerOptions": {
     "rootDir": ".",
     "target": "es6",
@@ -12,8 +11,21 @@
     "noEmit": true,
     "moduleResolution": "node",
     "isolatedModules": true,
-    "noUncheckedIndexedAccess": true
+    "noUncheckedIndexedAccess": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "strict": false,
+    "resolveJsonModule": true
   },
-  "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }

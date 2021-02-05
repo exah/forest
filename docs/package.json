@@ -1,0 +1,9 @@
+{
+  "name": "docs",
+  "private": true,
+  "scripts": {
+    "start": "next",
+    "dev": "next dev",
+    "build": "next build"
+  }
+}

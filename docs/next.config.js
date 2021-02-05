@@ -1,8 +1,5 @@
 const withMDX = require('@next/mdx')()
-const withTM = require('next-transpile-modules')([
-  'piny-forest/src',
-  'piny-theme/src',
-])
+const withTM = require('next-transpile-modules')(['piny-forest', 'pss'])
 
 module.exports = withTM(
   withMDX({
