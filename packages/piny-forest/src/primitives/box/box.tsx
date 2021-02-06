@@ -1,3 +1,4 @@
+import styled from '@emotion/styled'
 import {
   pss,
   PSS,
@@ -8,26 +9,25 @@ import {
   variant,
   VariantProps,
 } from 'pss'
-import styled from '@emotion/styled'
-import * as ThemeKey from '../../constants/theme-key'
-import { ThemeVariantProp } from '../../constants/theme-variant-prop'
+import { BOX_VARIANTS } from '../../constants/theme-key'
+import { VARIANT_PROP } from '../../constants/variant-prop'
 import { Base, BaseComponent, BaseProps } from '../base'
 
 interface VariantKeyProps {
-  [ThemeVariantProp]?: string
+  [VARIANT_PROP]?: string
 }
 
-function key({ [ThemeVariantProp]: key }: VariantKeyProps) {
+function key({ [VARIANT_PROP]: key }: VariantKeyProps) {
   return key ? variant(key) : null
 }
 
 export interface BoxProps<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = ThemeKey.BOX_VARIANTS
+  V extends string = BOX_VARIANTS
 > extends Omit<BaseProps<E>, keyof BoxInnerProps>,
     BoxInnerProps<V> {}
 
-export interface BoxInnerProps<V extends string = ThemeKey.BOX_VARIANTS>
+export interface BoxInnerProps<V extends string = BOX_VARIANTS>
   extends VariantKeyProps,
     VariantProps<V>,
     PSS,
@@ -42,7 +42,7 @@ export interface BoxInnerProps<V extends string = ThemeKey.BOX_VARIANTS>
 /** @private */
 export interface BoxComponent<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = ThemeKey.BOX_VARIANTS,
+  V extends string = BOX_VARIANTS,
   Props extends {} = {}
 > extends BaseComponent<E, BoxInnerProps<V> & Props> {}
 
@@ -64,5 +64,5 @@ export const Box: BoxComponent = styled(Base)<BoxInnerProps>(
 
 Box.defaultProps = {
   as: 'div',
-  [ThemeVariantProp]: ThemeKey.BOX_VARIANTS,
+  [VARIANT_PROP]: BOX_VARIANTS,
 }

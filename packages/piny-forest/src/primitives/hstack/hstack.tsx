@@ -1,12 +1,12 @@
-import { style, StyleProps } from 'pss'
 import styled from '@emotion/styled'
-import * as ThemeKey from '../../constants/theme-key'
-import { ThemeVariantProp } from '../../constants/theme-variant-prop'
+import { style, StyleProps } from 'pss'
+import { STACK_VARIANTS } from '../../constants/theme-key'
+import { VARIANT_PROP } from '../../constants/variant-prop'
 import { Box, BoxComponent, BoxProps } from '../box'
 
 export interface HStackProps<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = ThemeKey.STACK_VARIANTS
+  V extends string = STACK_VARIANTS
 > extends Omit<BoxProps<E, V>, keyof HStackInnerProps>,
     HStackInnerProps {}
 
@@ -17,7 +17,7 @@ export interface HStackInnerProps
 /** @private */
 export interface HStackComponent<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = ThemeKey.STACK_VARIANTS
+  V extends string = STACK_VARIANTS
 > extends BoxComponent<E, V, HStackInnerProps> {}
 
 export const HStack: HStackComponent = styled(Box)<HStackInnerProps>(
@@ -28,5 +28,5 @@ export const HStack: HStackComponent = styled(Box)<HStackInnerProps>(
 
 HStack.defaultProps = {
   as: 'div',
-  [ThemeVariantProp]: ThemeKey.STACK_VARIANTS,
+  [VARIANT_PROP]: STACK_VARIANTS,
 }
