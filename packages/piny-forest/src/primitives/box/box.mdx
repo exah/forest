@@ -4,18 +4,8 @@
 import { Box } from 'piny-forest'
 ```
 
-Core component used inside all other components.
-
-## Props
-
-- `m` — `margin`
-- `p` — `padding`
-- `s` — `size`
-- `w` — `width`
-- `h` — `height`
-- `fg` — `color`
-- `bg` — `backgroundColor`
+Base layout primitive, `div` by default.
 
 ```jsx live
-<Box pss={{ color: 'red' }}>Hello World</Box>
+<Box s={64} m="auto" bg="accent" />
 ```

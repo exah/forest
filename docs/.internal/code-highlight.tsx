@@ -12,7 +12,13 @@ interface Props {
 export const CodeHighlight = (props: Props) => (
   <Highlight Prism={Prism} theme={GithubTheme} {...props}>
     {({ tokens, getLineProps, getTokenProps, style }) => (
-      <Box w={0.5} p={2} my={5} style={{ ...style, borderRadius: '0.25rem' }}>
+      <Box
+        variant="code"
+        w={0.5}
+        p={2}
+        mb={5}
+        style={{ ...style, backgroundColor: null }}
+      >
         {tokens.map((line, index) => (
           <Text
             as="div"
