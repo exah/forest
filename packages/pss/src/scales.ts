@@ -5,10 +5,11 @@ const SCALES = {
   caretColor: 'colors',
   columnRuleColor: 'colors',
   opacity: 'opacities',
-  transition: 'opacities',
-  transitionDuration: 'transitions',
+  transition: 'transitions',
+  transitionDuration: 'durations',
   transitionTimingFunction: 'timings',
-  animationDuration: 'transitions',
+  animation: 'animations',
+  animationDuration: 'durations',
   animationTimingFunction: 'timings',
   margin: 'space',
   marginTop: 'space',
@@ -129,8 +130,6 @@ const SCALES = {
   maxInlineSize: 'sizes',
   minBlockSize: 'sizes',
   minInlineSize: 'sizes',
-  fill: 'colors',
-  stroke: 'colors',
 } as const
 
 type SCALES = typeof SCALES
