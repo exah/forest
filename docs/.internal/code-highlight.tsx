@@ -17,12 +17,11 @@ export const CodeHighlight = (props: Props) => (
         w={0.5}
         p={2}
         mb={5}
-        style={{ ...style, backgroundColor: null }}
+        style={{ ...style, backgroundColor: undefined }}
       >
         {tokens.map((line, index) => (
           <Text
             as="div"
-            variant="primary"
             fontFamily="monospace"
             {...getLineProps({ line, key: index })}
           >

@@ -97,8 +97,8 @@ export const PinActions = ({ children, ...rest }: PinActionsProps) => (
   <Text
     as="div"
     variant="secondary"
-    fg="grey.500"
     pss={{
+      color: 'grey.500',
       gridArea: 'actions',
     }}
     {...rest}

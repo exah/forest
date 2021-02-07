@@ -30,7 +30,7 @@ export function CodePlayground({
         <Box w={0.5} variant={{ '> div': 'code' }}>
           <LiveEditor
             theme={GithubTheme}
-            style={{ backgroundColor: null }}
+            style={{ backgroundColor: undefined }}
             code={code}
             onChange={setCode}
           />

@@ -12,20 +12,10 @@
     "moduleResolution": "node",
     "isolatedModules": true,
     "noUncheckedIndexedAccess": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "strict": false,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "strict": true,
     "resolveJsonModule": true
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "exclude": ["node_modules"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }
