@@ -14,7 +14,6 @@ export interface GridInnerProps
   extends StyleProps<'gap'>,
     StyleProps<'gridTemplate', 'template'>,
     StyleProps<'gridTemplateColumns', 'columns'>,
-    StyleProps<'gridTemplateRows', 'rows'>,
     StyleProps<'placeItems'>,
     StyleProps<'placeContent'> {}
 
@@ -31,7 +30,6 @@ export const Grid: GridComponent = styled(Box)<GridInnerProps>(
   style('columnGap'),
   style('gridTemplate', 'template'),
   style('gridTemplateColumns', 'columns'),
-  style('gridTemplateRows', 'rows'),
   style('placeItems'),
   style('placeContent')
 )

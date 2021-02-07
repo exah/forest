@@ -1,0 +1,64 @@
+# Pin
+
+## Orientations
+
+By default `horizontal`.
+
+```jsx live
+<Pin
+// variant="horizontal"
+// variant="vertical"
+>
+  <PinMedia>
+    <Link href="#image">
+      <Image
+        src="https://placekitten.com/2047/1536"
+        pss={{ size: '100%', objectFit: 'cover' }}
+      />
+    </Link>
+  </PinMedia>
+  <PinTitle>
+    <Link href="#link">Heading</Link>
+  </PinTitle>
+  <PinNote>
+    <Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+  </PinNote>
+  <PinTags>
+    <Link href="#tag">Tag 1</Link>
+    <Link href="#tag">Tag 2</Link>
+    <Link href="#tag">Tag 3</Link>
+  </PinTags>
+  <PinActions>
+    <Text>1 minute ago</Text>
+    <Button>later</Button>
+    <Button>like</Button>
+    <Button>archive</Button>
+    <Button>remove</Button>
+  </PinActions>
+</Pin>
+```
+
+## Optional image
+
+```jsx live
+<Pin>
+  <PinTitle>
+    <Link href="#pin">Heading</Link>
+  </PinTitle>
+  <PinNote>
+    <Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+  </PinNote>
+  <PinTags>
+    <Link href="#tag-1">Tag 1</Link>
+    <Link href="#tag-2">Tag 2</Link>
+    <Link href="#tag-3">Tag 3</Link>
+  </PinTags>
+  <PinActions>
+    <Text>1 minute ago</Text>
+    <Button>later</Button>
+    <Button>like</Button>
+    <Button>archive</Button>
+    <Button>remove</Button>
+  </PinActions>
+</Pin>
+```

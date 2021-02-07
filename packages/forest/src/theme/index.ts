@@ -27,8 +27,7 @@ export const Theme = {
       200: '#eeeeee',
       300: '#cccccc',
       400: '#bbbbbb',
-      500: '#aaaaaa',
-      600: '#999999',
+      500: '#999999',
       900: '#333333',
     },
   },
@@ -92,10 +91,28 @@ export const Theme = {
       minHeight: '100%',
     },
   },
-  gridVariants: {},
+  gridVariants: {
+    'v-pin': {
+      gridTemplate: `
+        "media"
+        "title"
+        "note"
+        "tags"
+        "actions"
+      `,
+    },
+    'h-pin': {
+      gridTemplate: `
+        "media title"
+        "media note"
+        "media tags"
+        "media actions" auto / auto minmax(40%, 100%)
+      `,
+    },
+  },
   imageVariants: { default: { display: 'block' } },
   linkVariants: {
-    default: { ':hover': { color: 'primary' } },
+    default: { ':link:hover': { color: 'primary' } },
     article: { ':link': { textDecoration: 'underline' } },
   },
   listVariants: { default: { listStyle: 'none' } },
@@ -126,13 +143,13 @@ export const Theme = {
       fontFamily: 'primary',
       fontSize: 'primary',
       lineHeight: 'primary',
-      fontWeight: 'bold',
+      fontWeight: 'semi',
     },
     h5: {
       fontFamily: 'primary',
       fontSize: 'secondary',
       lineHeight: 'secondary',
-      fontWeight: 'bold',
+      fontWeight: 'semi',
     },
     primary: {
       fontFamily: 'primary',
