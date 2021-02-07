@@ -10,11 +10,12 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "build": "rm -rf out && tsc --outDir out",
+    "build": "tsc && babel --extensions .ts,.tsx src --out-dir out",
     "test": "TS_JEST_DISABLE_VER_CHECKER=true jest",
     "size": "size-limit",
     "release": "np",
-    "preversion": "npm run build"
+    "preversion": "npm run build",
+    "prebuild": "rm -rf out"
   },
   "keywords": [],
   "author": "John Grishin <hi@johngrish.in>",
@@ -31,7 +32,7 @@
   "size-limit": [
     {
       "path": "./out/index.js",
-      "limit": "2 KB"
+      "limit": "2.5 KB"
     }
   ],
   "peerDependencies": {

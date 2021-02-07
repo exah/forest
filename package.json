@@ -13,9 +13,12 @@
     "printWidth": 80
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.13",
+    "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.12.13",
     "@babel/preset-react": "^7.12.13",
     "@babel/preset-typescript": "^7.12.13",
+    "@emotion/babel-plugin": "^11.1.2",
     "@emotion/jest": "^11.1.0",
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
