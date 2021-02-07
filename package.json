@@ -1,8 +1,8 @@
 {
-  "name": "piny-forest-project",
+  "name": "forest-project",
   "private": true,
   "workspaces": [
-    "packages/piny-forest",
+    "packages/forest",
     "packages/pss"
   ],
   "prettier": {
