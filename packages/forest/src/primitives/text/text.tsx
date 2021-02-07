@@ -29,7 +29,7 @@ export interface TextComponent<
   P extends {} = {}
 > extends BoxComponent<E, V, TextInnerProps & P> {}
 
-export const Text: TextComponent = styled(Box)<TextInnerProps>(
+export const Text: TextComponent = styled<any>(Box)(
   style('fontFamily'),
   style('fontSize'),
   style('fontWeight'),

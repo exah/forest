@@ -18,7 +18,7 @@ export interface InputComponent<
   P extends {} = {}
 > extends TextComponent<E, V, InputInnerProps & P> {}
 
-export const Input: InputComponent = styled(Text)<InputInnerProps>()
+export const Input: InputComponent = styled<any>(Text)()
 
 Input.defaultProps = {
   as: 'input',

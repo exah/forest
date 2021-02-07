@@ -17,7 +17,7 @@ export interface LabelComponent<
   V extends string = LABEL_VARIANTS
 > extends TextComponent<E, V, LabelInnerProps> {}
 
-export const Label: LabelComponent = styled(Text)<LabelInnerProps>()
+export const Label: LabelComponent = styled<any>(Text)()
 
 Label.defaultProps = {
   as: 'label',

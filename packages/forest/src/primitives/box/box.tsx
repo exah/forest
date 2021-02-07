@@ -46,7 +46,7 @@ export interface BoxComponent<
   Props extends {} = {}
 > extends BaseComponent<E, BoxInnerProps<V> & Props> {}
 
-export const Box: BoxComponent = styled(Base)<BoxInnerProps>(
+export const Box: BoxComponent = styled<any>(Base)(
   {
     boxSizing: 'border-box',
     '&::before, &::after': { boxSizing: 'inherit' },

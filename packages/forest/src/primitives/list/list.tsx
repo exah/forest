@@ -17,7 +17,7 @@ export interface ListComponent<
   V extends string = LIST_VARIANTS
 > extends TextComponent<E, V, ListInnerProps> {}
 
-export const List: ListComponent = styled(Text)<ListInnerProps>()
+export const List: ListComponent = styled<any>(Text)()
 
 List.defaultProps = {
   as: 'ul',
@@ -38,7 +38,9 @@ export interface ListItemComponent<
   V extends string = TEXT_VARIANTS
 > extends TextComponent<E, V, ListItemInnerProps> {}
 
-export const ListItem: ListItemComponent = styled(Text)<ListItemInnerProps>()
+export const ListItem: ListItemComponent = styled<any>(
+  Text
+)<ListItemInnerProps>()
 
 ListItem.defaultProps = {
   as: 'li',

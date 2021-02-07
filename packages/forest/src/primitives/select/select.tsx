@@ -17,7 +17,7 @@ export interface SelectComponent<
   V extends string = SELECT_VARIANTS
 > extends InputComponent<E, V> {}
 
-export const Select: SelectComponent = styled(Input)<SelectInnerProps>()
+export const Select: SelectComponent = styled<any>(Input)()
 
 Select.defaultProps = {
   as: 'select',

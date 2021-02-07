@@ -16,6 +16,6 @@ export interface ScrollComponent<
   V extends string = SCROLL_VARIANTS
 > extends BoxComponent<E, V, ScrollInnerProps> {}
 
-export const Scroll: ScrollComponent = styled(Box)<ScrollInnerProps>({
+export const Scroll: ScrollComponent = styled<any>(Box)({
   overflow: 'auto',
 })

@@ -17,7 +17,7 @@ export interface ButtonComponent<
   V extends string = typeof BUTTON_VARIANTS
 > extends InputComponent<E, V, ButtonInnerProps> {}
 
-export const Button: ButtonComponent = styled(Input)<ButtonInnerProps>()
+export const Button: ButtonComponent = styled<any>(Input)()
 
 Button.defaultProps = {
   as: 'button',

@@ -23,7 +23,7 @@ export interface GridComponent<
   V extends string = GRID_VARIANTS
 > extends BoxComponent<E, V, GridInnerProps> {}
 
-export const Grid: GridComponent = styled(Box)<GridInnerProps>(
+export const Grid: GridComponent = styled<any>(Box)(
   { display: 'grid' },
   style('gap'),
   style('rowGap'),

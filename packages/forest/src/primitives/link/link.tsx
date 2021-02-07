@@ -17,7 +17,7 @@ export interface LinkComponent<
   V extends string = LINK_VARIANTS
 > extends TextComponent<E, V, LinkInnerProps> {}
 
-export const Link: LinkComponent = styled(Text)<LinkInnerProps>()
+export const Link: LinkComponent = styled<any>(Text)()
 
 Link.defaultProps = {
   as: 'a',

@@ -24,7 +24,7 @@ export interface BaseComponent<
   ): React.ReactElement | null
 }
 
-export const Base = styled.div({
+export const Base: BaseComponent = styled<any>('div')({
   appearance: 'none',
   margin: 0,
   padding: 0,
@@ -36,4 +36,4 @@ export const Base = styled.div({
   color: 'inherit',
   textAlign: 'inherit',
   textDecoration: 'none',
-}) as BaseComponent
+})

@@ -17,7 +17,7 @@ export interface TextareaComponent<
   V extends string = TEXTAREA_VARIANTS
 > extends InputComponent<E, V, TextareaInnerProps> {}
 
-export const Textarea: TextareaComponent = styled(Input)<TextareaInnerProps>()
+export const Textarea: TextareaComponent = styled<any>(Input)()
 
 Textarea.defaultProps = {
   as: 'textarea',

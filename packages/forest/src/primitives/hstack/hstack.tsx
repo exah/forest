@@ -20,7 +20,7 @@ export interface HStackComponent<
   V extends string = STACK_VARIANTS
 > extends BoxComponent<E, V, HStackInnerProps> {}
 
-export const HStack: HStackComponent = styled(Box)<HStackInnerProps>(
+export const HStack: HStackComponent = styled<any>(Box)(
   { display: 'flex', flexDirection: 'row' },
   style('gap'),
   style('alignItems', 'align')

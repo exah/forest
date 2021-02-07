@@ -3,7 +3,7 @@ import SCALES from './scales'
 
 export interface SystemTheme {}
 
-export interface BreakpointsSystemTheme extends SystemTheme {
+export interface BreakpointsSystemTheme {
   breakpoints: { [K: string]: string | null }
 }
 
