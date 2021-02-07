@@ -8,7 +8,7 @@ import {
   SystemTheme,
   BreakpointsSystemTheme,
 } from './types'
-import { get, isObject, isPrimitive, isPropertyKey } from './helpers'
+import { get, isObject, isPrimitive, isPropertyKey, toArray } from './helpers'
 
 const AXIS = /^(\w+)(X|Y)(\w+)?$/
 
@@ -171,7 +171,7 @@ export const style = <Prop extends string, Alias extends string = Prop>(
 
 export interface VariantProps<Key extends string> {
   theme?: SystemTheme
-  variant?: Responsive<VariantValue<Key>>
+  variant?: Responsive<VariantValue<Key>> | Responsive<VariantValue<Key>>[]
 }
 
 export const variant = <Key extends string>(key: Key) => <
@@ -180,10 +180,12 @@ export const variant = <Key extends string>(key: Key) => <
   theme,
   variant = 'default',
 }: Props) =>
-  core({
-    input: responsive(variant, (result) => get(`${key}.${result}`, theme)),
-    theme,
-  })
+  toArray(variant).map((v) =>
+    core({
+      input: responsive(v, (result) => get(`${key}.${result}`, theme)),
+      theme,
+    })
+  )
 
 type PropDirection<Base extends string> =
   | Base

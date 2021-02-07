@@ -29,3 +29,6 @@ export const px = (input: number | `${number}px`) =>
   typeof input === 'number' ? `${input}px` : input
 
 export const rem = (input: number, base: number = 16) => `${input / base}rem`
+
+export const toArray = <T>(input: T | T[]): T[] =>
+  Array.isArray(input) ? input : [input]
