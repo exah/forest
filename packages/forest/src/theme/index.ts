@@ -13,17 +13,9 @@ export const Theme = {
     /** \> 1280px (~desktop) */
     $xl: '(min-width: 1280px)',
   },
+  borders: {},
   borderStyles: {},
   borderWidths: {},
-  borders: {},
-  boxVariants: {
-    code: {
-      backgroundColor: 'grey.100',
-      borderRadius: 'block-code',
-      minHeight: '100%',
-    },
-  },
-  buttonVariants: {},
   colors: {
     accent: '#F100E8',
     primary: '#0089FF',
@@ -59,16 +51,6 @@ export const Theme = {
     semi: 500,
     body: 400,
   },
-  gridVariants: {},
-  imageVariants: {
-    default: { display: 'block' },
-  },
-  inputVariants: {
-    default: { display: 'block' },
-  },
-  labelVariants: {
-    default: { display: 'block' },
-  },
   letterSpacings: {
     h1: px(0.35),
     h2: px(0.35),
@@ -81,19 +63,11 @@ export const Theme = {
     secondary: 18 / 14,
     small: 14 / 12,
   },
-  linkVariants: {
-    default: { ':hover': { color: 'primary' } },
-    article: { ':link': { textDecoration: 'underline' } },
-  },
-  listVariants: {
-    default: { listStyle: 'none' },
-  },
   opacities: {},
   radii: {
     'block-code': 4,
     'inline-code': 2,
   },
-  selectVariants: {},
   shadows: {},
   sizes: {},
   space: [
@@ -107,6 +81,26 @@ export const Theme = {
     rem(28),
     rem(32),
   ],
+  timings: {},
+  animations: {},
+  transitions: {},
+  zIndices: {},
+  boxVariants: {
+    code: {
+      backgroundColor: 'grey.100',
+      borderRadius: 'block-code',
+      minHeight: '100%',
+    },
+  },
+  gridVariants: {},
+  imageVariants: { default: { display: 'block' } },
+  linkVariants: {
+    default: { ':hover': { color: 'primary' } },
+    article: { ':link': { textDecoration: 'underline' } },
+  },
+  listVariants: { default: { listStyle: 'none' } },
+  stackVariants: {},
+  scrollVariants: {},
   textVariants: {
     h1: {
       fontFamily: 'primary',
@@ -165,10 +159,11 @@ export const Theme = {
       fontWeight: 'body',
     },
   },
-  textareaVariants: {},
-  timings: {},
-  transitions: {},
-  zIndices: {},
+  buttonVariants: { default: { display: 'block' } },
+  inputVariants: { default: { display: 'block' } },
+  selectVariants: { default: { display: 'block' } },
+  textareaVariants: { default: { display: 'block' } },
+  labelVariants: { default: { display: 'block' } },
 }
 
 export type Theme = typeof Theme

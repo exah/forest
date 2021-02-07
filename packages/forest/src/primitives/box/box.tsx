@@ -18,7 +18,7 @@ interface VariantKeyProps {
 }
 
 function key({ [VARIANT_PROP]: key }: VariantKeyProps) {
-  return key ? variant(key) : null
+  return key ? variant(key, 'default') : null
 }
 
 export interface BoxProps<

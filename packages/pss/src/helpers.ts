@@ -30,5 +30,5 @@ export const px = (input: number | `${number}px`) =>
 
 export const rem = (input: number, base: number = 16) => `${input / base}rem`
 
-export const toArray = <T>(input: T | T[]): T[] =>
+export const toArray = <T>(input: T | T[] | undefined): T[] =>
   Array.isArray(input) ? input : input != null ? [input] : []
