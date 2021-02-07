@@ -128,6 +128,18 @@ export const Theme = {
       lineHeight: 'h3',
       fontWeight: 'bold',
     },
+    h4: {
+      fontFamily: 'primary',
+      fontSize: 'primary',
+      lineHeight: 'primary',
+      fontWeight: 'bold',
+    },
+    h5: {
+      fontFamily: 'primary',
+      fontSize: 'secondary',
+      lineHeight: 'secondary',
+      fontWeight: 'bold',
+    },
     primary: {
       fontFamily: 'primary',
       fontSize: 'primary',
@@ -144,6 +156,12 @@ export const Theme = {
       fontFamily: 'primary',
       fontSize: 'small',
       lineHeight: 'small',
+      fontWeight: 'body',
+    },
+    code: {
+      fontFamily: 'monospace',
+      fontSize: 'primary',
+      lineHeight: 'primary',
       fontWeight: 'body',
     },
   },

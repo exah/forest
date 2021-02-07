@@ -28,12 +28,11 @@ function InlineCode(props: Props) {
   return (
     <Text
       as="code"
-      variant="primary"
-      fontFamily="monospace"
-      bg="grey.100"
-      px={2}
+      variant="code"
       pss={{
+        paddingX: 2,
         borderRadius: 2,
+        backgroundColor: 'grey.100',
       }}
       {...props}
     />
@@ -51,9 +50,11 @@ const H1 = (props: Props) => (
     as="h3"
     id={getId(props)}
     variant="h3"
-    w={0.5}
-    mt={{ ':not(:first-child)': 6 }}
-    mb={5}
+    pss={{
+      width: '50%',
+      marginBottom: 5,
+      ':not(:first-of-type)': { marginTop: 6 },
+    }}
     {...props}
   />
 )
@@ -62,11 +63,12 @@ const H2 = (props: Props) => (
   <Text
     as="h4"
     id={getId(props)}
-    variant="primary"
-    fontWeight="bold"
-    w={0.5}
-    mt={{ ':not(:first-child)': 5 }}
-    mb={4}
+    variant="h4"
+    pss={{
+      width: '50%',
+      marginBottom: 4,
+      ':not(:first-of-type)': { marginTop: 5 },
+    }}
     {...props}
   />
 )
@@ -75,17 +77,25 @@ const H3 = (props: Props) => (
   <Text
     as="h5"
     id={getId(props)}
-    variant="secondary"
-    fontWeight="bold"
-    w={0.5}
-    mt={{ ':not(:first-child)': 4 }}
-    mb={3}
+    variant="h5"
+    pss={{
+      width: '50%',
+      marginBottom: 3,
+      ':not(:first-of-type)': { marginTop: 4 },
+    }}
     {...props}
   />
 )
 
 const Table = (props: Props) => (
-  <Box as="table" w={0.5} pss={{ borderCollapse: 'collapse' }} {...props} />
+  <Box
+    as="table"
+    pss={{
+      width: '50%',
+      borderCollapse: 'collapse',
+    }}
+    {...props}
+  />
 )
 
 const TH = (props: Props) => (
@@ -94,12 +104,12 @@ const TH = (props: Props) => (
     variant="secondary"
     fontWeight="semi"
     textAlign="left"
-    w={{ ':first-child': '16ch' }}
-    py={1}
     pss={{
+      paddingY: 1,
       borderBottomWidth: 1,
       borderBottomStyle: 'solid',
       borderBottomColor: 'grey.200',
+      ':first-of-type': { width: '16ch' },
     }}
     {...props}
   />
@@ -110,8 +120,8 @@ const TD = (props: Props) => (
     as="td"
     variant="secondary"
     textAlign="left"
-    py={1}
     pss={{
+      paddingY: 1,
       borderBottomWidth: 1,
       borderBottomStyle: 'solid',
       borderBottomColor: 'grey.200',
