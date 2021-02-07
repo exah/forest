@@ -17,9 +17,9 @@ export type StyleValue<Prop extends string> =
   | (Prop extends keyof Properties ? Properties[Prop] : never)
   | ThemeValue<Prop extends keyof SCALES ? SCALES[Prop] : never>
 
-export type VariantValue<Key extends string> =
-  | (Key extends keyof SystemTheme ? keyof SystemTheme[Key] : never)
-  | 'default'
+export type VariantValue<Key extends string> = Key extends keyof SystemTheme
+  ? keyof SystemTheme[Key]
+  : string
 
 export type BreakpointsRecord<
   Value,

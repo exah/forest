@@ -107,6 +107,9 @@ function core({
   if (!isObject(input)) return []
 
   return Object.entries(input).flatMap(([key, value]) => {
+    if (key === 'variant')
+      return core({ input: get(value, theme), theme, getValue, getScale })
+
     const style = isObject(value)
       ? core({ input: value, theme, getValue, getScale })
       : getValue(value, getScale(key, theme))
