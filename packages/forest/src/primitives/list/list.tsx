@@ -17,9 +17,7 @@ export interface ListComponent<
   V extends string = LIST_VARIANTS
 > extends TextComponent<E, V, ListInnerProps> {}
 
-export const List: ListComponent = styled(Text)<ListInnerProps>({
-  listStyle: 'none',
-})
+export const List: ListComponent = styled(Text)<ListInnerProps>()
 
 List.defaultProps = {
   as: 'ul',

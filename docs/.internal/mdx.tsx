@@ -3,7 +3,7 @@ import slugify from 'slugify'
 
 import { MDXProvider } from '@mdx-js/react'
 import { Language } from 'prism-react-renderer'
-import { Box, Text, List, ListItem } from 'piny-forest/src'
+import { Box, Text, List, ListItem, Link } from 'piny-forest/src'
 import { CodePlayground } from './code-playground'
 import { CodeHighlight } from './code-highlight'
 
@@ -127,7 +127,7 @@ const P = (props: Props) => (
 const UL = (props: Props) => <List as="ul" w={0.5} mb={4} {...props} />
 const LI = (props: Props) => <ListItem as="li" mb={1} {...props} />
 
-const components = {
+export const components = {
   h1: H1,
   h2: H2,
   h3: H3,
@@ -137,6 +137,7 @@ const components = {
   table: Table,
   th: TH,
   td: TD,
+  a: (props: Props) => <Link variant="article" {...props} />,
   pre: (props: Props) => props.children as JSX.Element,
   code: Code,
   inlineCode: InlineCode,

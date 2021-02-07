@@ -16,9 +16,7 @@ export interface ImageComponent<
   V extends string = IMAGE_VARIANTS
 > extends BoxComponent<E, V, ImageInnerProps> {}
 
-export const Image: ImageComponent = styled(Box)<ImageInnerProps>({
-  display: 'block',
-})
+export const Image: ImageComponent = styled(Box)<ImageInnerProps>()
 
 Image.defaultProps = {
   as: 'img',

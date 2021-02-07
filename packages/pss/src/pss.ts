@@ -174,13 +174,11 @@ export interface VariantProps<Key extends string> {
   variant?: Responsive<VariantValue<Key>> | Responsive<VariantValue<Key>>[]
 }
 
-export const variant = <Key extends string>(key: Key) => <
-  Props extends VariantProps<Key>
->({
-  theme,
-  variant = 'default',
-}: Props) =>
-  toArray(variant).map((v) =>
+export const variant = <Key extends string>(
+  key: Key,
+  base: string = 'default'
+) => <Props extends VariantProps<Key>>({ theme, variant }: Props) =>
+  [base, ...toArray(variant)].map((v) =>
     core({
       input: responsive(v, (result) => get(`${key}.${result}`, theme)),
       theme,

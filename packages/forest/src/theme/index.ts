@@ -60,8 +60,15 @@ export const Theme = {
     body: 400,
   },
   gridVariants: {},
-  imageVariants: {},
-  inputVariants: {},
+  imageVariants: {
+    default: { display: 'block' },
+  },
+  inputVariants: {
+    default: { display: 'block' },
+  },
+  labelVariants: {
+    default: { display: 'block' },
+  },
   letterSpacings: {
     h1: px(0.35),
     h2: px(0.35),
@@ -74,8 +81,13 @@ export const Theme = {
     secondary: 18 / 14,
     small: 14 / 12,
   },
-  linkVariants: {},
-  listVariants: {},
+  linkVariants: {
+    default: { ':hover': { color: 'primary' } },
+    article: { ':link': { textDecoration: 'underline' } },
+  },
+  listVariants: {
+    default: { listStyle: 'none' },
+  },
   opacities: {},
   radii: {
     'block-code': 4,

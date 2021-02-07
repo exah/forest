@@ -25,6 +25,7 @@ export interface BaseComponent<
 }
 
 export const Base = styled.div({
+  appearance: 'none',
   margin: 0,
   padding: 0,
   border: 0,
