@@ -1,9 +1,12 @@
 {
   "name": "docs",
   "private": true,
+  "files": [
+    "out"
+  ],
   "scripts": {
-    "start": "next",
+    "start": "serve out",
     "dev": "next dev",
-    "build": "next build"
+    "build": "next build && next export"
   }
 }
