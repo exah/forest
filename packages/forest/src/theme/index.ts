@@ -1,4 +1,44 @@
-import { rem, px } from 'pss'
+import { rem } from 'pss'
+
+export const Color = {
+  accent: '#F100E8',
+  primary: '#0089FF',
+  foreground: '#222222',
+  background: '#ffffff',
+  grey: {
+    10: '#f8f8f8',
+    20: '#eeeeee',
+    30: '#cccccc',
+    40: '#bbbbbb',
+    50: '#999999',
+    60: '#777777',
+    70: '#555555',
+    80: '#444444',
+    90: '#222222',
+  },
+} as const
+
+export type Color = typeof Color
+
+export const Space = {
+  0: 0,
+  4: rem(4),
+  8: rem(8),
+  12: rem(12),
+  16: rem(16),
+  20: rem(20),
+  24: rem(24),
+  28: rem(28),
+  32: rem(32),
+} as const
+
+export type Space = typeof Space
+
+export const Size = {
+  s: Space,
+} as const
+
+export type Size = typeof Size
 
 export const Theme = {
   breakpoints: {
@@ -16,21 +56,7 @@ export const Theme = {
   borders: {},
   borderStyles: {},
   borderWidths: {},
-  colors: {
-    accent: '#F100E8',
-    primary: '#0089FF',
-    foreground: '#333333',
-    background: '#ffffff',
-    shadow: 'rgba(0, 0, 0, 0.175215)',
-    grey: {
-      100: '#f8f8f8',
-      200: '#eeeeee',
-      300: '#cccccc',
-      400: '#bbbbbb',
-      500: '#999999',
-      900: '#333333',
-    },
-  },
+  colors: Color,
   durations: {},
   fonts: {
     primary: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`,
@@ -50,70 +76,41 @@ export const Theme = {
     semi: 500,
     body: 400,
   },
-  letterSpacings: {
-    h1: px(0.35),
-    h2: px(0.35),
-  },
+  letterSpacings: {},
   lineHeights: {
-    h1: 34 / 28,
-    h2: 28 / 22,
-    h3: 22 / 18,
-    primary: 22 / 16,
-    secondary: 18 / 14,
-    small: 14 / 12,
+    h1: 40 / 28,
+    h2: 32 / 22,
+    h3: 24 / 18,
+    primary: 24 / 16,
+    secondary: 20 / 14,
+    small: 16 / 12,
   },
   opacities: {},
   radii: {
     'block-code': 4,
     'inline-code': 2,
   },
-  shadows: {},
-  sizes: {},
-  space: [
-    0,
-    rem(4),
-    rem(8),
-    rem(12),
-    rem(16),
-    rem(20),
-    rem(24),
-    rem(28),
-    rem(32),
-  ],
+  shadows: {
+    image: '0 0 15px rgba(0, 0, 0, 0.15)',
+  },
+  sizes: Size,
+  space: Size,
   timings: {},
   animations: {},
   transitions: {},
   zIndices: {},
   boxVariants: {
     code: {
-      backgroundColor: 'grey.100',
+      backgroundColor: 'grey.10',
       borderRadius: 'block-code',
       minHeight: '100%',
     },
   },
-  gridVariants: {
-    'v-pin': {
-      gridTemplate: `
-        "media"
-        "title"
-        "note"
-        "tags"
-        "actions"
-      `,
-    },
-    'h-pin': {
-      gridTemplate: `
-        "media title"
-        "media note"
-        "media tags"
-        "media actions" auto / auto minmax(40%, 100%)
-      `,
-    },
-  },
+  gridVariants: {},
   imageVariants: { default: { display: 'block' } },
   linkVariants: {
-    default: { ':link:hover': { color: 'primary' } },
-    article: { ':link': { textDecoration: 'underline' } },
+    default: { ':any-link:hover': { color: 'primary' } },
+    article: { ':any-link:link': { textDecoration: 'underline' } },
   },
   listVariants: { default: { listStyle: 'none' } },
   stackVariants: {},
@@ -124,14 +121,12 @@ export const Theme = {
       fontSize: 'h1',
       lineHeight: 'h1',
       fontWeight: 'h1',
-      letterSpacing: 'h1',
     },
     h2: {
       fontFamily: 'primary',
       fontSize: 'h2',
       lineHeight: 'h2',
       fontWeight: 'h2',
-      letterSpacing: 'h2',
     },
     h3: {
       fontFamily: 'primary',

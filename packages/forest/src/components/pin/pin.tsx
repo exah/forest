@@ -9,37 +9,46 @@ import {
   HStack,
 } from '../../primitives'
 
-const VARIANT = {
-  vertical: 'v-pin',
-  horizontal: 'h-pin',
+const PinMediaSelector = styled(Box)()
+
+const Variant = {
+  vertical: {
+    gridTemplate: `
+      "media"
+      "title"
+      "note"
+      "tags"
+      "actions"
+    `,
+    [`${PinMediaSelector}`]: {
+      paddingBottom: 's.12',
+    },
+  },
+  horizontal: {
+    gridTemplate: `
+      "media title"
+      "media note"
+      "media tags"
+      "media actions" auto / auto minmax(40%, 100%)
+    `,
+    [`${PinMediaSelector}`]: {
+      paddingRight: 's.28',
+    },
+  },
 } as const
 
-interface PinProps extends Omit<GridProps, 'ref' | 'variant'> {
-  variant: keyof typeof VARIANT
+export interface PinProps extends Omit<GridProps, 'ref' | 'variant'> {
+  variant: keyof typeof Variant
 }
 
-interface PinMediaProps extends Omit<BoxProps, 'ref'> {}
-interface PinTitleProps extends Omit<TextProps, 'ref'> {}
-interface PinNoteProps extends Omit<TextProps, 'ref'> {}
-interface PinTagsProps extends Omit<TextProps, 'ref'> {}
-interface PinActionsProps extends Omit<TextProps, 'ref'> {}
-
-const PinMediaBox = styled(Box)()
-
-export const Pin = ({ variant = 'horizontal', ...rest }: PinProps) => (
-  <Grid
-    as="article"
-    variant={VARIANT[variant]}
-    pss={{
-      [`${PinMediaBox}`]:
-        variant === 'horizontal' ? { paddingRight: 7 } : { paddingBottom: 3 },
-    }}
-    {...rest}
-  />
+export const Pin = ({ variant: key = 'horizontal', ...rest }: PinProps) => (
+  <Grid as="article" pss={Variant[key]} {...rest} />
 )
 
+export interface PinMediaProps extends Omit<BoxProps, 'ref'> {}
+
 export const PinMedia = ({ className, ...rest }: PinMediaProps) => (
-  <PinMediaBox
+  <PinMediaSelector
     pss={{
       gridArea: 'media',
       height: '100%',
@@ -48,17 +57,21 @@ export const PinMedia = ({ className, ...rest }: PinMediaProps) => (
   />
 )
 
+export interface PinTitleProps extends Omit<TextProps, 'ref'> {}
+
 export const PinTitle = (props: PinTitleProps) => (
   <Text
     as="h3"
     variant="h3"
     pss={{
       gridArea: 'title',
-      marginBottom: 3,
+      marginBottom: 's.12',
     }}
     {...props}
   />
 )
+
+export interface PinNoteProps extends Omit<TextProps, 'ref'> {}
 
 export const PinNote = (props: PinNoteProps) => (
   <Text
@@ -69,13 +82,15 @@ export const PinNote = (props: PinNoteProps) => (
       display: '-webkit-box',
       WebkitBoxOrient: 'vertical',
       WebkitLineClamp: 3,
-      color: 'grey.500',
+      color: 'grey.50',
       overflow: 'hidden',
-      marginBottom: 4,
+      marginBottom: 's.16',
     }}
     {...props}
   />
 )
+
+export interface PinTagsProps extends Omit<TextProps, 'ref'> {}
 
 export const PinTags = ({ children, ...rest }: PinTagsProps) => (
   <Text
@@ -83,28 +98,26 @@ export const PinTags = ({ children, ...rest }: PinTagsProps) => (
     variant="secondary"
     pss={{
       gridArea: 'tags',
-      marginBottom: 2,
+      marginBottom: 's.8',
     }}
     {...rest}
   >
-    <HStack as="div" gap={2}>
-      {children}
-    </HStack>
+    <HStack gap="s.8">{children}</HStack>
   </Text>
 )
+
+export interface PinActionsProps extends Omit<TextProps, 'ref'> {}
 
 export const PinActions = ({ children, ...rest }: PinActionsProps) => (
   <Text
     as="div"
     variant="secondary"
     pss={{
-      color: 'grey.500',
+      color: 'grey.50',
       gridArea: 'actions',
     }}
     {...rest}
   >
-    <HStack as="div" gap={2}>
-      {children}
-    </HStack>
+    <HStack gap="s.8">{children}</HStack>
   </Text>
 )

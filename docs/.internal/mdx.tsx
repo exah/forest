@@ -30,9 +30,9 @@ function InlineCode(props: Props) {
       as="code"
       variant="code"
       pss={{
-        paddingX: 2,
+        paddingX: 's.8',
         borderRadius: 2,
-        backgroundColor: 'grey.100',
+        backgroundColor: 'grey.10',
       }}
       {...props}
     />
@@ -52,8 +52,8 @@ const H1 = (props: Props) => (
     variant="h3"
     pss={{
       width: '50%',
-      marginBottom: 5,
-      ':not(:first-of-type)': { marginTop: 6 },
+      marginBottom: 's.20',
+      ':not(:first-of-type)': { marginTop: 's.24' },
     }}
     {...props}
   />
@@ -66,8 +66,8 @@ const H2 = (props: Props) => (
     variant="h4"
     pss={{
       width: '50%',
-      marginBottom: 4,
-      ':not(:first-of-type)': { marginTop: 5 },
+      marginBottom: 's.16',
+      ':not(:first-of-type)': { marginTop: 's.20' },
     }}
     {...props}
   />
@@ -80,8 +80,8 @@ const H3 = (props: Props) => (
     variant="h5"
     pss={{
       width: '50%',
-      marginBottom: 3,
-      ':not(:first-of-type)': { marginTop: 4 },
+      marginBottom: 's.12',
+      ':not(:first-of-type)': { marginTop: 's.16' },
     }}
     {...props}
   />
@@ -105,11 +105,12 @@ const TH = (props: Props) => (
     fontWeight="semi"
     textAlign="left"
     pss={{
-      paddingY: 1,
+      paddingY: 's.4',
+      paddingRight: 's.8',
       borderBottomWidth: 1,
       borderBottomStyle: 'solid',
-      borderBottomColor: 'grey.200',
-      ':first-of-type': { width: '16ch' },
+      borderBottomColor: 'grey.20',
+      ':first-of-type': { width: '20ch' },
     }}
     {...props}
   />
@@ -121,21 +122,22 @@ const TD = (props: Props) => (
     variant="secondary"
     textAlign="left"
     pss={{
-      paddingY: 1,
+      paddingY: 's.4',
+      paddingRight: 's.8',
       borderBottomWidth: 1,
       borderBottomStyle: 'solid',
-      borderBottomColor: 'grey.200',
+      borderBottomColor: 'grey.20',
     }}
     {...props}
   />
 )
 
 const P = (props: Props) => (
-  <Text as="p" variant="primary" w={0.5} mb={3} {...props} />
+  <Text as="p" variant="primary" w={0.5} mb="s.12" {...props} />
 )
 
-const UL = (props: Props) => <List as="ul" w={0.5} mb={4} {...props} />
-const LI = (props: Props) => <ListItem as="li" mb={1} {...props} />
+const UL = (props: Props) => <List as="ul" w={0.5} mb="s.16" {...props} />
+const LI = (props: Props) => <ListItem as="li" mb="s.4" {...props} />
 
 export const components = {
   h1: H1,

@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as PinyForest from 'piny-forest/src'
 import GithubTheme from 'prism-react-renderer/themes/github'
 import { LiveProvider, LivePreview, LiveEditor, LiveError } from 'react-live'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Box, Label, HStack } from 'piny-forest/src'
 
 interface PlaygroundProps {
@@ -17,6 +17,9 @@ export function CodePlayground({
 }: PlaygroundProps) {
   const [code, setCode] = useState<string>(defaultCode)
   const [hasOutline, setOutline] = useState<boolean>(false)
+
+  useEffect(() => setCode(defaultCode), [defaultCode])
+
   return (
     <LiveProvider
       scope={SCOPE}
@@ -26,7 +29,7 @@ export function CodePlayground({
       code={code}
       {...rest}
     >
-      <HStack gap={4} mb={5}>
+      <HStack gap="s.16" mb="s.20">
         <Box w={0.5} variant={{ '> div': 'code' }}>
           <LiveEditor
             theme={GithubTheme}
@@ -38,11 +41,12 @@ export function CodePlayground({
         <Box
           w={0.5}
           pss={{
+            position: 'relative',
             '> div': { outline: hasOutline ? '1px solid red' : 'none' },
           }}
         >
           <LivePreview />
-          <Label mt={2}>
+          <Label mt="s.8">
             <input
               type="checkbox"
               checked={hasOutline}

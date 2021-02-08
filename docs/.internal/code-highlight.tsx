@@ -10,27 +10,28 @@ interface Props {
 }
 
 export const CodeHighlight = (props: Props) => (
-  <Highlight Prism={Prism} theme={GithubTheme} {...props}>
-    {({ tokens, getLineProps, getTokenProps, style }) => (
-      <Box
-        variant="code"
-        w={0.5}
-        p={2}
-        mb={5}
-        style={{ ...style, backgroundColor: undefined }}
-      >
-        {tokens.map((line, index) => (
-          <Text
-            as="div"
-            fontFamily="monospace"
-            {...getLineProps({ line, key: index })}
-          >
-            {line.map((token, key) => (
-              <Text {...getTokenProps({ token, key })} />
-            ))}
-          </Text>
-        ))}
-      </Box>
-    )}
-  </Highlight>
+  <Box mb="s.20" pr="s.16">
+    <Highlight Prism={Prism} theme={GithubTheme} {...props}>
+      {({ tokens, getLineProps, getTokenProps, style }) => (
+        <Box
+          variant="code"
+          w={0.5}
+          p="s.8"
+          style={{ ...style, backgroundColor: undefined }}
+        >
+          {tokens.map((line, index) => (
+            <Text
+              as="div"
+              fontFamily="monospace"
+              {...getLineProps({ line, key: index })}
+            >
+              {line.map((token, key) => (
+                <Text {...getTokenProps({ token, key })} />
+              ))}
+            </Text>
+          ))}
+        </Box>
+      )}
+    </Highlight>
+  </Box>
 )
