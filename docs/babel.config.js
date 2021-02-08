@@ -1,4 +1,4 @@
 module.exports = {
   presets: ['next/babel'],
-  plugins: ['@emotion/babel-plugin'],
+  plugins: [['@emotion/babel-plugin', { autoLabel: 'never' }]],
 }
