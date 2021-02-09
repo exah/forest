@@ -110,7 +110,7 @@ export const Theme = {
   imageVariants: { default: { display: 'block' } },
   linkVariants: {
     default: { ':any-link:hover': { color: 'primary' } },
-    article: { ':any-link:link': { textDecoration: 'underline' } },
+    article: { ':any-link': { textDecoration: 'underline' } },
   },
   listVariants: { default: { listStyle: 'none' } },
   stackVariants: {},
@@ -166,7 +166,7 @@ export const Theme = {
     },
     code: {
       fontFamily: 'monospace',
-      fontSize: 'primary',
+      fontSize: '0.9em',
       lineHeight: 'primary',
       fontWeight: 'body',
     },

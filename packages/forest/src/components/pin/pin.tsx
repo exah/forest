@@ -79,11 +79,7 @@ export const PinNote = (props: PinNoteProps) => (
     variant="primary"
     pss={{
       gridArea: 'note',
-      display: '-webkit-box',
-      WebkitBoxOrient: 'vertical',
-      WebkitLineClamp: 3,
       color: 'grey.50',
-      overflow: 'hidden',
       marginBottom: 's.16',
     }}
     {...props}
@@ -93,17 +89,9 @@ export const PinNote = (props: PinNoteProps) => (
 export interface PinTagsProps extends Omit<TextProps, 'ref'> {}
 
 export const PinTags = ({ children, ...rest }: PinTagsProps) => (
-  <Text
-    as="div"
-    variant="secondary"
-    pss={{
-      gridArea: 'tags',
-      marginBottom: 's.8',
-    }}
-    {...rest}
-  >
-    <HStack gap="s.8">{children}</HStack>
-  </Text>
+  <HStack gap="s.8" pss={{ gridArea: 'tags' }} {...rest}>
+    {children}
+  </HStack>
 )
 
 export interface PinActionsProps extends Omit<TextProps, 'ref'> {}
@@ -115,6 +103,7 @@ export const PinActions = ({ children, ...rest }: PinActionsProps) => (
     pss={{
       color: 'grey.50',
       gridArea: 'actions',
+      marginTop: 's.8',
     }}
     {...rest}
   >

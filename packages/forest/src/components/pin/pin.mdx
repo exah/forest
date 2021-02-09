@@ -1,6 +1,10 @@
 # Pin
 
-By default `Pin` has `horizontal` variant. `PinMedia` can be omitted.
+Represents a summary of saved link: visual representation (screenshot or other media),
+title, note and associated tags.
+
+Contains two variants `horizontal` (default) and `vertical`.
+Without `PinMedia` both variants look the same .
 
 ```jsx live
 <Pin
@@ -26,16 +30,16 @@ By default `Pin` has `horizontal` variant. `PinMedia` can be omitted.
     <Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
   </PinNote>
   <PinTags>
-    <Link href="#tag">Tag 1</Link>
-    <Link href="#tag">Tag 2</Link>
-    <Link href="#tag">Tag 3</Link>
+    <Tag href="#tag">Tag 1</Tag>
+    <Tag href="#tag">Tag 2</Tag>
+    <Tag href="#tag">Tag 3</Tag>
   </PinTags>
   <PinActions>
     <Text>1 minute ago</Text>
     <Button>later</Button>
     <Button>like</Button>
     <Button>archive</Button>
-    <Button>remove</Button>
+    <Button ml="auto">remove</Button>
   </PinActions>
 </Pin>
 ```
