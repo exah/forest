@@ -7,6 +7,7 @@ import {
   Text,
   TextProps,
   HStack,
+  HStackProps,
 } from '../../primitives'
 
 const PinMediaSelector = styled(Box)()
@@ -86,7 +87,7 @@ export const PinNote = (props: PinNoteProps) => (
   />
 )
 
-export interface PinTagsProps extends Omit<TextProps, 'ref'> {}
+export interface PinTagsProps extends Omit<HStackProps, 'ref'> {}
 
 export const PinTags = ({ children, ...rest }: PinTagsProps) => (
   <HStack gap="s.8" pss={{ gridArea: 'tags' }} {...rest}>
@@ -94,19 +95,10 @@ export const PinTags = ({ children, ...rest }: PinTagsProps) => (
   </HStack>
 )
 
-export interface PinActionsProps extends Omit<TextProps, 'ref'> {}
+export interface PinActionsProps extends Omit<HStackProps, 'ref'> {}
 
 export const PinActions = ({ children, ...rest }: PinActionsProps) => (
-  <Text
-    as="div"
-    variant="secondary"
-    pss={{
-      color: 'grey.50',
-      gridArea: 'actions',
-      marginTop: 's.8',
-    }}
-    {...rest}
-  >
-    <HStack gap="s.8">{children}</HStack>
-  </Text>
+  <HStack gap="s.8" pss={{ gridArea: 'actions', marginTop: 's.8' }} {...rest}>
+    {children}
+  </HStack>
 )
