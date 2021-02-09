@@ -1,8 +1,9 @@
 import { rem } from 'pss'
 
 export const Color = {
-  accent: '#F100E8',
   primary: '#0089FF',
+  highlight: '#F100E8',
+  destructive: '#ff4d46',
   foreground: '#222222',
   background: '#ffffff',
   grey: {
@@ -97,7 +98,9 @@ export const Theme = {
   space: Size,
   timings: {},
   animations: {},
-  transitions: {},
+  transitions: {
+    text: 'color .2s',
+  },
   zIndices: {},
   boxVariants: {
     code: {
@@ -109,8 +112,13 @@ export const Theme = {
   gridVariants: {},
   imageVariants: { default: { display: 'block' } },
   linkVariants: {
-    default: { ':any-link:hover': { color: 'primary' } },
-    article: { ':any-link': { textDecoration: 'underline' } },
+    default: {
+      transition: 'text',
+      ':any-link:hover': { color: 'primary' },
+    },
+    article: {
+      ':any-link': { textDecoration: 'underline' },
+    },
   },
   listVariants: { default: { listStyle: 'none' } },
   stackVariants: {},
