@@ -21,7 +21,7 @@ export interface VStackComponent<
 > extends BoxComponent<E, V, VStackInnerProps> {}
 
 export const VStack: VStackComponent = styled<any>(Box)(
-  { display: 'flex', flexDirection: 'column' },
+  { display: 'flex', flexDirection: 'column', '> *': { flex: '0 0 auto' } },
   style('gap'),
   style('alignItems', 'align')
 )

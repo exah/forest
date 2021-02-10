@@ -21,7 +21,7 @@ export interface HStackComponent<
 > extends BoxComponent<E, V, HStackInnerProps> {}
 
 export const HStack: HStackComponent = styled<any>(Box)(
-  { display: 'flex', flexDirection: 'row' },
+  { display: 'flex', flexDirection: 'row', '> *': { flex: '0 0 auto' } },
   style('gap'),
   style('alignItems', 'align')
 )
