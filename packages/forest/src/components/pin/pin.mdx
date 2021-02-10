@@ -1,5 +1,16 @@
 # Pin
 
+```js
+import {
+  Pin,
+  PinMedia,
+  PinTitle,
+  PinNote,
+  PinTags,
+  PinActions,
+} from 'piny-forest'
+```
+
 Represents a summary of saved link: visual representation (screenshot or other media),
 title, note and associated tags.
 
@@ -35,9 +46,9 @@ Without `PinMedia` both variants look the same .
     <Tag href="#tag">Tag 3</Tag>
   </PinTags>
   <PinActions>
-    <Text variant="secondary" fg="grey.50">
+    <Status as="time" datetime="22:00" title="22:00">
       1 minute ago
-    </Text>
+    </Status>
     <Action>later</Action>
     <Action>like</Action>
     <Action>archive</Action>
