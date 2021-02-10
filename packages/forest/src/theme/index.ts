@@ -61,6 +61,7 @@ export const Theme = {
   durations: {},
   fonts: {
     primary: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`,
+    code: `monospace`,
   },
   fontSizes: {
     h1: rem(28),
@@ -173,7 +174,7 @@ export const Theme = {
       fontWeight: 'body',
     },
     code: {
-      fontFamily: 'monospace',
+      fontFamily: 'code',
       fontSize: '0.9em',
       lineHeight: 'primary',
       fontWeight: 'body',

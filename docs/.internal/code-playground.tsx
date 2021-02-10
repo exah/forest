@@ -3,7 +3,7 @@ import * as PinyForest from 'piny-forest/src'
 import GithubTheme from 'prism-react-renderer/themes/github'
 import { LiveProvider, LivePreview, LiveEditor, LiveError } from 'react-live'
 import { useState, useEffect } from 'react'
-import { Box, Label, HStack } from 'piny-forest/src'
+import { Box, Grid, Label, HStack } from 'piny-forest/src'
 
 interface PlaygroundProps {
   code: string
@@ -29,8 +29,8 @@ export function CodePlayground({
       code={code}
       {...rest}
     >
-      <HStack gap="s.16" mb="s.20">
-        <Box w={0.5} variant={{ '> div': 'code' }}>
+      <Grid columns={{ $: 1, $md: 2 }} gap="s.16" my="s.24">
+        <Box variant={{ '> div': 'code' }}>
           <LiveEditor
             theme={GithubTheme}
             style={{ backgroundColor: undefined }}
@@ -39,10 +39,11 @@ export function CodePlayground({
           />
         </Box>
         <Box
-          w={0.5}
           pss={{
             position: 'relative',
             '> div': { outline: hasOutline ? '1px solid red' : 'none' },
+            order: -1,
+            $md: { order: 1 },
           }}
         >
           <LivePreview />
@@ -55,7 +56,7 @@ export function CodePlayground({
             {' Outline'}
           </Label>
         </Box>
-      </HStack>
+      </Grid>
       <LiveError />
     </LiveProvider>
   )

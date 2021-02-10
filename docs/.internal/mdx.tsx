@@ -51,7 +51,7 @@ const H1 = (props: Props) => (
     id={getId(props)}
     variant="h3"
     pss={{
-      width: '50%',
+      $md: { width: '50%' },
       marginBottom: 's.20',
       ':not(:first-of-type)': { marginTop: 's.24' },
     }}
@@ -65,7 +65,7 @@ const H2 = (props: Props) => (
     id={getId(props)}
     variant="h4"
     pss={{
-      width: '50%',
+      $md: { width: '50%' },
       marginBottom: 's.16',
       ':not(:first-of-type)': { marginTop: 's.20' },
     }}
@@ -79,7 +79,7 @@ const H3 = (props: Props) => (
     id={getId(props)}
     variant="h5"
     pss={{
-      width: '50%',
+      $md: { width: '50%' },
       marginBottom: 's.12',
       ':not(:first-of-type)': { marginTop: 's.16' },
     }}
@@ -91,7 +91,7 @@ const Table = (props: Props) => (
   <Box
     as="table"
     pss={{
-      width: '50%',
+      $md: { width: '50%' },
       borderCollapse: 'collapse',
     }}
     {...props}
@@ -133,10 +133,12 @@ const TD = (props: Props) => (
 )
 
 const P = (props: Props) => (
-  <Text as="p" variant="primary" w={0.5} mb="s.12" {...props} />
+  <Text as="p" variant="primary" w={{ $md: 0.5 }} mb="s.12" {...props} />
 )
 
-const UL = (props: Props) => <List as="ul" w={0.5} mb="s.16" {...props} />
+const UL = (props: Props) => (
+  <List as="ul" w={{ $md: 0.5 }} mb="s.16" {...props} />
+)
 const LI = (props: Props) => <ListItem as="li" mb="s.4" {...props} />
 
 export const components = {

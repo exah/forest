@@ -10,13 +10,13 @@ interface Props {
 }
 
 export const CodeHighlight = (props: Props) => (
-  <Box mb="s.20" pr="s.16">
+  <Box my="s.24" w={{ $md: 0.5 }} pr={{ $md: 's.16' }}>
     <Highlight Prism={Prism} theme={GithubTheme} {...props}>
       {({ tokens, getLineProps, getTokenProps, style }) => (
         <Box
-          variant="code"
-          w={0.5}
+          as="pre"
           p="s.8"
+          variant="code"
           style={{ ...style, backgroundColor: undefined }}
         >
           {tokens.map((line, index) => (
