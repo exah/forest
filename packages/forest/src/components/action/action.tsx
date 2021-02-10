@@ -1,7 +1,7 @@
 import { Button, ButtonProps, Text, TextProps } from '../../primitives'
 
 export interface ActionProps
-  extends Omit<ButtonProps, 'variant'>,
+  extends Omit<ButtonProps, 'variant' | 'ref'>,
     Pick<TextProps, 'variant'> {
   accent?: string
 }
