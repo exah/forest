@@ -48,13 +48,13 @@ export const Pin = ({ variant: key = 'horizontal', ...rest }: PinProps) => (
 
 export interface PinMediaProps extends Omit<BoxProps, 'ref'> {}
 
-export const PinMedia = ({ className, ...rest }: PinMediaProps) => (
+export const PinMedia = (props: PinMediaProps) => (
   <PinMediaSelector
     pss={{
       gridArea: 'media',
       height: '100%',
     }}
-    {...rest}
+    {...props}
   />
 )
 
