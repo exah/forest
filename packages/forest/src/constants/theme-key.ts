@@ -1,5 +1,6 @@
 export const BOX_VARIANTS = 'boxVariants'
 export const BUTTON_VARIANTS = 'buttonVariants'
+export const FLEX_VARIANTS = 'flexVariants'
 export const GRID_VARIANTS = 'gridVariants'
 export const IMAGE_VARIANTS = 'imageVariants'
 export const INPUT_VARIANTS = 'inputVariants'
@@ -14,6 +15,7 @@ export const TEXTAREA_VARIANTS = 'textareaVariants'
 
 export type BOX_VARIANTS = typeof BOX_VARIANTS
 export type BUTTON_VARIANTS = typeof BUTTON_VARIANTS
+export type FLEX_VARIANTS = typeof FLEX_VARIANTS
 export type GRID_VARIANTS = typeof GRID_VARIANTS
 export type IMAGE_VARIANTS = typeof IMAGE_VARIANTS
 export type INPUT_VARIANTS = typeof INPUT_VARIANTS

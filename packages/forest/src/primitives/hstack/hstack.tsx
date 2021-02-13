@@ -2,12 +2,12 @@ import styled from '@emotion/styled'
 import { style, StyleProps } from 'pss'
 import { STACK_VARIANTS } from '../../constants/theme-key'
 import { VARIANT_PROP } from '../../constants/variant-prop'
-import { Box, BoxComponent, BoxProps } from '../box'
+import { Flex, FlexComponent, FlexProps } from '../flex'
 
 export interface HStackProps<
   E extends keyof React.ReactHTML = 'div',
   V extends string = STACK_VARIANTS
-> extends Omit<BoxProps<E, V>, keyof HStackInnerProps>,
+> extends Omit<FlexProps<E, V>, keyof HStackInnerProps>,
     HStackInnerProps {}
 
 export interface HStackInnerProps
@@ -18,10 +18,10 @@ export interface HStackInnerProps
 export interface HStackComponent<
   E extends keyof React.ReactHTML = 'div',
   V extends string = STACK_VARIANTS
-> extends BoxComponent<E, V, HStackInnerProps> {}
+> extends FlexComponent<E, V, HStackInnerProps> {}
 
-export const HStack: HStackComponent = styled<any>(Box)(
-  { display: 'flex', flexDirection: 'row', '> *': { flex: '0 0 auto' } },
+export const HStack: HStackComponent = styled<any>(Flex)(
+  { flexDirection: 'row', '> *': { flex: '0 0 auto' } },
   style('gap'),
   style('alignItems', 'align')
 )
