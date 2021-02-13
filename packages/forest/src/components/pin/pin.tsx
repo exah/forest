@@ -33,7 +33,8 @@ const Variant = {
       "media actions" auto / auto minmax(40%, 100%)
     `,
     [`${PinMediaSelector}`]: {
-      paddingRight: 's.28',
+      paddingRight: 's.16',
+      $md: { paddingRight: 's.28' },
     },
   },
 } as const
