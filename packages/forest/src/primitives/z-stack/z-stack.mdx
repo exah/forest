@@ -1,0 +1,22 @@
+# ZStack
+
+Based on [Flex](#flex). Items positioned one after another on z-axis.
+
+Experimental, can be removed later if there is no enough use cases.
+[Idea taken from Swift UI.](https://developer.apple.com/documentation/swiftui/zstack)
+
+```jsx live
+<ZStack
+  fg="white"
+  bg="lime"
+  pss={{
+    height: 200,
+    alignItems: 'center',
+    justifyContent: 'center',
+  }}
+>
+  <Box bg="blue" s={100} />
+  <Box bg="red" s={50} />
+  <Box bg="yellow" s={75} pss={{ left: 's.16', bottom: 's.16' }} />
+</ZStack>
+```
