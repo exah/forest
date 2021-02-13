@@ -1,11 +1,9 @@
 import styled from '@emotion/styled'
-import { LINK_VARIANTS } from '../../constants/theme-key'
-import { VARIANT_PROP } from '../../constants/variant-prop'
 import { Text, TextComponent, TextProps } from '../text'
 
 export interface LinkProps<
   E extends keyof React.ReactHTML = 'a',
-  V extends string = LINK_VARIANTS
+  V extends string = 'linkVariants'
 > extends TextProps<E, V>,
     LinkInnerProps {}
 
@@ -14,12 +12,12 @@ export interface LinkInnerProps {}
 /** @private */
 export interface LinkComponent<
   E extends keyof React.ReactHTML = 'a',
-  V extends string = LINK_VARIANTS
+  V extends string = 'linkVariants'
 > extends TextComponent<E, V, LinkInnerProps> {}
 
 export const Link: LinkComponent = styled<any>(Text)()
 
 Link.defaultProps = {
   as: 'a',
-  [VARIANT_PROP]: LINK_VARIANTS,
+  '@pss/variant': 'linkVariants',
 }

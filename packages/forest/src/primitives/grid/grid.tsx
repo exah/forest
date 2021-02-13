@@ -1,12 +1,10 @@
 import styled from '@emotion/styled'
 import { style, StyleProps } from 'pss'
-import { GRID_VARIANTS } from '../../constants/theme-key'
-import { VARIANT_PROP } from '../../constants/variant-prop'
 import { Box, BoxComponent, BoxProps } from '../box'
 
 export interface GridProps<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = GRID_VARIANTS
+  V extends string = 'gridVariants'
 > extends Omit<BoxProps<E, V>, keyof GridInnerProps>,
     GridInnerProps {}
 
@@ -20,7 +18,7 @@ export interface GridInnerProps
 /** @private */
 export interface GridComponent<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = GRID_VARIANTS
+  V extends string = 'gridVariants'
 > extends BoxComponent<E, V, GridInnerProps> {}
 
 export const Grid: GridComponent = styled<any>(Box)(
@@ -36,5 +34,5 @@ export const Grid: GridComponent = styled<any>(Box)(
 
 Grid.defaultProps = {
   as: 'div',
-  [VARIANT_PROP]: GRID_VARIANTS,
+  '@pss/variant': 'gridVariants',
 }

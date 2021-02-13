@@ -1,12 +1,11 @@
 import styled from '@emotion/styled'
 import { style, StyleProps } from 'pss'
-import { STACK_VARIANTS } from '../../constants/theme-key'
-import { VARIANT_PROP } from '../../constants/variant-prop'
+
 import { Flex, FlexComponent, FlexProps } from '../flex'
 
 export interface VStackProps<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = STACK_VARIANTS
+  V extends string = 'vStackVariants'
 > extends Omit<FlexProps<E, V>, keyof VStackInnerProps>,
     VStackInnerProps {}
 
@@ -17,7 +16,7 @@ export interface VStackInnerProps
 /** @private */
 export interface VStackComponent<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = STACK_VARIANTS
+  V extends string = 'vStackVariants'
 > extends FlexComponent<E, V, VStackInnerProps> {}
 
 export const VStack: VStackComponent = styled<any>(Flex)(
@@ -28,5 +27,5 @@ export const VStack: VStackComponent = styled<any>(Flex)(
 
 VStack.defaultProps = {
   as: 'div',
-  [VARIANT_PROP]: STACK_VARIANTS,
+  '@pss/variant': 'vStackVariants',
 }

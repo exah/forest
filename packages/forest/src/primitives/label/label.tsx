@@ -1,11 +1,9 @@
 import styled from '@emotion/styled'
-import { LABEL_VARIANTS } from '../../constants/theme-key'
-import { VARIANT_PROP } from '../../constants/variant-prop'
 import { Text, TextComponent, TextProps } from '../text'
 
 export interface LabelProps<
   E extends keyof React.ReactHTML = 'label',
-  V extends string = LABEL_VARIANTS
+  V extends string = 'labelVariants'
 > extends TextProps<E, V>,
     LabelInnerProps {}
 
@@ -14,12 +12,12 @@ export interface LabelInnerProps {}
 /** @private */
 export interface LabelComponent<
   E extends keyof React.ReactHTML = 'label',
-  V extends string = LABEL_VARIANTS
+  V extends string = 'labelVariants'
 > extends TextComponent<E, V, LabelInnerProps> {}
 
 export const Label: LabelComponent = styled<any>(Text)()
 
 Label.defaultProps = {
   as: 'label',
-  [VARIANT_PROP]: LABEL_VARIANTS,
+  '@pss/variant': 'labelVariants',
 }

@@ -9,25 +9,23 @@ import {
   variant,
   VariantProps,
 } from 'pss'
-import { BOX_VARIANTS } from '../../constants/theme-key'
-import { VARIANT_PROP } from '../../constants/variant-prop'
 import { Base, BaseComponent, BaseProps } from '../base'
 
 interface VariantKeyProps {
-  [VARIANT_PROP]?: string
+  '@pss/variant'?: string
 }
 
-function key({ [VARIANT_PROP]: key }: VariantKeyProps) {
+function key({ '@pss/variant': key }: VariantKeyProps) {
   return key ? variant(key, 'default') : null
 }
 
 export interface BoxProps<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = BOX_VARIANTS
+  V extends string = 'boxVariants'
 > extends Omit<BaseProps<E>, keyof BoxInnerProps>,
     BoxInnerProps<V> {}
 
-export interface BoxInnerProps<V extends string = BOX_VARIANTS>
+export interface BoxInnerProps<V extends string = 'boxVariants'>
   extends VariantKeyProps,
     VariantProps<V>,
     PSS,
@@ -42,7 +40,7 @@ export interface BoxInnerProps<V extends string = BOX_VARIANTS>
 /** @private */
 export interface BoxComponent<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = BOX_VARIANTS,
+  V extends string = 'boxVariants',
   Props extends {} = {}
 > extends BaseComponent<E, BoxInnerProps<V> & Props> {}
 
@@ -64,5 +62,5 @@ export const Box: BoxComponent = styled<any>(Base)(
 
 Box.defaultProps = {
   as: 'div',
-  [VARIANT_PROP]: BOX_VARIANTS,
+  '@pss/variant': 'boxVariants',
 }
