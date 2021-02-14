@@ -1,6 +1,19 @@
 import { rem } from 'pss'
 
-export const Color = {
+const breakpoints = {
+  /** all screens */
+  $: null,
+  /** \> 375px (~mobile) */
+  $sm: '(min-width: 320px)',
+  /** \> 768px  (~tablet) */
+  $md: '(min-width: 768px)',
+  /** \> 1024px (~laptop) */
+  $lg: '(min-width: 1024px)',
+  /** \> 1280px (~desktop) */
+  $xl: '(min-width: 1280px)',
+} as const
+
+const colors = {
   primary: '#0089FF',
   highlight: '#F100E8',
   destructive: '#ff4d46',
@@ -19,9 +32,47 @@ export const Color = {
   },
 } as const
 
-export type Color = typeof Color
+const fonts = {
+  primary: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`,
+  code: `monospace`,
+} as const
 
-export const Space = {
+const fontSizes = {
+  h1: rem(28),
+  h2: rem(22),
+  h3: rem(18),
+  primary: rem(16),
+  secondary: rem(14),
+  small: rem(12),
+} as const
+
+const fontWeights = {
+  h1: 900,
+  h2: 900,
+  bold: 600,
+  semi: 500,
+  body: 400,
+} as const
+
+const lineHeights = {
+  h1: 40 / 28,
+  h2: 32 / 22,
+  h3: 24 / 18,
+  primary: 24 / 16,
+  secondary: 20 / 14,
+  small: 16 / 12,
+} as const
+
+const radii = {
+  'block-code': 4,
+  'inline-code': 2,
+} as const
+
+const shadows = {
+  image: '0 0 15px rgba(0, 0, 0, 0.15)',
+} as const
+
+const space = {
   0: 0,
   2: rem(2),
   4: rem(4),
@@ -35,158 +86,131 @@ export const Space = {
   40: rem(40),
 } as const
 
-export type Space = typeof Space
-
-export const Size = {
-  s: Space,
+const sizes = {
+  s: space,
 } as const
 
-export type Size = typeof Size
+const transitions = {
+  text: 'color .2s',
+} as const
+
+const boxVariants = {
+  code: {
+    backgroundColor: 'grey.10',
+    borderRadius: 'block-code',
+    minHeight: '100%',
+  },
+} as const
+
+const imageVariants = {
+  default: {
+    display: 'block',
+  },
+} as const
+
+const linkVariants = {
+  default: {
+    transition: 'text',
+    ':any-link:hover': { color: 'primary' },
+  },
+  article: {
+    ':any-link': { textDecoration: 'underline' },
+  },
+} as const
+
+const listVariants = {
+  default: {
+    listStyle: 'none',
+  },
+} as const
+
+const textVariants = {
+  h1: {
+    fontFamily: 'primary',
+    fontSize: 'h1',
+    lineHeight: 'h1',
+    fontWeight: 'h1',
+  },
+  h2: {
+    fontFamily: 'primary',
+    fontSize: 'h2',
+    lineHeight: 'h2',
+    fontWeight: 'h2',
+  },
+  h3: {
+    fontFamily: 'primary',
+    fontSize: 'h3',
+    lineHeight: 'h3',
+    fontWeight: 'bold',
+  },
+  h4: {
+    fontFamily: 'primary',
+    fontSize: 'primary',
+    lineHeight: 'primary',
+    fontWeight: 'semi',
+  },
+  h5: {
+    fontFamily: 'primary',
+    fontSize: 'secondary',
+    lineHeight: 'secondary',
+    fontWeight: 'semi',
+  },
+  primary: {
+    fontFamily: 'primary',
+    fontSize: 'primary',
+    lineHeight: 'primary',
+    fontWeight: 'body',
+  },
+  secondary: {
+    fontFamily: 'primary',
+    fontSize: 'secondary',
+    lineHeight: 'secondary',
+    fontWeight: 'body',
+  },
+  small: {
+    fontFamily: 'primary',
+    fontSize: 'small',
+    lineHeight: 'small',
+    fontWeight: 'body',
+  },
+  code: {
+    fontFamily: 'code',
+  },
+} as const
+
+const inputVariants = {
+  default: {
+    display: 'block',
+  },
+} as const
+
+const buttonVariants = { ...inputVariants } as const
+const selectVariants = { ...inputVariants } as const
+const textareaVariants = { ...inputVariants } as const
+const labelVariants = { ...inputVariants } as const
 
 export const Theme = {
-  breakpoints: {
-    /** all screens */
-    $: null,
-    /** \> 375px (~mobile) */
-    $sm: '(min-width: 320px)',
-    /** \> 768px  (~tablet) */
-    $md: '(min-width: 768px)',
-    /** \> 1024px (~laptop) */
-    $lg: '(min-width: 1024px)',
-    /** \> 1280px (~desktop) */
-    $xl: '(min-width: 1280px)',
-  },
-  borders: {},
-  borderStyles: {},
-  borderWidths: {},
-  colors: Color,
-  durations: {},
-  fonts: {
-    primary: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`,
-    code: `monospace`,
-  },
-  fontSizes: {
-    h1: rem(28),
-    h2: rem(22),
-    h3: rem(18),
-    primary: rem(16),
-    secondary: rem(14),
-    small: rem(12),
-  },
-  fontWeights: {
-    h1: 900,
-    h2: 900,
-    bold: 600,
-    semi: 500,
-    body: 400,
-  },
-  letterSpacings: {},
-  lineHeights: {
-    h1: 40 / 28,
-    h2: 32 / 22,
-    h3: 24 / 18,
-    primary: 24 / 16,
-    secondary: 20 / 14,
-    small: 16 / 12,
-  },
-  opacities: {},
-  radii: {
-    'block-code': 4,
-    'inline-code': 2,
-  },
-  shadows: {
-    image: '0 0 15px rgba(0, 0, 0, 0.15)',
-  },
-  sizes: Size,
-  space: Size,
-  timings: {},
-  animations: {},
-  transitions: {
-    text: 'color .2s',
-  },
-  zIndices: {},
-  boxVariants: {
-    code: {
-      backgroundColor: 'grey.10',
-      borderRadius: 'block-code',
-      minHeight: '100%',
-    },
-  },
-  gridVariants: {},
-  imageVariants: { default: { display: 'block' } },
-  linkVariants: {
-    default: {
-      transition: 'text',
-      ':any-link:hover': { color: 'primary' },
-    },
-    article: {
-      ':any-link': { textDecoration: 'underline' },
-    },
-  },
-  listVariants: { default: { listStyle: 'none' } },
-  stackVariants: {},
-  scrollVariants: {},
-  textVariants: {
-    h1: {
-      fontFamily: 'primary',
-      fontSize: 'h1',
-      lineHeight: 'h1',
-      fontWeight: 'h1',
-    },
-    h2: {
-      fontFamily: 'primary',
-      fontSize: 'h2',
-      lineHeight: 'h2',
-      fontWeight: 'h2',
-    },
-    h3: {
-      fontFamily: 'primary',
-      fontSize: 'h3',
-      lineHeight: 'h3',
-      fontWeight: 'bold',
-    },
-    h4: {
-      fontFamily: 'primary',
-      fontSize: 'primary',
-      lineHeight: 'primary',
-      fontWeight: 'semi',
-    },
-    h5: {
-      fontFamily: 'primary',
-      fontSize: 'secondary',
-      lineHeight: 'secondary',
-      fontWeight: 'semi',
-    },
-    primary: {
-      fontFamily: 'primary',
-      fontSize: 'primary',
-      lineHeight: 'primary',
-      fontWeight: 'body',
-    },
-    secondary: {
-      fontFamily: 'primary',
-      fontSize: 'secondary',
-      lineHeight: 'secondary',
-      fontWeight: 'body',
-    },
-    small: {
-      fontFamily: 'primary',
-      fontSize: 'small',
-      lineHeight: 'small',
-      fontWeight: 'body',
-    },
-    code: {
-      fontFamily: 'code',
-      fontSize: '0.9em',
-      lineHeight: 'primary',
-      fontWeight: 'body',
-    },
-  },
-  buttonVariants: { default: { display: 'block' } },
-  inputVariants: { default: { display: 'block' } },
-  selectVariants: { default: { display: 'block' } },
-  textareaVariants: { default: { display: 'block' } },
-  labelVariants: { default: { display: 'block' } },
-}
+  breakpoints,
+  colors,
+  fonts,
+  fontSizes,
+  fontWeights,
+  lineHeights,
+  radii,
+  shadows,
+  sizes,
+  space: sizes,
+  transitions,
+  boxVariants,
+  buttonVariants,
+  imageVariants,
+  inputVariants,
+  labelVariants,
+  linkVariants,
+  listVariants,
+  selectVariants,
+  textareaVariants,
+  textVariants,
+} as const
 
 export type Theme = typeof Theme

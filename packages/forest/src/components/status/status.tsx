@@ -1,6 +1,8 @@
-import { Box, BoxProps, Text } from '../../primitives'
+import { Box, BoxProps, Text, TextProps } from '../../primitives'
 
-export interface StatusProps extends Omit<BoxProps<'span'>, 'ref'> {}
+export interface StatusProps
+  extends Omit<BoxProps<'span'>, 'ref' | 'variant'>,
+    Pick<TextProps, 'variant'> {}
 
 export const Status = ({
   variant = 'secondary',

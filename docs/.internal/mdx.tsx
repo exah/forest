@@ -134,7 +134,7 @@ const TD = (props: Props) => (
 )
 
 const P = (props: Props) => (
-  <Text as="p" variant="primary" w={{ $md: 0.5 }} mb="s.12" {...props} />
+  <Text as="p" w={{ $md: 0.5 }} mb="s.12" {...props} />
 )
 
 const UL = (props: Props) => (
