@@ -52,6 +52,7 @@ const H1 = (props: Props) => (
     variant="h3"
     pss={{
       $md: { width: '50%' },
+      paddingTop: 's.8',
       marginBottom: 's.20',
       ':not(:first-of-type)': { marginTop: 's.24' },
     }}

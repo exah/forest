@@ -23,6 +23,7 @@ export type Color = typeof Color
 
 export const Space = {
   0: 0,
+  2: rem(2),
   4: rem(4),
   8: rem(8),
   12: rem(12),
@@ -31,6 +32,7 @@ export const Space = {
   24: rem(24),
   28: rem(28),
   32: rem(32),
+  40: rem(40),
 } as const
 
 export type Space = typeof Space
