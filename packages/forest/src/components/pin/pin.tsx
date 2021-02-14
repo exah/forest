@@ -63,7 +63,7 @@ export interface PinTitleProps extends Omit<TextProps, 'ref'> {}
 
 export const PinTitle = (props: PinTitleProps) => (
   <Text
-    as="h3"
+    as="div"
     variant="h3"
     pss={{
       gridArea: 'title',

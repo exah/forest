@@ -1,14 +1,15 @@
-import { Text, TextProps } from '../../primitives'
+import { Box, BoxProps, Text } from '../../primitives'
 
-export interface StatusProps<E extends keyof React.ReactHTML = 'span'>
-  extends Omit<TextProps<E>, 'ref'> {
-  accent?: string
-}
+export interface StatusProps extends Omit<BoxProps<'span'>, 'ref'> {}
 
-export function Status<E extends keyof React.ReactHTML>({
+export const Status = ({
   variant = 'secondary',
-  accent = 'grey.80',
+  children,
   ...rest
-}: StatusProps<E>) {
-  return <Text variant={variant} fg="grey.50" {...rest} />
-}
+}: StatusProps) => (
+  <Box as="span" {...rest}>
+    <Text variant={variant} fg="grey.50">
+      {children}
+    </Text>
+  </Box>
+)
