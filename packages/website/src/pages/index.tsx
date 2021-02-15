@@ -9,7 +9,7 @@ import {
   Link,
 } from 'piny-forest/src'
 import { rem } from 'pss'
-import { MDX } from '../.internal'
+import { MDX } from '../components'
 
 const context = require.context('piny-forest', true, /\.mdx$/)
 const modules = context.keys().map((key) => [key, context(key)])
