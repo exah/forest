@@ -139,10 +139,10 @@ Use `variant` prop to set styles using values from your [theme](#theme).
   <Box
     pss={{
       size: 64,
-      backgroundColor: 'primary',
+      backgroundColor: 'accent',
       $md: {
         size: 128,
-        backgroundColor: 'highlight',
+        backgroundColor: 'later',
       },
       ':hover': {
         backgroundColor: 'lime',
@@ -163,7 +163,7 @@ Use `variant` prop to set styles using values from your [theme](#theme).
 >
   <Box
     s={{ $: 64, $md: 128 }}
-    bg={{ $: 'primary', $md: 'highlight', ':hover': 'lime' }}
+    bg={{ $: 'accent', $md: 'later', ':hover': 'lime' }}
   />
 </Provider>
 ```
@@ -171,7 +171,7 @@ Use `variant` prop to set styles using values from your [theme](#theme).
 ### Colors
 
 ```jsx live
-<Box bg="primary" fg="white">
+<Box bg="accent" fg="white">
   Hello
 </Box>
 ```
@@ -179,7 +179,7 @@ Use `variant` prop to set styles using values from your [theme](#theme).
 ```jsx live
 <Box
   pss={{
-    backgroundColor: 'primary',
+    backgroundColor: 'accent',
     color: 'white',
   }}
 >

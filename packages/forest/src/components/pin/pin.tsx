@@ -40,7 +40,7 @@ const Variant = {
 } as const
 
 export interface PinProps extends Omit<GridProps, 'ref' | 'variant'> {
-  variant: keyof typeof Variant
+  variant?: keyof typeof Variant
 }
 
 export const Pin = ({ variant: key = 'horizontal', ...rest }: PinProps) => (

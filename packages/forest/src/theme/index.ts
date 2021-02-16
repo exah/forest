@@ -14,8 +14,8 @@ const breakpoints = {
 } as const
 
 const colors = {
-  primary: '#0089FF',
-  highlight: '#F100E8',
+  accent: '#0089FF',
+  later: '#F100E8',
   destructive: '#ff4d46',
   foreground: '#222222',
   background: '#ffffff',
@@ -84,6 +84,7 @@ const space = {
   28: rem(28),
   32: rem(32),
   40: rem(40),
+  48: rem(48),
 } as const
 
 const sizes = {
@@ -111,7 +112,7 @@ const imageVariants = {
 const linkVariants = {
   default: {
     transition: 'text',
-    ':any-link:hover': { color: 'primary' },
+    ':any-link:hover': { color: 'accent' },
   },
   article: {
     ':visited:not([href^="#"])': { color: 'grey.50' },

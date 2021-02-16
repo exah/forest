@@ -10,6 +10,8 @@ export interface GridProps<
 
 export interface GridInnerProps
   extends StyleProps<'gap'>,
+    StyleProps<'rowGap'>,
+    StyleProps<'columnGap'>,
     StyleProps<'gridTemplate', 'template'>,
     StyleProps<'gridTemplateColumns', 'columns'>,
     StyleProps<'placeItems'>,

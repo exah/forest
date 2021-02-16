@@ -1,10 +1,12 @@
 import Head from 'next/head'
 import {
   Text,
-  Grid,
   Box,
   Provider,
   Theme,
+  Layout,
+  LayoutMain,
+  LayoutNav,
   List,
   ListItem,
   Link,
@@ -28,10 +30,10 @@ function Index() {
           content="Component library and design system for piny.link"
         />
       </Head>
-      <Text as="div" variant="primary" px="s.16">
-        <Grid columns={{ $: 1, $md: '10rem 1fr' }} gap="s.16">
-          <Box as="nav">
-            <List pss={{ position: 'sticky', top: 's.16' }}>
+      <Text as="div" variant="primary" fg="foreground">
+        <Layout>
+          <LayoutNav>
+            <List>
               <ListItem>
                 <Link href="#top">
                   <Box mb="s.20">
@@ -68,8 +70,8 @@ function Index() {
                 </List>
               </ListItem>
             </List>
-          </Box>
-          <Box as="main" fg="foreground" pt="s.16">
+          </LayoutNav>
+          <LayoutMain>
             <MDX>
               <Box id="components" as="section" mb="s.40">
                 <Text as="h2" variant="h2" pt="s.2" mb="s.20">
@@ -88,19 +90,19 @@ function Index() {
                 ))}
               </Box>
             </MDX>
-          </Box>
-        </Grid>
-        <style jsx global>{`
-          html {
-            scroll-padding-top: ${rem(16)};
-          }
-
-          body {
-            margin: 0;
-            padding: 0;
-          }
-        `}</style>
+          </LayoutMain>
+        </Layout>
       </Text>
+      <style jsx global>{`
+        html {
+          scroll-padding-top: ${rem(32)};
+        }
+
+        body {
+          margin: 0;
+          padding: 0;
+        }
+      `}</style>
     </Provider>
   )
 }
