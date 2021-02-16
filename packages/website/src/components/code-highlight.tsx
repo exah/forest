@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Highlight, { Language, Prism } from 'prism-react-renderer'
 import GithubTheme from 'prism-react-renderer/themes/github'
 import { Box, Text } from 'piny-forest/src'

@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import {
   Text,
   Grid,
@@ -9,7 +10,7 @@ import {
   Link,
 } from 'piny-forest/src'
 import { rem } from 'pss'
-import { MDX } from '../components'
+import { MDX, Logo } from '../components'
 
 const context = require.context('piny-forest', true, /\.mdx$/)
 const modules = context.keys().map((key) => [key, context(key)])
@@ -20,15 +21,22 @@ const primitives = modules.filter(([key]) => key.includes('/primitives/'))
 function Index() {
   return (
     <Provider theme={Theme}>
+      <Head>
+        <title>Forest</title>
+        <meta
+          name="description"
+          content="Component library and design system for piny.link"
+        />
+      </Head>
       <Text as="div" variant="primary" px="s.16">
         <Grid columns={{ $: 1, $md: '10rem 1fr' }} gap="s.16">
           <Box as="nav">
             <List pss={{ position: 'sticky', top: 's.16' }}>
               <ListItem>
                 <Link href="#top">
-                  <Text as="h1" variant="h1" mb="s.20">
-                    Forest
-                  </Text>
+                  <Box mb="s.20">
+                    <Logo role="img" aria-label="Forest" />
+                  </Box>
                 </Link>
               </ListItem>
               <ListItem>
@@ -61,7 +69,7 @@ function Index() {
               </ListItem>
             </List>
           </Box>
-          <Box as="main" fg="foreground" pt="s.20">
+          <Box as="main" fg="foreground" pt="s.16">
             <MDX>
               <Box id="components" as="section" mb="s.40">
                 <Text as="h2" variant="h2" pt="s.2" mb="s.20">
@@ -84,7 +92,7 @@ function Index() {
         </Grid>
         <style jsx global>{`
           html {
-            scroll-padding-top: ${rem(20)};
+            scroll-padding-top: ${rem(16)};
           }
 
           body {

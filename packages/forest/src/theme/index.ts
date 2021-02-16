@@ -114,6 +114,7 @@ const linkVariants = {
     ':any-link:hover': { color: 'primary' },
   },
   article: {
+    ':visited:not([href^="#"])': { color: 'grey.50' },
     ':any-link': { textDecoration: 'underline' },
   },
 } as const
