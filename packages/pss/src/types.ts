@@ -7,7 +7,11 @@ export interface BreakpointsSystemTheme {
   breakpoints: { [K: string]: string | null }
 }
 
-export type Properties = CSS.Properties<(string & {}) | number>
+type Length = (string & {}) | number
+
+export interface Properties extends CSS.Properties<Length> {
+  size?: CSS.Property.Width<Length> | CSS.Property.Height<Length>
+}
 
 export type ThemeValue<Key extends string> = Key extends keyof SystemTheme
   ? keyof SystemTheme[Key]

@@ -1,4 +1,6 @@
 export * from './action'
+export * from './icons'
+export * from './item'
 export * from './layout'
 export * from './pin'
 export * from './provider'
