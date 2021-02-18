@@ -1,43 +1,36 @@
 import { Button, ButtonProps, Grid, Text } from '../../primitives'
 
-export interface ItemProps extends Omit<ButtonProps<'button'>, 'ref'> {
-  icon: React.ReactElement
+export interface ItemProps<E extends keyof React.ReactHTML = 'button'>
+  extends Omit<ButtonProps<E, 'itemVariants'>, 'ref'> {
+  icon: React.ComponentType
   accent?: string
 }
 
-export const Item = ({
-  icon,
+export function Item<E extends keyof React.ReactHTML = 'button'>({
+  icon: Icon,
   children,
-  accent = 'accent',
-  pss,
   ...rest
-}: ItemProps) => (
-  <Button
-    pss={{
-      color: 'grey.90',
-      transition: 'text',
-      ':hover': {
-        color: accent,
-      },
-      ...pss,
-    }}
-    {...rest}
-  >
-    <Grid
-      as="span"
-      pss={{
-        gridTemplate: `
-          "icon label" auto / 1.25rem 1fr
-        `,
-        columnGap: 's.8',
-        alignItems: 'center',
-        svg: { display: 'block' },
-      }}
-    >
-      <Text pss={{ gridArea: 'icon' }}>{icon}</Text>
-      <Text variant="primary" pss={{ gridArea: 'label' }}>
-        {children}
-      </Text>
-    </Grid>
-  </Button>
-)
+}: ItemProps<E>) {
+  return (
+    <Button {...rest} __key="itemVariants">
+      <Grid
+        as="span"
+        pss={{
+          gridTemplate: `
+            "icon label" auto / 1.25rem 1fr
+          `,
+          columnGap: 's.8',
+          alignItems: 'center',
+          svg: { display: 'block' },
+        }}
+      >
+        <Text pss={{ gridArea: 'icon' }}>
+          <Icon />
+        </Text>
+        <Text variant="primary" pss={{ gridArea: 'label' }}>
+          {children}
+        </Text>
+      </Grid>
+    </Button>
+  )
+}

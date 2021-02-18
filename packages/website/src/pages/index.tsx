@@ -10,6 +10,12 @@ import {
   List,
   ListItem,
   Link,
+  Group,
+  Header,
+  HeaderTitle,
+  HeaderAction,
+  Item,
+  BoxIcon,
 } from 'piny-forest/src'
 import { rem } from 'pss'
 import { MDX, Logo } from '../components'
@@ -33,43 +39,45 @@ function Index() {
       <Text as="div" variant="primary" fg="foreground">
         <Layout>
           <LayoutNav>
-            <List>
-              <ListItem>
-                <Link href="#top">
-                  <Box mb="s.20">
-                    <Logo role="img" aria-label="Forest" />
-                  </Box>
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Link href="#components" variant="article">
-                  Components
-                </Link>
-                <List ml="s.12" mb="s.12">
-                  {components.map(([key, mod]) => (
-                    <ListItem key={key}>
-                      <Link href={`#${mod.id}`} variant="article">
-                        <Text variant="secondary">{mod.title}</Text>
-                      </Link>
-                    </ListItem>
-                  ))}
-                </List>
-              </ListItem>
-              <ListItem>
-                <Link href="#primitives" variant="article">
-                  Primitives
-                </Link>
-                <List ml="s.12">
-                  {primitives.map(([key, mod]) => (
-                    <ListItem key={key}>
-                      <Link href={`#${mod.id}`} variant="article">
-                        <Text variant="secondary">{mod.title}</Text>
-                      </Link>
-                    </ListItem>
-                  ))}
-                </List>
-              </ListItem>
-            </List>
+            <Group>
+              <Link href="#top">
+                <Box mb="s.20">
+                  <Logo role="img" aria-label="Forest" />
+                </Box>
+              </Link>
+            </Group>
+            <Group>
+              <Header>
+                <HeaderTitle>
+                  <Link href="#primitives">Components</Link>
+                </HeaderTitle>
+              </Header>
+              <List>
+                {components.map(([key, mod]) => (
+                  <ListItem key={key}>
+                    <Link href={`#${mod.id}`} h="s.32" variant="article">
+                      <Text variant="secondary">{mod.title}</Text>
+                    </Link>
+                  </ListItem>
+                ))}
+              </List>
+            </Group>
+            <Group>
+              <Header>
+                <HeaderTitle>
+                  <Link href="#primitives">Primitives</Link>
+                </HeaderTitle>
+              </Header>
+              <List>
+                {primitives.map(([key, mod]) => (
+                  <ListItem key={key}>
+                    <Link href={`#${mod.id}`} variant="article">
+                      <Text variant="secondary">{mod.title}</Text>
+                    </Link>
+                  </ListItem>
+                ))}
+              </List>
+            </Group>
           </LayoutNav>
           <LayoutMain>
             <MDX>

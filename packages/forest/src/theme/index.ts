@@ -14,9 +14,9 @@ const breakpoints = {
 } as const
 
 const colors = {
-  accent: '#0089FF',
-  later: '#F100E8',
-  destructive: '#ff4d46',
+  primary: '#0089FF',
+  accent: '#F100E8',
+  danger: '#ff4d46',
   foreground: '#222222',
   background: '#ffffff',
   grey: {
@@ -69,7 +69,11 @@ const radii = {
 } as const
 
 const shadows = {
-  image: '0 0 15px rgba(0, 0, 0, 0.15)',
+  level: {
+    10: '0 0 8px rgba(0, 0, 0, 0.08)',
+    20: '0 0 16px rgba(0, 0, 0, 0.16)',
+    25: '0 0 16px rgba(0, 0, 0, 0.20)',
+  },
 } as const
 
 const space = {
@@ -93,6 +97,7 @@ const sizes = {
 
 const transitions = {
   text: 'color .2s',
+  shadow: 'box-shadow .2s',
 } as const
 
 const boxVariants = {
@@ -112,7 +117,7 @@ const imageVariants = {
 const linkVariants = {
   default: {
     transition: 'text',
-    ':any-link:hover': { color: 'accent' },
+    ':any-link:hover': { color: 'primary' },
   },
   article: {
     ':visited:not([href^="#"])': { color: 'grey.50' },
@@ -123,6 +128,12 @@ const linkVariants = {
 const listVariants = {
   default: {
     listStyle: 'none',
+  },
+  nav: {
+    display: 'grid',
+    gridAutoFlow: 'row',
+    gridAutoRows: rem(34),
+    alignItems: 'center',
   },
 } as const
 
@@ -186,10 +197,35 @@ const inputVariants = {
   },
 } as const
 
-const buttonVariants = { ...inputVariants } as const
 const selectVariants = { ...inputVariants } as const
 const textareaVariants = { ...inputVariants } as const
 const labelVariants = { ...inputVariants } as const
+
+const buttonVariants = {
+  ...inputVariants,
+  add: {
+    size: rem(40),
+    borderRadius: rem(40),
+    padding: 's.12',
+    svg: { display: 'block' },
+    transition: 'shadow',
+    boxShadow: 'level.20',
+    ':hover': { boxShadow: 'level.25' },
+    ':active': { boxShadow: 'level.10' },
+  },
+} as const
+
+const itemVariants = {
+  default: {
+    display: 'block',
+    color: 'grey.90',
+    transition: 'text',
+    ':hover, &[aria-current=page], &[aria-pressed=true]': { color: 'primary' },
+  },
+  accent: {
+    ':hover, &[aria-current=page], &[aria-pressed=true]': { color: 'accent' },
+  },
+} as const
 
 export const Theme = {
   breakpoints,
@@ -213,6 +249,7 @@ export const Theme = {
   selectVariants,
   textareaVariants,
   textVariants,
+  itemVariants,
 } as const
 
 export type Theme = typeof Theme
