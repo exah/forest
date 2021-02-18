@@ -1,17 +1,15 @@
 import styled from '@emotion/styled'
 import { Box, BoxComponent, BoxProps } from '../box'
 
-export interface FlexProps<
-  E extends keyof React.ReactHTML = 'div',
-  V extends string = 'flexs'
-> extends Omit<BoxProps<E, V>, keyof FlexInnerProps>,
+export interface FlexProps<E extends string = 'div', V extends string = 'flexs'>
+  extends Omit<BoxProps<E, V>, keyof FlexInnerProps>,
     FlexInnerProps {}
 
 export interface FlexInnerProps {}
 
 /** @private */
 export interface FlexComponent<
-  E extends keyof React.ReactHTML = 'div',
+  E extends string = 'div',
   V extends string = 'flexs',
   P = {}
 > extends BoxComponent<E, V, FlexInnerProps & P> {}

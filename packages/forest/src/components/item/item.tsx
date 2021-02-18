@@ -1,12 +1,12 @@
 import { Button, ButtonProps, Grid, Text } from '../../primitives'
 
-export interface ItemProps<E extends keyof React.ReactHTML = 'button'>
+export interface ItemProps<E extends string = 'button'>
   extends Omit<ButtonProps<E, 'items'>, 'ref'> {
   icon: React.ComponentType
   accent?: string
 }
 
-export const Item = <E extends keyof React.ReactHTML = 'button'>({
+export const Item = <E extends string = 'button'>({
   icon: Icon,
   children,
   ...rest

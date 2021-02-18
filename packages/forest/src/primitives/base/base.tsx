@@ -1,6 +1,5 @@
 import styled, { ComponentSelector } from '@emotion/styled'
 import { variant, VariantProps } from 'pss'
-import { ElementType } from './types'
 
 interface VariantKeyProps<V> {
   /** @private */
@@ -11,28 +10,36 @@ function key({ __key: key }: VariantKeyProps<string>) {
   return key ? variant(key, 'default') : null
 }
 
-export interface HTMLProps<E extends keyof React.ReactHTML>
+type Cast<A, B> = A extends B ? A : B
+
+type ElementType<E extends string> = E extends keyof React.ReactHTML
+  ? React.ReactHTML[E] extends React.DetailedHTMLFactory<any, infer T>
+    ? Cast<T, HTMLElement>
+    : HTMLElement
+  : unknown
+
+export interface HTMLProps<E extends string>
   extends Omit<React.AllHTMLAttributes<ElementType<E>>, 'as' | 'ref'> {}
 
-export interface BaseProps<E extends keyof React.ReactHTML, V extends string>
+export interface BaseProps<E extends string, V extends string>
   extends HTMLProps<E>,
     BaseInnerProps<E>,
     VariantKeyProps<V>,
     VariantProps<V> {}
 
-export interface BaseInnerProps<E extends keyof React.ReactHTML> {
+export interface BaseInnerProps<E extends string> {
   as?: E | React.ComponentType
   ref?: React.Ref<ElementType<E>>
 }
 
 /** @private */
 export interface BaseComponent<
-  Element extends keyof React.ReactHTML = 'div',
-  Variant extends string = 'bases',
+  Element extends string = 'div',
+  Variant extends string = never,
   Props extends {} = {}
 > extends React.VFC<BaseProps<keyof React.ReactHTML, Variant> & Props>,
     ComponentSelector {
-  <T extends keyof React.ReactHTML = Element, V extends string = Variant>(
+  <T extends string = Element, V extends string = Variant>(
     props: BaseProps<T, V> & Props
   ): React.ReactElement | null
 }

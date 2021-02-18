@@ -1,12 +1,12 @@
 import { Button, ButtonProps, Text, TextProps } from '../../primitives'
 
-export interface ActionProps<E extends keyof React.ReactHTML = 'button'>
+export interface ActionProps<E extends string = 'button'>
   extends Omit<ButtonProps<E>, 'variant' | 'ref'>,
     Pick<TextProps, 'variant'> {
   accent?: string
 }
 
-export const Action = <E extends keyof React.ReactHTML = 'button'>({
+export const Action = <E extends string = 'button'>({
   variant = 'secondary',
   accent = 'grey.80',
   children,

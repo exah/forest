@@ -4,7 +4,7 @@ import { style, StyleProps } from 'pss'
 import { Box, BoxComponent, BoxProps } from '../box'
 
 export interface TextProps<
-  E extends keyof React.ReactHTML = 'span',
+  E extends string = 'span',
   V extends string = 'texts'
 > extends Omit<BoxProps<E, V>, keyof TextInnerProps>,
     TextInnerProps {}
@@ -23,7 +23,7 @@ export interface TextInnerProps
 
 /** @private */
 export interface TextComponent<
-  E extends keyof React.ReactHTML = 'span',
+  E extends string = 'span',
   V extends string = 'texts',
   P extends {} = {}
 > extends BoxComponent<E, V, TextInnerProps & P> {}

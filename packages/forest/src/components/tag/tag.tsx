@@ -1,9 +1,8 @@
 import { Link, LinkProps, Text } from '../../primitives'
 
-export interface TagProps<E extends keyof React.ReactHTML>
-  extends Omit<LinkProps<E>, 'ref'> {}
+export interface TagProps<E extends string> extends Omit<LinkProps<E>, 'ref'> {}
 
-export const Tag = <E extends keyof React.ReactHTML = 'a'>({
+export const Tag = <E extends string = 'a'>({
   children,
   ...rest
 }: TagProps<E>) => (

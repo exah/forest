@@ -2,10 +2,8 @@ import styled from '@emotion/styled'
 import { style, StyleProps } from 'pss'
 import { Box, BoxComponent, BoxProps } from '../box'
 
-export interface GridProps<
-  E extends keyof React.ReactHTML = 'div',
-  V extends string = 'grids'
-> extends Omit<BoxProps<E, V>, keyof GridInnerProps>,
+export interface GridProps<E extends string = 'div', V extends string = 'grids'>
+  extends Omit<BoxProps<E, V>, keyof GridInnerProps>,
     GridInnerProps {}
 
 export interface GridInnerProps
@@ -19,7 +17,7 @@ export interface GridInnerProps
 
 /** @private */
 export interface GridComponent<
-  E extends keyof React.ReactHTML = 'div',
+  E extends string = 'div',
   V extends string = 'grids'
 > extends BoxComponent<E, V, GridInnerProps> {}
 

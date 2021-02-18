@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { Flex, FlexComponent, FlexProps } from '../flex'
 
 export interface ZStackProps<
-  E extends keyof React.ReactHTML = 'div',
+  E extends string = 'div',
   V extends string = 'zStacks'
 > extends Omit<FlexProps<E, V>, keyof ZStackInnerProps>,
     ZStackInnerProps {}
@@ -12,7 +12,7 @@ export interface ZStackInnerProps {}
 
 /** @private */
 export interface ZStackComponent<
-  E extends keyof React.ReactHTML = 'div',
+  E extends string = 'div',
   V extends string = 'zStacks'
 > extends FlexComponent<E, V, ZStackInnerProps> {}
 

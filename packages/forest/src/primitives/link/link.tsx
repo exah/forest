@@ -1,17 +1,15 @@
 import styled from '@emotion/styled'
 import { Text, TextComponent, TextProps } from '../text'
 
-export interface LinkProps<
-  E extends keyof React.ReactHTML = 'a',
-  V extends string = 'links'
-> extends TextProps<E, V>,
+export interface LinkProps<E extends string = 'a', V extends string = 'links'>
+  extends TextProps<E, V>,
     LinkInnerProps {}
 
 export interface LinkInnerProps {}
 
 /** @private */
 export interface LinkComponent<
-  E extends keyof React.ReactHTML = 'a',
+  E extends string = 'a',
   V extends string = 'links'
 > extends TextComponent<E, V, LinkInnerProps> {}
 

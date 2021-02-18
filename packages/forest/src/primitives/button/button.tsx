@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { Input, InputComponent, InputProps } from '../input'
 
 export interface ButtonProps<
-  E extends keyof React.ReactHTML = 'button',
+  E extends string = 'button',
   V extends string = 'buttons'
 > extends InputProps<E, V>,
     ButtonInnerProps {}
@@ -11,7 +11,7 @@ export interface ButtonInnerProps {}
 
 /** @private */
 export interface ButtonComponent<
-  E extends keyof React.ReactHTML = 'button',
+  E extends string = 'button',
   V extends string = 'buttons'
 > extends InputComponent<E, V, ButtonInnerProps> {}
 

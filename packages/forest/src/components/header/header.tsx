@@ -1,12 +1,9 @@
 import { Box, BoxProps, Grid, GridProps, Text } from '../../primitives'
 import { Action, ActionProps } from '../action'
 
-export interface HeaderProps<E extends keyof React.ReactHTML>
-  extends GridProps<E> {}
+export interface HeaderProps<E extends string> extends GridProps<E> {}
 
-export const Header = <E extends keyof React.ReactHTML = 'header'>(
-  props: HeaderProps<E>
-) => (
+export const Header = <E extends string = 'header'>(props: HeaderProps<E>) => (
   <Grid
     as="header"
     mb="s.8"
@@ -18,10 +15,9 @@ export const Header = <E extends keyof React.ReactHTML = 'header'>(
   />
 )
 
-export interface HeaderTitleProps<E extends keyof React.ReactHTML>
-  extends BoxProps<E> {}
+export interface HeaderTitleProps<E extends string> extends BoxProps<E> {}
 
-export const HeaderTitle = <E extends keyof React.ReactHTML = 'div'>({
+export const HeaderTitle = <E extends string = 'div'>({
   children,
   ...rest
 }: HeaderTitleProps<E>) => (
@@ -30,10 +26,9 @@ export const HeaderTitle = <E extends keyof React.ReactHTML = 'div'>({
   </Box>
 )
 
-export interface HeaderActionProps<E extends keyof React.ReactHTML>
-  extends ActionProps<E> {}
+export interface HeaderActionProps<E extends string> extends ActionProps<E> {}
 
-export const HeaderAction = <E extends keyof React.ReactHTML = 'button'>(
+export const HeaderAction = <E extends string = 'button'>(
   props: HeaderActionProps<E>
 ) => (
   <Action

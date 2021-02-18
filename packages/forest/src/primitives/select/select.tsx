@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { Input, InputComponent, InputProps } from '../input'
 
 export interface SelectProps<
-  E extends keyof React.ReactHTML = 'select',
+  E extends string = 'select',
   V extends string = 'selects'
 > extends InputProps<E, V>,
     SelectInnerProps {}
@@ -11,7 +11,7 @@ export interface SelectInnerProps {}
 
 /** @private */
 export interface SelectComponent<
-  E extends keyof React.ReactHTML = 'select',
+  E extends string = 'select',
   V extends string = 'selects'
 > extends InputComponent<E, V> {}
 

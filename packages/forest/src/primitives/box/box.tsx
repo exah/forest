@@ -2,10 +2,8 @@ import styled from '@emotion/styled'
 import { pss, PSS, spaceStyle, SpaceStyleProps, style, StyleProps } from 'pss'
 import { Base, BaseComponent, BaseProps } from '../base'
 
-export interface BoxProps<
-  E extends keyof React.ReactHTML = 'div',
-  V extends string = 'boxes'
-> extends Omit<BaseProps<E, V>, keyof BoxInnerProps>,
+export interface BoxProps<E extends string = 'div', V extends string = 'boxes'>
+  extends Omit<BaseProps<E, V>, keyof BoxInnerProps>,
     BoxInnerProps {}
 
 export interface BoxInnerProps
@@ -20,7 +18,7 @@ export interface BoxInnerProps
 
 /** @private */
 export interface BoxComponent<
-  E extends keyof React.ReactHTML = 'div',
+  E extends string = 'div',
   V extends string = 'boxes',
   Props extends {} = {}
 > extends BaseComponent<E, V, BoxInnerProps & Props> {}

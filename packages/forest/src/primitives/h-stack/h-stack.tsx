@@ -3,7 +3,7 @@ import { style, StyleProps } from 'pss'
 import { Flex, FlexComponent, FlexProps } from '../flex'
 
 export interface HStackProps<
-  E extends keyof React.ReactHTML = 'div',
+  E extends string = 'div',
   V extends string = 'hStacks'
 > extends Omit<FlexProps<E, V>, keyof HStackInnerProps>,
     HStackInnerProps {}
@@ -14,7 +14,7 @@ export interface HStackInnerProps
 
 /** @private */
 export interface HStackComponent<
-  E extends keyof React.ReactHTML = 'div',
+  E extends string = 'div',
   V extends string = 'hStacks'
 > extends FlexComponent<E, V, HStackInnerProps> {}
 

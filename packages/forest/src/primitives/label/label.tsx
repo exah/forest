@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { Text, TextComponent, TextProps } from '../text'
 
 export interface LabelProps<
-  E extends keyof React.ReactHTML = 'label',
+  E extends string = 'label',
   V extends string = 'labels'
 > extends TextProps<E, V>,
     LabelInnerProps {}
@@ -11,7 +11,7 @@ export interface LabelInnerProps {}
 
 /** @private */
 export interface LabelComponent<
-  E extends keyof React.ReactHTML = 'label',
+  E extends string = 'label',
   V extends string = 'labels'
 > extends TextComponent<E, V, LabelInnerProps> {}
 

@@ -1,9 +1,9 @@
 import { Box, BoxProps, Grid } from '../../primitives'
 
-export interface LayoutProps<E extends keyof React.ReactHTML>
+export interface LayoutProps<E extends string>
   extends Omit<BoxProps<E>, 'ref'> {}
 
-export const Layout = <E extends keyof React.ReactHTML = 'div'>({
+export const Layout = <E extends string = 'div'>({
   pss,
   children,
   ...rest
@@ -29,10 +29,9 @@ export const Layout = <E extends keyof React.ReactHTML = 'div'>({
   </Grid>
 )
 
-export interface LayoutMainProps<E extends keyof React.ReactHTML>
-  extends LayoutProps<E> {}
+export interface LayoutMainProps<E extends string> extends LayoutProps<E> {}
 
-export const LayoutMain = <E extends keyof React.ReactHTML = 'main'>({
+export const LayoutMain = <E extends string = 'main'>({
   pss,
   ...rest
 }: LayoutMainProps<E>) => (
@@ -48,10 +47,9 @@ export const LayoutMain = <E extends keyof React.ReactHTML = 'main'>({
   />
 )
 
-export interface LayoutNavProps<E extends keyof React.ReactHTML>
-  extends LayoutMainProps<E> {}
+export interface LayoutNavProps<E extends string> extends LayoutMainProps<E> {}
 
-export const LayoutNav = <E extends keyof React.ReactHTML = 'nav'>({
+export const LayoutNav = <E extends string = 'nav'>({
   pss,
   children,
   ...rest
@@ -65,10 +63,10 @@ export const LayoutNav = <E extends keyof React.ReactHTML = 'nav'>({
   </LayoutMain>
 )
 
-export interface LayoutAsideProps<E extends keyof React.ReactHTML>
+export interface LayoutAsideProps<E extends string>
   extends LayoutMainProps<E> {}
 
-export const LayoutAside = <E extends keyof React.ReactHTML = 'aside'>({
+export const LayoutAside = <E extends string = 'aside'>({
   pss,
   ...rest
 }: LayoutAsideProps<E>) => (
