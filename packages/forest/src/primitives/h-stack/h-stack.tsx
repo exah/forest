@@ -26,5 +26,5 @@ export const HStack: HStackComponent = styled<any>(Flex)(
 
 HStack.defaultProps = {
   as: 'div',
-  '@pss/variant': 'hStackVariants',
+  __key: 'hStackVariants',
 }

@@ -23,5 +23,5 @@ export const ZStack: ZStackComponent = styled<any>(Flex)({
 
 ZStack.defaultProps = {
   as: 'div',
-  '@pss/variant': 'zStackVariants',
+  __key: 'zStackVariants',
 }

@@ -43,5 +43,5 @@ export const Text: TextComponent = styled<any>(Box)(
 
 Text.defaultProps = {
   as: 'span',
-  '@pss/variant': 'textVariants',
+  __key: 'textVariants',
 }

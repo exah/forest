@@ -19,5 +19,5 @@ export const Link: LinkComponent = styled<any>(Text)()
 
 Link.defaultProps = {
   as: 'a',
-  '@pss/variant': 'linkVariants',
+  __key: 'linkVariants',
 }

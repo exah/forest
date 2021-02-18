@@ -19,5 +19,5 @@ export const Select: SelectComponent = styled<any>(Input)()
 
 Select.defaultProps = {
   as: 'select',
-  '@pss/variant': 'selectVariants',
+  __key: 'selectVariants',
 }

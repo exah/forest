@@ -21,5 +21,5 @@ export const Scroll: ScrollComponent = styled<any>(Box)({
 
 Scroll.defaultProps = {
   as: 'div',
-  '@pss/variant': 'scrollVariants',
+  __key: 'scrollVariants',
 }

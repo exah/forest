@@ -20,5 +20,5 @@ export const Textarea: TextareaComponent = styled<any>(Input)()
 
 Textarea.defaultProps = {
   as: 'textarea',
-  '@pss/variant': 'textareaVariants',
+  __key: 'textareaVariants',
 }

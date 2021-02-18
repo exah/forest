@@ -20,5 +20,5 @@ export const Input: InputComponent = styled<any>(Text)()
 
 Input.defaultProps = {
   as: 'input',
-  '@pss/variant': 'inputVariants',
+  __key: 'inputVariants',
 }

@@ -36,5 +36,5 @@ export const Grid: GridComponent = styled<any>(Box)(
 
 Grid.defaultProps = {
   as: 'div',
-  '@pss/variant': 'gridVariants',
+  __key: 'gridVariants',
 }

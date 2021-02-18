@@ -27,5 +27,5 @@ export const VStack: VStackComponent = styled<any>(Flex)(
 
 VStack.defaultProps = {
   as: 'div',
-  '@pss/variant': 'vStackVariants',
+  __key: 'vStackVariants',
 }

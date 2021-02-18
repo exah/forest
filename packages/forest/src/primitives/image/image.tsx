@@ -18,5 +18,5 @@ export const Image: ImageComponent = styled<any>(Box)()
 
 Image.defaultProps = {
   as: 'img',
-  '@pss/variant': 'imageVariants',
+  __key: 'imageVariants',
 }

@@ -19,7 +19,7 @@ export const List: ListComponent = styled<any>(Text)()
 
 List.defaultProps = {
   as: 'ul',
-  '@pss/variant': 'listVariants',
+  __key: 'listVariants',
 }
 
 export interface ListItemProps<
@@ -42,5 +42,5 @@ export const ListItem: ListItemComponent = styled<any>(
 
 ListItem.defaultProps = {
   as: 'li',
-  '@pss/variant': 'listItemVariants',
+  __key: 'listItemVariants',
 }

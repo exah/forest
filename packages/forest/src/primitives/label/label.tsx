@@ -19,5 +19,5 @@ export const Label: LabelComponent = styled<any>(Text)()
 
 Label.defaultProps = {
   as: 'label',
-  '@pss/variant': 'labelVariants',
+  __key: 'labelVariants',
 }

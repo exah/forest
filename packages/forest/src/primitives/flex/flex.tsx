@@ -22,5 +22,5 @@ export const Flex: FlexComponent = styled<any>(Box)({
 
 Flex.defaultProps = {
   as: 'div',
-  '@pss/variant': 'flexVariants',
+  __key: 'flexVariants',
 }

@@ -20,5 +20,5 @@ export const Button: ButtonComponent = styled<any>(Input)()
 Button.defaultProps = {
   as: 'button',
   type: 'button',
-  '@pss/variant': 'buttonVariants',
+  __key: 'buttonVariants',
 }
