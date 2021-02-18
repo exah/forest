@@ -21,6 +21,11 @@ export const CodeHighlight = (props: Props) => (
             <Text
               as="div"
               fontFamily="monospace"
+              pss={{
+                overflowWrap: 'break-word',
+                whiteSpace: 'pre-wrap',
+                wordBreak: 'keep-all',
+              }}
               {...getLineProps({ line, key: index })}
             >
               {line.map((token, key) => (
