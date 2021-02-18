@@ -4,7 +4,7 @@ import { Base, BaseComponent, BaseProps } from '../base'
 
 export interface BoxProps<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = 'boxVariants'
+  V extends string = 'boxes'
 > extends Omit<BaseProps<E, V>, keyof BoxInnerProps>,
     BoxInnerProps {}
 
@@ -21,7 +21,7 @@ export interface BoxInnerProps
 /** @private */
 export interface BoxComponent<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = 'boxVariants',
+  V extends string = 'boxes',
   Props extends {} = {}
 > extends BaseComponent<E, V, BoxInnerProps & Props> {}
 
@@ -38,5 +38,5 @@ export const Box: BoxComponent = styled<any>(Base)(
 
 Box.defaultProps = {
   as: 'div',
-  __key: 'boxVariants',
+  __key: 'boxes',
 }

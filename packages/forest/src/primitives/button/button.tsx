@@ -3,7 +3,7 @@ import { Input, InputComponent, InputProps } from '../input'
 
 export interface ButtonProps<
   E extends keyof React.ReactHTML = 'button',
-  V extends string = 'buttonVariants'
+  V extends string = 'buttons'
 > extends InputProps<E, V>,
     ButtonInnerProps {}
 
@@ -12,7 +12,7 @@ export interface ButtonInnerProps {}
 /** @private */
 export interface ButtonComponent<
   E extends keyof React.ReactHTML = 'button',
-  V extends string = 'buttonVariants'
+  V extends string = 'buttons'
 > extends InputComponent<E, V, ButtonInnerProps> {}
 
 export const Button: ButtonComponent = styled<any>(Input)()
@@ -20,5 +20,5 @@ export const Button: ButtonComponent = styled<any>(Input)()
 Button.defaultProps = {
   as: 'button',
   type: 'button',
-  __key: 'buttonVariants',
+  __key: 'buttons',
 }

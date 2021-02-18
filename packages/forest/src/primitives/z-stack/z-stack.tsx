@@ -3,7 +3,7 @@ import { Flex, FlexComponent, FlexProps } from '../flex'
 
 export interface ZStackProps<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = 'zStackVariants'
+  V extends string = 'zStacks'
 > extends Omit<FlexProps<E, V>, keyof ZStackInnerProps>,
     ZStackInnerProps {}
 
@@ -13,7 +13,7 @@ export interface ZStackInnerProps {}
 /** @private */
 export interface ZStackComponent<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = 'zStackVariants'
+  V extends string = 'zStacks'
 > extends FlexComponent<E, V, ZStackInnerProps> {}
 
 export const ZStack: ZStackComponent = styled<any>(Flex)({
@@ -23,5 +23,5 @@ export const ZStack: ZStackComponent = styled<any>(Flex)({
 
 ZStack.defaultProps = {
   as: 'div',
-  __key: 'zStackVariants',
+  __key: 'zStacks',
 }

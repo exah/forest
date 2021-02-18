@@ -100,7 +100,7 @@ const transitions = {
   shadow: 'box-shadow .2s',
 } as const
 
-const boxVariants = {
+const boxes = {
   code: {
     backgroundColor: 'grey.10',
     borderRadius: 'block-code',
@@ -108,13 +108,13 @@ const boxVariants = {
   },
 } as const
 
-const imageVariants = {
+const images = {
   default: {
     display: 'block',
   },
 } as const
 
-const linkVariants = {
+const links = {
   default: {
     transition: 'text',
     ':any-link:hover': { color: 'primary' },
@@ -125,7 +125,7 @@ const linkVariants = {
   },
 } as const
 
-const listVariants = {
+const lists = {
   default: {
     listStyle: 'none',
   },
@@ -137,7 +137,7 @@ const listVariants = {
   },
 } as const
 
-const textVariants = {
+const texts = {
   h1: {
     fontFamily: 'primary',
     fontSize: 'h1',
@@ -191,18 +191,18 @@ const textVariants = {
   },
 } as const
 
-const inputVariants = {
+const inputs = {
   default: {
     display: 'block',
   },
 } as const
 
-const selectVariants = { ...inputVariants } as const
-const textareaVariants = { ...inputVariants } as const
-const labelVariants = { ...inputVariants } as const
+const selects = { ...inputs } as const
+const textareas = { ...inputs } as const
+const labels = { ...inputs } as const
 
-const buttonVariants = {
-  ...inputVariants,
+const buttons = {
+  ...inputs,
   add: {
     size: rem(40),
     borderRadius: rem(40),
@@ -215,7 +215,7 @@ const buttonVariants = {
   },
 } as const
 
-const itemVariants = {
+const items = {
   default: {
     display: 'block',
     color: 'grey.90',
@@ -239,17 +239,17 @@ export const Theme = {
   sizes,
   space: sizes,
   transitions,
-  boxVariants,
-  buttonVariants,
-  imageVariants,
-  inputVariants,
-  labelVariants,
-  linkVariants,
-  listVariants,
-  selectVariants,
-  textareaVariants,
-  textVariants,
-  itemVariants,
+  boxes,
+  buttons,
+  images,
+  inputs,
+  labels,
+  links,
+  lists,
+  selects,
+  textareas,
+  texts,
+  items,
 } as const
 
 export type Theme = typeof Theme

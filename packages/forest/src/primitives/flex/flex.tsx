@@ -3,7 +3,7 @@ import { Box, BoxComponent, BoxProps } from '../box'
 
 export interface FlexProps<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = 'flexVariants'
+  V extends string = 'flexs'
 > extends Omit<BoxProps<E, V>, keyof FlexInnerProps>,
     FlexInnerProps {}
 
@@ -12,7 +12,7 @@ export interface FlexInnerProps {}
 /** @private */
 export interface FlexComponent<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = 'flexVariants',
+  V extends string = 'flexs',
   P = {}
 > extends BoxComponent<E, V, FlexInnerProps & P> {}
 
@@ -22,5 +22,5 @@ export const Flex: FlexComponent = styled<any>(Box)({
 
 Flex.defaultProps = {
   as: 'div',
-  __key: 'flexVariants',
+  __key: 'flexs',
 }

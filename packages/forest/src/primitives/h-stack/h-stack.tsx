@@ -4,7 +4,7 @@ import { Flex, FlexComponent, FlexProps } from '../flex'
 
 export interface HStackProps<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = 'hStackVariants'
+  V extends string = 'hStacks'
 > extends Omit<FlexProps<E, V>, keyof HStackInnerProps>,
     HStackInnerProps {}
 
@@ -15,7 +15,7 @@ export interface HStackInnerProps
 /** @private */
 export interface HStackComponent<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = 'hStackVariants'
+  V extends string = 'hStacks'
 > extends FlexComponent<E, V, HStackInnerProps> {}
 
 export const HStack: HStackComponent = styled<any>(Flex)(
@@ -26,5 +26,5 @@ export const HStack: HStackComponent = styled<any>(Flex)(
 
 HStack.defaultProps = {
   as: 'div',
-  __key: 'hStackVariants',
+  __key: 'hStacks',
 }

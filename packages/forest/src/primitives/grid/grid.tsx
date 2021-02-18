@@ -4,7 +4,7 @@ import { Box, BoxComponent, BoxProps } from '../box'
 
 export interface GridProps<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = 'gridVariants'
+  V extends string = 'grids'
 > extends Omit<BoxProps<E, V>, keyof GridInnerProps>,
     GridInnerProps {}
 
@@ -20,7 +20,7 @@ export interface GridInnerProps
 /** @private */
 export interface GridComponent<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = 'gridVariants'
+  V extends string = 'grids'
 > extends BoxComponent<E, V, GridInnerProps> {}
 
 export const Grid: GridComponent = styled<any>(Box)(
@@ -36,5 +36,5 @@ export const Grid: GridComponent = styled<any>(Box)(
 
 Grid.defaultProps = {
   as: 'div',
-  __key: 'gridVariants',
+  __key: 'grids',
 }

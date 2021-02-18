@@ -28,7 +28,7 @@ export interface BaseInnerProps<E extends keyof React.ReactHTML> {
 /** @private */
 export interface BaseComponent<
   Element extends keyof React.ReactHTML = 'div',
-  Variant extends string = 'baseVariants',
+  Variant extends string = 'bases',
   Props extends {} = {}
 > extends React.VFC<BaseProps<keyof React.ReactHTML, Variant> & Props>,
     ComponentSelector {

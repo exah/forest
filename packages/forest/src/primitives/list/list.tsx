@@ -3,7 +3,7 @@ import { Text, TextComponent, TextProps } from '../text'
 
 export interface ListProps<
   E extends keyof React.ReactHTML = 'ul',
-  V extends string = 'listVariants'
+  V extends string = 'lists'
 > extends TextProps<E, V>,
     ListInnerProps {}
 
@@ -12,19 +12,19 @@ export interface ListInnerProps {}
 /** @private */
 export interface ListComponent<
   E extends keyof React.ReactHTML = 'ul',
-  V extends string = 'listVariants'
+  V extends string = 'lists'
 > extends TextComponent<E, V, ListInnerProps> {}
 
 export const List: ListComponent = styled<any>(Text)()
 
 List.defaultProps = {
   as: 'ul',
-  __key: 'listVariants',
+  __key: 'lists',
 }
 
 export interface ListItemProps<
   E extends keyof React.ReactHTML = 'li',
-  V extends string = 'listItemVariants'
+  V extends string = 'listItems'
 > extends TextProps<E, V>,
     ListItemInnerProps {}
 
@@ -33,7 +33,7 @@ export interface ListItemInnerProps {}
 /** @private */
 export interface ListItemComponent<
   E extends keyof React.ReactHTML = 'li',
-  V extends string = 'listItemVariants'
+  V extends string = 'listItems'
 > extends TextComponent<E, V, ListItemInnerProps> {}
 
 export const ListItem: ListItemComponent = styled<any>(
@@ -42,5 +42,5 @@ export const ListItem: ListItemComponent = styled<any>(
 
 ListItem.defaultProps = {
   as: 'li',
-  __key: 'listItemVariants',
+  __key: 'listItems',
 }

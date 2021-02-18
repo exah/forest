@@ -5,7 +5,7 @@ import { Flex, FlexComponent, FlexProps } from '../flex'
 
 export interface VStackProps<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = 'vStackVariants'
+  V extends string = 'vStacks'
 > extends Omit<FlexProps<E, V>, keyof VStackInnerProps>,
     VStackInnerProps {}
 
@@ -16,7 +16,7 @@ export interface VStackInnerProps
 /** @private */
 export interface VStackComponent<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = 'vStackVariants'
+  V extends string = 'vStacks'
 > extends FlexComponent<E, V, VStackInnerProps> {}
 
 export const VStack: VStackComponent = styled<any>(Flex)(
@@ -27,5 +27,5 @@ export const VStack: VStackComponent = styled<any>(Flex)(
 
 VStack.defaultProps = {
   as: 'div',
-  __key: 'vStackVariants',
+  __key: 'vStacks',
 }

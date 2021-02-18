@@ -5,7 +5,7 @@ import { Box, BoxComponent, BoxProps } from '../box'
 
 export interface TextProps<
   E extends keyof React.ReactHTML = 'span',
-  V extends string = 'textVariants'
+  V extends string = 'texts'
 > extends Omit<BoxProps<E, V>, keyof TextInnerProps>,
     TextInnerProps {}
 
@@ -24,7 +24,7 @@ export interface TextInnerProps
 /** @private */
 export interface TextComponent<
   E extends keyof React.ReactHTML = 'span',
-  V extends string = 'textVariants',
+  V extends string = 'texts',
   P extends {} = {}
 > extends BoxComponent<E, V, TextInnerProps & P> {}
 
@@ -43,5 +43,5 @@ export const Text: TextComponent = styled<any>(Box)(
 
 Text.defaultProps = {
   as: 'span',
-  __key: 'textVariants',
+  __key: 'texts',
 }

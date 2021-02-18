@@ -3,7 +3,7 @@ import { Box, BoxComponent, BoxProps } from '../box'
 
 export interface ScrollProps<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = 'scrollVariants'
+  V extends string = 'scrolls'
 > extends BoxProps<E, V>,
     ScrollInnerProps {}
 
@@ -12,7 +12,7 @@ export interface ScrollInnerProps {}
 /** @private */
 export interface ScrollComponent<
   E extends keyof React.ReactHTML = 'div',
-  V extends string = 'scrollVariants'
+  V extends string = 'scrolls'
 > extends BoxComponent<E, V, ScrollInnerProps> {}
 
 export const Scroll: ScrollComponent = styled<any>(Box)({
@@ -21,5 +21,5 @@ export const Scroll: ScrollComponent = styled<any>(Box)({
 
 Scroll.defaultProps = {
   as: 'div',
-  __key: 'scrollVariants',
+  __key: 'scrolls',
 }
