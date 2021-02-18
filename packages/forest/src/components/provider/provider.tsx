@@ -5,6 +5,6 @@ interface ProviderProps<T> {
   children?: React.ReactNode
 }
 
-export function Provider<T>(props: ProviderProps<T>) {
-  return <ThemeProvider {...props} />
-}
+export const Provider = <T extends {}>(props: ProviderProps<T>) => (
+  <ThemeProvider {...props} />
+)

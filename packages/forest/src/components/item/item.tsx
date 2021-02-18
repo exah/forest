@@ -6,31 +6,29 @@ export interface ItemProps<E extends keyof React.ReactHTML = 'button'>
   accent?: string
 }
 
-export function Item<E extends keyof React.ReactHTML = 'button'>({
+export const Item = <E extends keyof React.ReactHTML = 'button'>({
   icon: Icon,
   children,
   ...rest
-}: ItemProps<E>) {
-  return (
-    <Button {...rest} __key="itemVariants">
-      <Grid
-        as="span"
-        pss={{
-          gridTemplate: `
+}: ItemProps<E>) => (
+  <Button {...rest} __key="itemVariants">
+    <Grid
+      as="span"
+      pss={{
+        gridTemplate: `
             "icon label" auto / 1.25rem 1fr
           `,
-          columnGap: 's.8',
-          alignItems: 'center',
-          svg: { display: 'block' },
-        }}
-      >
-        <Text pss={{ gridArea: 'icon' }}>
-          <Icon />
-        </Text>
-        <Text variant="primary" pss={{ gridArea: 'label' }}>
-          {children}
-        </Text>
-      </Grid>
-    </Button>
-  )
-}
+        columnGap: 's.8',
+        alignItems: 'center',
+        svg: { display: 'block' },
+      }}
+    >
+      <Text pss={{ gridArea: 'icon' }}>
+        <Icon />
+      </Text>
+      <Text variant="primary" pss={{ gridArea: 'label' }}>
+        {children}
+      </Text>
+    </Grid>
+  </Button>
+)
