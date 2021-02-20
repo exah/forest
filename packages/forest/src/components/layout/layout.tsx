@@ -54,13 +54,28 @@ export const LayoutNav = <E extends string = 'nav'>({
   children,
   ...rest
 }: LayoutNavProps<E>) => (
-  <LayoutMain
+  <Box
     as="nav"
-    pss={{ gridArea: 'nav', width: '10rem', ...pss }}
+    pss={{
+      gridArea: 'nav',
+      width: '10rem',
+      marginX: 's.24',
+      ...pss,
+    }}
     {...rest}
   >
-    <Box pss={{ position: 'sticky', top: 's.32' }}>{children}</Box>
-  </LayoutMain>
+    <Box
+      pss={{
+        position: 'sticky',
+        top: 0,
+        overflow: 'auto',
+        maxHeight: '100vh',
+        paddingTop: 's.32',
+      }}
+    >
+      {children}
+    </Box>
+  </Box>
 )
 
 export interface LayoutAsideProps<E extends string>
