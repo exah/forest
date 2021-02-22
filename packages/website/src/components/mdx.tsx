@@ -31,7 +31,7 @@ function InlineCode(props: Props) {
       variant="code"
       pss={{
         paddingX: 's.8',
-        borderRadius: 2,
+        borderRadius: 'code.inline',
         backgroundColor: 'grey.10',
       }}
       {...props}
