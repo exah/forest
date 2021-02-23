@@ -14,11 +14,11 @@
     "printWidth": 80
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.16",
-    "@babel/core": "^7.12.16",
-    "@babel/preset-env": "^7.12.16",
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.1",
+    "@babel/preset-env": "^7.13.5",
     "@babel/preset-react": "^7.12.13",
-    "@babel/preset-typescript": "^7.12.16",
+    "@babel/preset-typescript": "^7.13.0",
     "@emotion/babel-plugin": "^11.2.0",
     "@emotion/jest": "^11.2.0",
     "@emotion/react": "^11.1.4",
@@ -45,8 +45,8 @@
     "react-live": "^2.2.3",
     "serve": "^11.3.2",
     "size-limit": "^4.9.2",
-    "slugify": "^1.4.6",
-    "ts-jest": "^26.5.1",
-    "typescript": "^4.2.1-rc"
+    "slugify": "^1.4.7",
+    "ts-jest": "^26.5.2",
+    "typescript": "^4.2.2"
   }
 }
