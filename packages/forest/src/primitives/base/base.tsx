@@ -1,5 +1,12 @@
 import styled, { ComponentSelector } from '@emotion/styled'
-import { variant, VariantProps, colorScheme, ColorSchemeProps } from 'pss'
+import {
+  colorScheme,
+  ColorSchemeProps,
+  pss,
+  PSS,
+  variant,
+  VariantProps,
+} from 'pss'
 
 interface VariantKeyProps<V> {
   /** @private */
@@ -28,7 +35,8 @@ export interface BaseProps<E extends string, V extends string>
 export interface BaseInnerProps<E extends string, V extends string>
   extends VariantKeyProps<V>,
     VariantProps<V>,
-    ColorSchemeProps {
+    ColorSchemeProps,
+    PSS {
   as?: E | React.ComponentType
   ref?: React.Ref<ElementType<E>>
 }
@@ -62,5 +70,6 @@ export const Base: BaseComponent = styled<any>('div')(
     textDecoration: 'none',
   },
   colorScheme,
-  key
+  key,
+  pss
 )
