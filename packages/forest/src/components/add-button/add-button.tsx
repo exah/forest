@@ -4,7 +4,7 @@ import { PlusIcon } from '../icons'
 export interface AddButtonProps extends ButtonProps {}
 
 export const AddButton = (props: AddButtonProps) => (
-  <Button variant="add" {...props}>
+  <Button variant="round" {...props}>
     <PlusIcon />
   </Button>
 )

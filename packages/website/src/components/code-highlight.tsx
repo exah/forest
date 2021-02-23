@@ -11,12 +11,7 @@ export const CodeHighlight = (props: Props) => (
   <Box my="s.24" w={{ $md: 0.5 }} pr={{ $md: 's.16' }}>
     <Highlight Prism={Prism} theme={GithubTheme} {...props}>
       {({ tokens, getLineProps, getTokenProps, style }) => (
-        <Box
-          as="pre"
-          p="s.8"
-          variant="code"
-          style={{ ...style, backgroundColor: undefined }}
-        >
+        <Box as="pre" p="s.8" variant="code" style={{ ...style }}>
           {tokens.map((line, index) => (
             <Text
               as="div"

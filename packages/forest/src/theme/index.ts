@@ -147,7 +147,6 @@ const transitions = {
 
 const boxes = {
   code: {
-    backgroundColor: 'grey.10',
     borderRadius: 'code.block',
     minHeight: '100%',
   },
@@ -248,7 +247,7 @@ const labels = { ...inputs } as const
 
 const buttons = {
   ...inputs,
-  add: {
+  round: {
     size: 'button.md',
     borderRadius: 'button.md',
     padding: 's.12',

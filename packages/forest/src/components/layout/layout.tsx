@@ -58,7 +58,7 @@ export const LayoutNav = <E extends string = 'nav'>({
     as="nav"
     pss={{
       gridArea: 'nav',
-      width: '10rem',
+      width: 'layout.side',
       marginX: 's.24',
       ...pss,
     }}

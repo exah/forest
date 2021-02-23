@@ -31,12 +31,7 @@ export function CodePlayground({
     >
       <Grid columns={{ $: 1, $md: 2 }} gap="s.16" my="s.24">
         <Box variant={{ '> div': 'code' }}>
-          <LiveEditor
-            theme={GithubTheme}
-            style={{ backgroundColor: undefined }}
-            code={code}
-            onChange={setCode}
-          />
+          <LiveEditor theme={GithubTheme} code={code} onChange={setCode} />
         </Box>
         <Box
           pss={{
