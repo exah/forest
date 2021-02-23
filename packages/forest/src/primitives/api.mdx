@@ -7,11 +7,12 @@ export const title = 'API'
 
 ### Core props
 
-| Prop      | Description                                                            |
-| --------- | ---------------------------------------------------------------------- |
-| `as`      | [Changes HTML element](#change-html-element)                           |
-| `pss`     | [Apply theme-aware styles](#theme-aware-styles)                        |
-| `variant` | [Set component style variant](#variants) (see docs for each component) |
+| Prop          | Description                                                            |
+| ------------- | ---------------------------------------------------------------------- |
+| `as`          | [Changes HTML element](#change-html-element)                           |
+| `pss`         | [Apply theme-aware styles](#theme-aware-styles)                        |
+| `variant`     | [Set component style variant](#variants) (see docs for each component) |
+| `colorScheme` | [Set color scheme](#color-scheme)                                      |
 
 ### Style props
 
@@ -122,6 +123,34 @@ Use `variant` prop to set styles using values from your [theme](#theme).
   }}
 >
   <Box variant="circle">Box</Box>
+</Provider>
+```
+
+### Color Scheme
+
+Use `colorScheme` prop to choose different set of colors (powered by CSS variables). All elements inside will use these variables, following regular CSS inheritance rules.
+
+```jsx live
+<Provider
+  theme={{
+    colorSchemes: {
+      light: {
+        '--colors-foreground': '#000000',
+        '--colors-background': '#ffffff',
+      },
+      dark: {
+        '--colors-foreground': '#ffffff',
+        '--colors-background': '#000000',
+      },
+    },
+  }}
+>
+  <Box bg="background" fg="foreground" s={128} colorScheme="dark">
+    Box
+  </Box>
+  <Box bg="background" fg="foreground" s={128} colorScheme="light">
+    Box
+  </Box>
 </Provider>
 ```
 

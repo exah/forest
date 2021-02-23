@@ -11,16 +11,43 @@ const breakpoints = {
   $lg: '(min-width: 1024px)',
   /** \> 1280px (~desktop) */
   $xl: '(min-width: 1280px)',
+  /** dark mode */
+  $dark: '(prefers-color-scheme: dark)',
 } as const
 
+const light = null
+const dark = {
+  '--colors-primary': '#0089ff',
+  '--colors-accent': '#f100e8',
+  '--colors-danger': '#ff4d46',
+  '--colors-grey-10': '#222222',
+  '--colors-grey-20': '#444444',
+  '--colors-grey-30': '#555555',
+  '--colors-grey-40': '#777777',
+  '--colors-grey-50': '#999999',
+  '--colors-grey-60': '#bbbbbb',
+  '--colors-grey-70': '#cccccc',
+  '--colors-grey-80': '#eeeeee',
+  '--colors-grey-90': '#f6f8fa',
+  '--colors-elevated-button': '#222222',
+  '--colors-foreground': '#ffffff',
+  '--colors-background': '#000000',
+}
+
+const colorSchemes = {
+  auto: { $: light, $dark: dark },
+  dark,
+  light,
+}
+
 const colors = {
-  primary: 'var(--colors-primary, #0089FF)',
-  accent: 'var(--colors-accent, #F100E8)',
+  primary: 'var(--colors-primary, #0089ff)',
+  accent: 'var(--colors-accent, #f100e8)',
   danger: 'var(--colors-danger, #ff4d46)',
-  foreground: 'var(--colors-foreground, #222222)',
+  foreground: 'var(--colors-foreground, #000000)',
   background: 'var(--colors-background, #ffffff)',
   grey: {
-    10: 'var(--colors-grey-10, #f8f8f8)',
+    10: 'var(--colors-grey-10, #f6f8fa)',
     20: 'var(--colors-grey-20, #eeeeee)',
     30: 'var(--colors-grey-30, #cccccc)',
     40: 'var(--colors-grey-40, #bbbbbb)',
@@ -29,6 +56,9 @@ const colors = {
     70: 'var(--colors-grey-70, #555555)',
     80: 'var(--colors-grey-80, #444444)',
     90: 'var(--colors-grey-90, #222222)',
+  },
+  elevated: {
+    button: 'var(--colors-elevated-button, #ffffff)',
   },
 } as const
 
@@ -90,6 +120,9 @@ const sizes = {
   s: space,
   button: {
     md: `var(--sizes-button-md, ${rem(40)})`,
+  },
+  layout: {
+    side: `var(--sizes-layout-side, ${rem(160)})`,
   },
 } as const
 
@@ -224,6 +257,8 @@ const buttons = {
     boxShadow: 'level.20',
     ':hover': { boxShadow: 'level.25' },
     ':active': { boxShadow: 'level.10' },
+    color: 'foreground',
+    backgroundColor: 'elevated.button',
   },
 } as const
 
@@ -242,6 +277,7 @@ const items = {
 export const Theme = {
   breakpoints,
   colors,
+  colorSchemes,
   fonts,
   fontSizes,
   fontWeights,

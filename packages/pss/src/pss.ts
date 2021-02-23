@@ -7,8 +7,17 @@ import {
   VariantValue,
   SystemTheme,
   BreakpointsSystemTheme,
+  ColorSchemesSystemTheme,
+  ColorSchemesValue,
 } from './types'
-import { get, isObject, isPrimitive, isPropertyKey, toArray } from './helpers'
+import {
+  get,
+  isObject,
+  isPrimitive,
+  isPropertyKey,
+  isString,
+  toArray,
+} from './helpers'
 
 const AXIS = /^(\w+)(X|Y)(\w+)?$/
 
@@ -223,3 +232,25 @@ export const spaceStyle = <
   style(prop + 'X', alias && alias + 'x'),
   style(prop + 'Y', alias && alias + 'y'),
 ]
+
+function hasColorSchemes<T extends { colorSchemes?: unknown }>(
+  theme?: T
+): theme is T & ColorSchemesSystemTheme {
+  return isObject(theme?.colorSchemes)
+}
+
+export interface ColorSchemeProps {
+  theme?: SystemTheme
+  colorScheme?: ColorSchemesValue | 'auto'
+}
+
+export function colorScheme({ theme, colorScheme: mode }: ColorSchemeProps) {
+  if (hasColorSchemes(theme) && isString(mode)) {
+    return core({
+      input: theme.colorSchemes[mode],
+      theme: theme,
+    })
+  }
+
+  return null
+}

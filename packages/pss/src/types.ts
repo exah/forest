@@ -1,5 +1,12 @@
 import * as CSS from 'csstype'
+import { CSSObject } from '@emotion/serialize'
 import SCALES from './scales'
+
+type Length = (string & {}) | number
+
+export interface Properties extends CSS.Properties<Length> {
+  size?: CSS.Property.Width<Length> | CSS.Property.Height<Length>
+}
 
 export interface SystemTheme {}
 
@@ -7,10 +14,8 @@ export interface BreakpointsSystemTheme {
   breakpoints: { [K: string]: string | null }
 }
 
-type Length = (string & {}) | number
-
-export interface Properties extends CSS.Properties<Length> {
-  size?: CSS.Property.Width<Length> | CSS.Property.Height<Length>
+export interface ColorSchemesSystemTheme {
+  colorSchemes: { [K: string]: CSSObject | null }
 }
 
 export type ThemeValue<Key extends string> = Key extends keyof SystemTheme
@@ -24,6 +29,10 @@ export type StyleValue<Prop extends string> =
 export type VariantValue<Key extends string> = Key extends keyof SystemTheme
   ? keyof SystemTheme[Key]
   : string
+
+export type ColorSchemesValue<
+  Key extends keyof SystemTheme = keyof SystemTheme
+> = Key extends 'colorSchemes' ? keyof SystemTheme[Key] : never
 
 export type BreakpointsRecord<
   Value,

@@ -1,21 +1,20 @@
 import Head from 'next/head'
+import { useState, useLayoutEffect, useEffect } from 'react'
 import {
-  Text,
   Box,
-  Provider,
-  Theme,
-  Layout,
-  LayoutMain,
-  LayoutNav,
-  List,
-  ListItem,
-  Link,
   Group,
   Header,
   HeaderTitle,
-  HeaderAction,
-  Item,
-  BoxIcon,
+  Layout,
+  LayoutMain,
+  LayoutNav,
+  Link,
+  List,
+  ListItem,
+  Provider,
+  Select,
+  Text,
+  Theme,
 } from 'piny-forest/src'
 import { rem } from 'pss'
 import { MDX, Logo } from '../components'
@@ -26,7 +25,28 @@ const modules = context.keys().map((key) => [key, context(key)])
 const components = modules.filter(([key]) => key.includes('/components/'))
 const primitives = modules.filter(([key]) => key.includes('/primitives/'))
 
+const useUniversalLayoutEffect =
+  typeof window === 'undefined' ? useEffect : useLayoutEffect
+
+type Mode = keyof Theme['colorSchemes']
+
+function useLocalModeState(key: string = '@@piny-forest/mode') {
+  const [current, setMode] = useState<Mode>('auto')
+
+  useUniversalLayoutEffect(() => {
+    const restored = window.localStorage.getItem(key) as Mode
+    if (restored) setMode(restored)
+  }, [])
+
+  useEffect(() => {
+    if (current) window.localStorage.setItem(key, current)
+  }, [current])
+
+  return [current, setMode] as const
+}
+
 function Index() {
+  const [mode, setMode] = useLocalModeState()
   return (
     <Provider theme={Theme}>
       <Head>
@@ -36,7 +56,13 @@ function Index() {
           content="Component library and design system for piny.link"
         />
       </Head>
-      <Text as="div" variant="primary" fg="foreground">
+      <Text
+        as="div"
+        variant="primary"
+        colorScheme={mode}
+        fg="foreground"
+        bg="background"
+      >
         <Layout>
           <LayoutNav>
             <Group>
@@ -45,6 +71,16 @@ function Index() {
                   <Logo role="img" aria-label="Forest" />
                 </Box>
               </Link>
+            </Group>
+            <Group>
+              <Select
+                value={mode}
+                onChange={(event) => setMode(event.currentTarget.value as Mode)}
+              >
+                <option value="auto">Mode: Auto</option>
+                <option value="light">Mode: Light</option>
+                <option value="dark">Mode: Dark</option>
+              </Select>
             </Group>
             <Group>
               <Header>
