@@ -58,8 +58,10 @@ export const LayoutNav = <E extends string = 'nav'>({
     as="nav"
     pss={{
       gridArea: 'nav',
-      width: 'layout.side',
       marginX: 's.24',
+      $md: {
+        width: 'layout.side',
+      },
       ...pss,
     }}
     {...rest}
@@ -69,8 +71,8 @@ export const LayoutNav = <E extends string = 'nav'>({
         position: 'sticky',
         top: 0,
         overflow: 'auto',
-        maxHeight: '100vh',
         paddingTop: 's.32',
+        $md: { maxHeight: '100vh' },
       }}
     >
       {children}

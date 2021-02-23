@@ -59,9 +59,9 @@ function Index() {
       <Text
         as="div"
         variant="primary"
-        colorScheme={mode}
         fg="foreground"
         bg="background"
+        colorScheme={mode}
       >
         <Layout>
           <LayoutNav>

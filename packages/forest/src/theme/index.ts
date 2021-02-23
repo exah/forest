@@ -17,9 +17,6 @@ const breakpoints = {
 
 const light = null
 const dark = {
-  '--colors-primary': '#0089ff',
-  '--colors-accent': '#f100e8',
-  '--colors-danger': '#ff4d46',
   '--colors-grey-10': '#222222',
   '--colors-grey-20': '#444444',
   '--colors-grey-30': '#555555',
