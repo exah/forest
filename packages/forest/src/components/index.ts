@@ -1,5 +1,4 @@
 export * from './action'
-export * from './add-button'
 export * from './group'
 export * from './header'
 export * from './icons'

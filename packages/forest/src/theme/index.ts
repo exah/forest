@@ -238,7 +238,6 @@ const inputs = {
   },
 } as const
 
-const selects = { ...inputs } as const
 const textareas = { ...inputs } as const
 const labels = { ...inputs } as const
 
@@ -300,7 +299,6 @@ export const Theme = {
   links,
   lists,
   root,
-  selects,
   textareas,
   texts,
 } as const

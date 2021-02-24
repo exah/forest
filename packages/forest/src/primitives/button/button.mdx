@@ -8,24 +8,27 @@ import { Button } from 'piny-forest'
 ```
 
 ```jsx live
-<Button
-  variant="primary"
+<Provider
   theme={{
-    colors: {
-      primary: 'royalblue',
-    },
     buttons: {
       primary: {
         backgroundColor: 'primary',
         color: 'white',
-        paddingX: '0.5rem',
-        paddingY: '0.25rem',
-        borderRadius: '0.25rem',
+        paddingX: 's.8',
+        paddingY: 's.4',
+        borderRadius: 4,
       },
     },
   }}
-  onClick={() => alert('Hello')}
 >
-  Say hello
+  <Button variant="primary" onClick={() => alert('Hello')}>
+    Say hello
+  </Button>
+</Provider>
+```
+
+```jsx live
+<Button variant="round" aria-label="Add link">
+  <PlusIcon />
 </Button>
 ```

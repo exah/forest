@@ -1,5 +1,5 @@
 import { useState, useLayoutEffect, useEffect } from 'react'
-import { Select, Theme, Root } from 'piny-forest/src'
+import { Select, Theme, Root, Label } from 'piny-forest/src'
 
 const useUniversalLayoutEffect =
   typeof window === 'undefined' ? useEffect : useLayoutEffect
@@ -26,14 +26,17 @@ export function GlobalColorScheme() {
   return (
     <>
       <Root colorScheme={mode} />
-      <Select
-        value={mode}
-        onChange={(event) => setMode(event.currentTarget.value as Mode)}
-      >
-        <option value="auto">Mode: Auto</option>
-        <option value="light">Mode: Light</option>
-        <option value="dark">Mode: Dark</option>
-      </Select>
+      <Label>
+        Mode:&nbsp;
+        <Select
+          value={mode}
+          onChange={(event) => setMode(event.currentTarget.value as Mode)}
+        >
+          <option value="auto">Auto</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </Select>
+      </Label>
     </>
   )
 }

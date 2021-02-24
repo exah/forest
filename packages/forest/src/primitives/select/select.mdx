@@ -8,17 +8,33 @@ import { Select } from 'piny-forest'
 ```
 
 ```jsx live
-<Select
-  defaultValue="main"
+<Label>
+  Reply:
+  <Select defaultValue="main">
+    <option value="main">Hello World</option>
+    <option value="other">Bye, cruel world</option>
+  </Select>
+</Label>
+```
+
+```jsx live
+<Provider
   theme={{
     selects: {
       default: {
         width: '100%',
+        border: '1px solid #aaa',
+        borderRadius: 4,
       },
     },
   }}
 >
-  <option value="main">Hello World</option>
-  <option value="other">Bye, cruel world</option>
-</Select>
+  <Label>
+    Reply:
+    <Select defaultValue="main">
+      <option value="main">Hello World</option>
+      <option value="other">Bye, cruel world</option>
+    </Select>
+  </Label>
+</Provider>
 ```
