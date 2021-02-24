@@ -270,6 +270,14 @@ const items = {
   },
 } as const
 
+export const root = {
+  default: {
+    ...texts.primary,
+    backgroundColor: 'background',
+    color: 'foreground',
+  },
+}
+
 export const Theme = {
   breakpoints,
   colors,
@@ -287,13 +295,14 @@ export const Theme = {
   buttons,
   images,
   inputs,
+  items,
   labels,
   links,
   lists,
+  root,
   selects,
   textareas,
   texts,
-  items,
 } as const
 
 export type Theme = typeof Theme

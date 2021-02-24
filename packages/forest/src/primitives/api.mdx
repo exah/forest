@@ -135,12 +135,12 @@ Use `colorScheme` prop to choose different set of colors (powered by CSS variabl
   theme={{
     colorSchemes: {
       light: {
-        '--colors-foreground': '#000000',
-        '--colors-background': '#ffffff',
+        '--colors-foreground': '#222222',
+        '--colors-background': '#eeeeee',
       },
       dark: {
-        '--colors-foreground': '#ffffff',
-        '--colors-background': '#000000',
+        '--colors-foreground': '#eeeeee',
+        '--colors-background': '#222222',
       },
     },
   }}
@@ -247,11 +247,11 @@ Use `colorScheme` prop to choose different set of colors (powered by CSS variabl
 ## Sizing
 
 ```jsx live
-<Box w={64} h={28} bg="black" />
+<Box w={64} h={28} bg="foreground" />
 ```
 
 ```jsx live
-<Box s={32} bg="black" />
+<Box s={32} bg="foreground" />
 ```
 
 ```jsx live
@@ -263,7 +263,7 @@ Use `colorScheme` prop to choose different set of colors (powered by CSS variabl
     },
   }}
 >
-  <Box w="foo" h="bar" bg="black" />
+  <Box w="foo" h="bar" bg="foreground" />
 </Provider>
 ```
 
@@ -278,7 +278,7 @@ Use `colorScheme` prop to choose different set of colors (powered by CSS variabl
   <Box
     pss={{
       size: 'bar',
-      backgroundColor: 'black',
+      backgroundColor: 'foreground',
     }}
   />
 </Provider>

@@ -244,7 +244,10 @@ export interface ColorSchemeProps {
   colorScheme?: ColorSchemesValue | 'auto'
 }
 
-export function colorScheme({ theme, colorScheme: mode }: ColorSchemeProps) {
+export function colorScheme({
+  theme,
+  colorScheme: mode,
+}: ColorSchemeProps): CSSInterpolation[] {
   if (hasColorSchemes(theme) && isString(mode)) {
     return core({
       input: theme.colorSchemes[mode],
@@ -252,5 +255,9 @@ export function colorScheme({ theme, colorScheme: mode }: ColorSchemeProps) {
     })
   }
 
-  return null
+  return []
 }
+
+export const combine = <P extends {}, R>(...input: ((props: P) => R)[]) => (
+  props: P
+) => input.map((fn) => fn(props))
