@@ -3,20 +3,23 @@ import * as PinyForest from 'piny-forest/src'
 import GithubTheme from 'prism-react-renderer/themes/github'
 import { LiveProvider, LivePreview, LiveEditor, LiveError } from 'react-live'
 import { useState, useEffect } from 'react'
-import { Box, Grid, Label, HStack } from 'piny-forest/src'
+import { Box, Grid, Label } from 'piny-forest/src'
+import { Frame } from './frame'
 
 interface PlaygroundProps {
   code: string
+  isolate?: boolean
 }
 
 export const SCOPE = { ...React, ...PinyForest }
 
 export function CodePlayground({
   code: defaultCode,
+  isolate = false,
   ...rest
 }: PlaygroundProps) {
   const [code, setCode] = useState<string>(defaultCode)
-  const [hasOutline, setOutline] = useState<boolean>(false)
+  const Wrapper = isolate ? Frame : Box
 
   useEffect(() => setCode(defaultCode), [defaultCode])
 
@@ -31,25 +34,20 @@ export function CodePlayground({
     >
       <Grid columns={{ $: 1, $md: 2 }} gap="s.16" my="s.24">
         <Box variant={{ '> div': 'code' }}>
-          <LiveEditor theme={GithubTheme} code={code} onChange={setCode} />
+          <Label aria-label="Live editor">
+            <LiveEditor theme={GithubTheme} code={code} onChange={setCode} />
+          </Label>
         </Box>
         <Box
           pss={{
             position: 'relative',
-            '> div': { outline: hasOutline ? '1px solid red' : 'none' },
             order: -1,
             $md: { order: 1 },
           }}
         >
-          <LivePreview />
-          <Label mt="s.8">
-            <input
-              type="checkbox"
-              checked={hasOutline}
-              onChange={(event) => setOutline(event.target.checked)}
-            />
-            {' Outline'}
-          </Label>
+          <Wrapper title="Live preview" pss={{ size: '100%' }}>
+            <LivePreview />
+          </Wrapper>
         </Box>
       </Grid>
       <LiveError />

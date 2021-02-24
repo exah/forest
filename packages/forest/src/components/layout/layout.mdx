@@ -9,8 +9,8 @@ import { Layout, LayoutNav, LayoutMain, LayoutAside } from 'piny-forest'
 
 Primary layout component, should be used for wrapping whole app or page. `LayoutNav` and `LayoutSide` component are optional.
 
-```jsx live
-<Layout bg="grey.20">
+```jsx live isolate
+<Layout bg="grey.20" pss={{ minHeight: '100vh' }}>
   <LayoutNav bg="grey.10">Nav</LayoutNav>
   <LayoutMain bg="grey.10">Main</LayoutMain>
   <LayoutAside bg="grey.10">Aside</LayoutAside>

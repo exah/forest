@@ -37,7 +37,7 @@ export interface BaseInnerProps<E extends string, V extends string>
     VariantProps<V>,
     ColorSchemeProps,
     PSS {
-  as?: E | React.ComponentType
+  as?: E | React.ComponentType<any>
   ref?: React.Ref<ElementType<E>>
 }
 
