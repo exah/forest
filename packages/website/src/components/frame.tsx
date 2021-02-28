@@ -37,8 +37,11 @@ export function Frame({ children, ...rest }: BoxProps<'iframe'>) {
       {doc &&
         ReactDOM.createPortal(
           <CacheProvider value={cache(doc.head)}>
-            <ColorSchemeRoot />
-            <Root pss={{ body: { margin: 0 } }} />
+            <ColorSchemeRoot
+              pss={{
+                body: { margin: 0 },
+              }}
+            />
             {children}
           </CacheProvider>,
           doc.body

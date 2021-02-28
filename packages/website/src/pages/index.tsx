@@ -35,14 +35,16 @@ function Index() {
       <Provider theme={Theme}>
         <Head>
           <title>Forest</title>
-          <meta name="viewport" content="width=device-width" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
           <meta
             name="description"
             content="Component library and design system for piny.link"
           />
         </Head>
-        <ColorSchemeRoot />
-        <Root
+        <ColorSchemeRoot
           pss={{
             body: { margin: 0 },
             $md: { scrollPaddingTop: 's.32' },

@@ -5,7 +5,7 @@ import {
   useLayoutEffect,
   useEffect,
 } from 'react'
-import { Select, Theme, Root, Label } from 'piny-forest/src'
+import { Select, Theme, Root, RootProps, Label } from 'piny-forest/src'
 
 const useUniversalLayoutEffect =
   typeof window === 'undefined' ? useEffect : useLayoutEffect
@@ -42,9 +42,9 @@ export function ColorSchemeProvider(props: { children: React.ReactNode }) {
   )
 }
 
-export function ColorSchemeRoot() {
+export function ColorSchemeRoot(props: RootProps) {
   const [mode] = useContext(ColorSchemeContext)
-  return <Root colorScheme={mode} />
+  return <Root {...props} colorScheme={mode} />
 }
 
 export function ColorSchemeSelect() {

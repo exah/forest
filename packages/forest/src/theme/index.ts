@@ -1,16 +1,16 @@
-import { rem } from 'pss'
+import { em, rem } from 'pss'
 
 const breakpoints = {
   /** all screens */
   $: null,
   /** \> 375px (~mobile) */
-  $sm: '(min-width: 320px)',
+  $sm: `(min-width: ${em(320)})`,
   /** \> 768px  (~tablet) */
-  $md: '(min-width: 768px)',
+  $md: `(min-width: ${em(768)})`,
   /** \> 1024px (~laptop) */
-  $lg: '(min-width: 1024px)',
+  $lg: `(min-width: ${em(1024)})`,
   /** \> 1280px (~desktop) */
-  $xl: '(min-width: 1280px)',
+  $xl: `(min-width: ${em(1280)})`,
   /** dark mode */
   $dark: '(prefers-color-scheme: dark)',
 } as const
@@ -272,6 +272,7 @@ const items = {
 export const root = {
   default: {
     ...texts.primary,
+    fontSize: '100%',
     backgroundColor: 'background',
     color: 'foreground',
   },
