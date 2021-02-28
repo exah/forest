@@ -1,21 +1,43 @@
-import { Box, BoxProps, Grid } from '../../primitives'
+import { Box, BoxProps, Grid, GridProps } from '../../primitives'
+
+type Variant = 'auto' | 'keep-horizontal'
 
 export interface LayoutProps<E extends string>
-  extends Omit<BoxProps<E>, 'ref'> {}
+  extends Omit<GridProps<E>, 'ref' | 'variant'> {
+  variant?: Variant
+}
 
 export const Layout = <E extends string = 'div'>({
   pss,
   children,
+  variant = 'auto',
   ...rest
 }: LayoutProps<E>) => (
   <Grid
     pss={{
-      paddingBottom: 's.32',
       gridTemplate: `
         "nav"
         "aside"
         "main"
       `,
+      ...(variant === 'keep-horizontal'
+        ? {
+            gridTemplate: `
+              "nav main aside" auto / 100% 100% 100%
+            `,
+            height: '100vh',
+            overflowX: 'auto',
+            overflowY: 'hidden',
+            scrollSnapType: 'x mandatory',
+            scrollBehavior: 'smooth',
+            $md: {
+              height: 'auto',
+              overflowX: 'visible',
+              overflowY: 'visible',
+              scrollSnapType: 'normal',
+            },
+          }
+        : {}),
       $md: {
         gridTemplate: `
           "nav main aside" auto / auto 1fr auto
@@ -29,7 +51,8 @@ export const Layout = <E extends string = 'div'>({
   </Grid>
 )
 
-export interface LayoutMainProps<E extends string> extends LayoutProps<E> {}
+export interface LayoutMainProps<E extends string>
+  extends Omit<BoxProps<E>, 'ref'> {}
 
 export const LayoutMain = <E extends string = 'main'>({
   pss,
@@ -39,49 +62,52 @@ export const LayoutMain = <E extends string = 'main'>({
     as="main"
     pss={{
       gridArea: 'main',
-      marginX: 's.24',
-      marginTop: 's.32',
+      overflow: 'auto',
+      scrollSnapAlign: 'start',
+      scrollBehavior: 'smooth',
+      padding: 's.16',
+      $md: {
+        paddingX: 's.24',
+        paddingY: 's.32',
+      },
       ...pss,
     }}
     {...rest}
   />
 )
 
-export interface LayoutNavProps<E extends string> extends LayoutMainProps<E> {}
+export interface LayoutNavProps<E extends string>
+  extends Omit<BoxProps<E>, 'ref'> {}
 
 export const LayoutNav = <E extends string = 'nav'>({
   pss,
   children,
   ...rest
 }: LayoutNavProps<E>) => (
-  <Box
+  <LayoutMain
     as="nav"
     pss={{
       gridArea: 'nav',
-      marginX: 's.24',
+      overflow: 'auto',
+      scrollSnapAlign: 'start',
+      padding: 's.16',
       $md: {
+        position: 'sticky',
+        top: 0,
         width: 'layout.side',
+        maxHeight: '100vh',
+        paddingX: 's.24',
+        paddingY: 's.32',
       },
       ...pss,
     }}
     {...rest}
   >
-    <Box
-      pss={{
-        position: 'sticky',
-        top: 0,
-        overflow: 'auto',
-        paddingTop: 's.32',
-        $md: { maxHeight: '100vh' },
-      }}
-    >
-      {children}
-    </Box>
-  </Box>
+    {children}
+  </LayoutMain>
 )
 
-export interface LayoutAsideProps<E extends string>
-  extends LayoutMainProps<E> {}
+export interface LayoutAsideProps<E extends string> extends LayoutNavProps<E> {}
 
 export const LayoutAside = <E extends string = 'aside'>({
   pss,
