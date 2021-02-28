@@ -3,7 +3,7 @@ import { useRef, useState, useEffect } from 'react'
 import createCache, { EmotionCache } from '@emotion/cache'
 import weakMemoize from '@emotion/weak-memoize'
 import { CacheProvider } from '@emotion/react'
-import { Box, BoxProps } from 'piny-forest/src'
+import { Box, BoxProps, Root } from 'piny-forest/src'
 import { ColorSchemeRoot } from './color-scheme'
 
 const cache = weakMemoize<HTMLHeadElement, EmotionCache>((container) =>
@@ -37,7 +37,8 @@ export function Frame({ children, ...rest }: BoxProps<'iframe'>) {
       {doc &&
         ReactDOM.createPortal(
           <CacheProvider value={cache(doc.head)}>
-            <ColorSchemeRoot pss={{ body: { margin: 0 } }} />
+            <ColorSchemeRoot />
+            <Root pss={{ body: { margin: 0 } }} />
             {children}
           </CacheProvider>,
           doc.body

@@ -13,8 +13,8 @@ import {
   Provider,
   Text,
   Theme,
+  Root,
 } from 'piny-forest/src'
-import { rem } from 'pss'
 import {
   MDX,
   Logo,
@@ -33,14 +33,21 @@ function Index() {
   return (
     <ColorSchemeProvider>
       <Provider theme={Theme}>
-        <ColorSchemeRoot />
         <Head>
           <title>Forest</title>
+          <meta name="viewport" content="width=device-width" />
           <meta
             name="description"
             content="Component library and design system for piny.link"
           />
         </Head>
+        <ColorSchemeRoot />
+        <Root
+          pss={{
+            body: { margin: 0 },
+            $md: { scrollPaddingTop: 's.32' },
+          }}
+        />
         <Layout>
           <LayoutNav>
             <Group>
@@ -107,16 +114,6 @@ function Index() {
             </MDX>
           </LayoutMain>
         </Layout>
-        <style jsx global>{`
-          html {
-            scroll-padding-top: ${rem(32)};
-          }
-
-          body {
-            margin: 0;
-            padding: 0;
-          }
-        `}</style>
       </Provider>
     </ColorSchemeProvider>
   )

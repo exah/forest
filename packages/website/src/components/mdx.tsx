@@ -14,12 +14,12 @@ interface Props {
   isolate?: boolean
 }
 
-function Code({ live, children, className, isolate, ...rest }: Props) {
+function Code({ live, children, className, isolate }: Props) {
   const code = React.Children.toArray(children).join('\n').trim()
   const language = className.replace('language-', '') as Language
 
   return live ? (
-    <CodePlayground code={code} isolate={isolate} {...rest} />
+    <CodePlayground code={code} isolate={isolate} />
   ) : (
     <CodeHighlight code={code} language={language} />
   )
