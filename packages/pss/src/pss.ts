@@ -19,7 +19,7 @@ import {
   toArray,
 } from './helpers'
 
-const AXIS = /^(\w+)(X|Y)(\w+)?$/
+const AXIS = /^(\w+)(X|Y)$/
 
 function responsive<I>(
   input: I | Record<string, I> | undefined,
@@ -41,26 +41,22 @@ function responsive<I>(
 function rule(key: string, value: CSSInterpolation): CSSInterpolation {
   switch (key) {
     case 'size':
-      if (isPropertyKey(value)) {
-        return { width: value, height: value }
-      }
-    default:
-      const [start, direction, end = ''] = (key.match(AXIS) || []).slice(1)
+      // @ts-expect-error
+      return { width: value, height: value }
+    case 'paddingX':
+    case 'paddingY':
+    case 'marginX':
+    case 'marginY':
+      const [prop, direction] = (key.match(AXIS) || []).slice(1)
       switch (direction) {
         case 'X':
-          return {
-            [start + 'Left' + end]: value,
-            [start + 'Right' + end]: value,
-          }
+          return { [prop + 'Left']: value, [prop + 'Right']: value }
         case 'Y':
-          return {
-            [start + 'Top' + end]: value,
-            [start + 'Bottom' + end]: value,
-          }
-        default: {
-          return { [key]: value }
-        }
+          return { [prop + 'Top']: value, [prop + 'Bottom']: value }
       }
+    default: {
+      return { [key]: value }
+    }
   }
 }
 
@@ -178,8 +174,9 @@ const createStyle = <Prop extends string, Alias extends string = Prop>({
 
 export const style = <Prop extends string, Alias extends string = Prop>(
   prop: Prop,
-  alias?: Alias
-) => createStyle<Prop, Alias>({ prop, alias })
+  alias?: Alias,
+  transform?: <V>(value: V, prop: Prop) => V | string | number | null
+) => createStyle<Prop, Alias>({ prop, alias, transform })
 
 export interface VariantProps<Key extends string> {
   theme?: SystemTheme
