@@ -7,8 +7,16 @@ export const title = 'ZStack'
 import { ZStack } from 'piny-forest'
 ```
 
-Based on [Grid](#grid). Items positioned one after another.
+Based on [Grid](#grid). Items placed one after another.
 [Idea from Swift UI.](https://developer.apple.com/documentation/swiftui/zstack)
+
+```jsx live
+<ZStack>
+  {['red', 'orange', 'yellow', 'green', 'blue'].map((color, index) => (
+    <Box key={color} s={100} bg={color} mt={index * 10} ml={index * 10} />
+  ))}
+</ZStack>
+```
 
 ```jsx live
 <ZStack placeItems="center" fg="white" bg="lime">
