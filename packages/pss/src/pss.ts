@@ -1,5 +1,3 @@
-import { CSSObject, CSSInterpolation } from '@emotion/serialize'
-
 import SCALES from './scales'
 import {
   Responsive,
@@ -9,6 +7,8 @@ import {
   BreakpointsSystemTheme,
   ColorSchemesSystemTheme,
   ColorSchemesValue,
+  CSSObject,
+  CSSInterpolation,
 } from './types'
 import {
   get,
@@ -112,7 +112,7 @@ function core({
   if (!isObject(input)) return []
 
   return Object.entries(input).flatMap(([key, value]) => {
-    if (key === 'variant')
+    if (key === 'variant' && isPropertyKey(value))
       return core({ input: get(value, theme), theme, getValue, getScale })
 
     const style = isObject(value)
