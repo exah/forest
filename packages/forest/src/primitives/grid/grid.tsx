@@ -18,8 +18,9 @@ export interface GridInnerProps
 /** @private */
 export interface GridComponent<
   E extends string = 'div',
-  V extends string = 'grids'
-> extends BoxComponent<E, V, GridInnerProps> {}
+  V extends string = 'grids',
+  P extends {} = {}
+> extends BoxComponent<E, V, GridInnerProps & P> {}
 
 export const Grid: GridComponent = styled<any>(Box)(
   { display: 'grid' },

@@ -1,25 +1,27 @@
 import styled from '@emotion/styled'
-import { Flex, FlexComponent, FlexProps } from '../flex'
+import { style, StyleProps } from 'pss'
+
+import { Grid, GridComponent, GridProps } from '../grid'
 
 export interface ZStackProps<
   E extends string = 'div',
   V extends string = 'zStacks'
-> extends Omit<FlexProps<E, V>, keyof ZStackInnerProps>,
+> extends Omit<GridProps<E, V>, keyof ZStackInnerProps>,
     ZStackInnerProps {}
 
 /** @private */
-export interface ZStackInnerProps {}
+export interface ZStackInnerProps extends StyleProps<'placeItems'> {}
 
 /** @private */
 export interface ZStackComponent<
   E extends string = 'div',
   V extends string = 'zStacks'
-> extends FlexComponent<E, V, ZStackInnerProps> {}
+> extends GridComponent<E, V, ZStackInnerProps> {}
 
-export const ZStack: ZStackComponent = styled<any>(Flex)({
-  position: 'relative',
-  '> *': { position: 'absolute' },
-})
+export const ZStack: ZStackComponent = styled<any>(Grid)(
+  { gridTemplateAreas: '"z-stack-item"', '> *': { gridArea: 'z-stack-item' } },
+  style('placeItems')
+)
 
 ZStack.defaultProps = {
   as: 'div',
