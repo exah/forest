@@ -74,8 +74,6 @@ const fontSizes = {
 } as const
 
 const fontWeights = {
-  h1: `var(--fontWeights-h1, ${900})`,
-  h2: `var(--fontWeights-h2, ${900})`,
   bold: `var(--fontWeights-bold, ${600})`,
   semi: `var(--fontWeights-semi, ${500})`,
   body: `var(--fontWeights-body, ${400})`,
@@ -183,13 +181,13 @@ const texts = {
     fontFamily: 'primary',
     fontSize: 'h1',
     lineHeight: 'h1',
-    fontWeight: 'h1',
+    fontWeight: 'bold',
   },
   h2: {
     fontFamily: 'primary',
     fontSize: 'h2',
     lineHeight: 'h2',
-    fontWeight: 'h2',
+    fontWeight: 'bold',
   },
   h3: {
     fontFamily: 'primary',

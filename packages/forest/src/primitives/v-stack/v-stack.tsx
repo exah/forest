@@ -10,7 +10,7 @@ export interface VStackProps<
     VStackInnerProps {}
 
 export interface VStackInnerProps
-  extends StyleProps<'gap'>,
+  extends StyleProps<'rowGap', 'spacing'>,
     StyleProps<'alignItems', 'align'> {}
 
 /** @private */
@@ -20,8 +20,8 @@ export interface VStackComponent<
 > extends FlexComponent<E, V, VStackInnerProps> {}
 
 export const VStack: VStackComponent = styled<any>(Flex)(
-  { flexDirection: 'column', '> *': { flex: '0 0 auto' } },
-  style('gap'),
+  { flexDirection: 'column' },
+  style('rowGap', 'spacing'),
   style('alignItems', 'align')
 )
 

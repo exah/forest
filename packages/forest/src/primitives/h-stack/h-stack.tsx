@@ -9,7 +9,7 @@ export interface HStackProps<
     HStackInnerProps {}
 
 export interface HStackInnerProps
-  extends StyleProps<'gap'>,
+  extends StyleProps<'columnGap', 'spacing'>,
     StyleProps<'alignItems', 'align'> {}
 
 /** @private */
@@ -19,8 +19,8 @@ export interface HStackComponent<
 > extends FlexComponent<E, V, HStackInnerProps> {}
 
 export const HStack: HStackComponent = styled<any>(Flex)(
-  { flexDirection: 'row', '> *': { flex: '0 0 auto' } },
-  style('gap'),
+  { flexDirection: 'row' },
+  style('columnGap', 'spacing'),
   style('alignItems', 'align')
 )
 

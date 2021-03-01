@@ -44,7 +44,9 @@ Without `PinMedia` both variants look the same .
     </Link>
   </PinTitle>
   <PinNote>
-    <Text as="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
+    <Text as="p" mb="s.16">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </Text>
   </PinNote>
   <PinTags>
     <Tag href="#tag">Tag 1</Tag>
@@ -52,17 +54,16 @@ Without `PinMedia` both variants look the same .
     <Tag href="#tag">Tag 3</Tag>
   </PinTags>
   <PinActions>
+    <Action>like</Action>
+    <Action accent="accent">later</Action>
+    <Action>edit</Action>
+    <Action accent="danger">archive</Action>
+    <Box ml="auto" />
     <Link href="#status">
       <Status as="time" datetime="22:00" title="22:00">
         1 minute ago
       </Status>
     </Link>
-    <Action>like</Action>
-    <Action accent="accent">later</Action>
-    <Action>edit</Action>
-    <Action ml="auto" accent="danger">
-      archive
-    </Action>
   </PinActions>
 </Pin>
 ```

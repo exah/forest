@@ -13,7 +13,6 @@ import {
   Provider,
   Text,
   Theme,
-  Root,
 } from 'piny-forest/src'
 import {
   MDX,

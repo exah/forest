@@ -91,7 +91,7 @@ export const PinNote = (props: PinNoteProps) => (
 export interface PinTagsProps extends Omit<HStackProps, 'ref'> {}
 
 export const PinTags = ({ children, ...rest }: PinTagsProps) => (
-  <HStack gap="s.8" pss={{ gridArea: 'tags' }} {...rest}>
+  <HStack spacing="s.8" pss={{ gridArea: 'tags', flexWrap: 'wrap' }} {...rest}>
     {children}
   </HStack>
 )
@@ -99,7 +99,11 @@ export const PinTags = ({ children, ...rest }: PinTagsProps) => (
 export interface PinActionsProps extends Omit<HStackProps, 'ref'> {}
 
 export const PinActions = ({ children, ...rest }: PinActionsProps) => (
-  <HStack gap="s.8" pss={{ gridArea: 'actions', marginTop: 's.8' }} {...rest}>
+  <HStack
+    spacing="s.8"
+    pss={{ gridArea: 'actions', marginTop: 's.8', flexWrap: 'wrap' }}
+    {...rest}
+  >
     {children}
   </HStack>
 )
