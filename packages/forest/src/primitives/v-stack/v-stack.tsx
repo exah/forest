@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import { style, StyleProps } from 'pss'
-
 import { Flex, FlexComponent, FlexProps } from '../flex'
 
 export interface VStackProps<
@@ -10,7 +9,7 @@ export interface VStackProps<
     VStackInnerProps {}
 
 export interface VStackInnerProps
-  extends StyleProps<'rowGap', 'spacing'>,
+  extends StyleProps<'rowGap', 'space'>,
     StyleProps<'alignItems', 'align'> {}
 
 /** @private */
@@ -20,8 +19,11 @@ export interface VStackComponent<
 > extends FlexComponent<E, V, VStackInnerProps> {}
 
 export const VStack: VStackComponent = styled<any>(Flex)(
-  { flexDirection: 'column' },
-  style('rowGap', 'spacing'),
+  {
+    flexDirection: 'column',
+    '> :not(:last-child):not(style)': { marginBlockEnd: 'var(--stack-space)' },
+  },
+  style('--stack-space', 'space', 'space'),
   style('alignItems', 'align')
 )
 

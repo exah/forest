@@ -21,6 +21,14 @@ import {
 
 const AXIS = /^(\w+)(X|Y)$/
 
+interface GetValue {
+  <V>(value: V, scale?: unknown): V
+}
+
+interface GetScale {
+  (key: string, theme?: SystemTheme): unknown
+}
+
 function responsive<I>(
   input: I | Record<string, I> | undefined,
   transform: (input: I | undefined) => CSSInterpolation
@@ -60,13 +68,10 @@ function rule(key: string, value: CSSInterpolation): CSSInterpolation {
   }
 }
 
-function defaultGetValue<V>(value: V, scale?: unknown): V {
-  return isPropertyKey(value) ? get(value, scale) ?? value : value
-}
+const defaultGetValue: GetValue = (value, scale) =>
+  isPropertyKey(value) ? get(value, scale) ?? value : value
 
-function defaultGetScale(key: string, theme?: SystemTheme): unknown {
-  return get(get(key, SCALES), theme)
-}
+const defaultGetScale: GetScale = (key, theme) => get(get(key, SCALES), theme)
 
 function hasBreakpoints<T extends { breakpoints?: unknown }>(
   theme?: T
@@ -99,8 +104,8 @@ function defaultTransform<V, Prop extends string>(
 interface CoreOptions {
   input?: CSSInterpolation | null
   theme?: SystemTheme
-  getValue?<V>(value: V, scale?: unknown): V
-  getScale?(key: string, theme?: SystemTheme): unknown
+  getValue?: GetValue
+  getScale?: GetScale
 }
 
 function core({
@@ -143,6 +148,7 @@ interface CreateStyleOptions<Prop extends string, Alias extends string = Prop> {
   prop: Prop
   alias?: Alias
   transform?: <V>(value: V, prop: Prop) => V | string | number | null
+  getScale?: GetScale
 }
 
 export type StyleProps<Prop extends string, Alias extends string = Prop> = {
@@ -156,6 +162,7 @@ const createStyle = <Prop extends string, Alias extends string = Prop>({
   // @ts-expect-error
   alias = prop,
   transform = defaultTransform,
+  getScale,
 }: CreateStyleOptions<Prop, Alias>) => <Props extends StyleProps<Prop, Alias>>(
   props: Props
 ): CSSInterpolation[] =>
@@ -170,13 +177,22 @@ const createStyle = <Prop extends string, Alias extends string = Prop>({
       return null
     }),
     theme: props.theme,
+    getScale,
   })
 
 export const style = <Prop extends string, Alias extends string = Prop>(
   prop: Prop,
   alias?: Alias,
-  transform?: <V>(value: V, prop: Prop) => V | string | number | null
-) => createStyle<Prop, Alias>({ prop, alias, transform })
+  scale?: string
+) =>
+  createStyle<Prop, Alias>({
+    prop,
+    alias,
+    getScale(key, theme) {
+      if (scale) return get(scale, theme)
+      return defaultGetScale(key, theme)
+    },
+  })
 
 export interface VariantProps<Key extends string> {
   theme?: SystemTheme

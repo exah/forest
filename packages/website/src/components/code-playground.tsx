@@ -46,7 +46,7 @@ export function CodePlayground({
           }}
         >
           <Wrapper title="Live preview" pss={{ size: '100%' }}>
-            <LivePreview />
+            <LivePreview style={{ display: 'inline' }} />
           </Wrapper>
         </Box>
       </Grid>

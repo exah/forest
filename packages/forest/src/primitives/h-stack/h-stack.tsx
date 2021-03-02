@@ -9,7 +9,7 @@ export interface HStackProps<
     HStackInnerProps {}
 
 export interface HStackInnerProps
-  extends StyleProps<'columnGap', 'spacing'>,
+  extends StyleProps<'columnGap', 'space'>,
     StyleProps<'alignItems', 'align'> {}
 
 /** @private */
@@ -19,8 +19,11 @@ export interface HStackComponent<
 > extends FlexComponent<E, V, HStackInnerProps> {}
 
 export const HStack: HStackComponent = styled<any>(Flex)(
-  { flexDirection: 'row' },
-  style('columnGap', 'spacing'),
+  {
+    flexDirection: 'row',
+    '> :not(:last-child):not(style)': { marginInlineEnd: 'var(--stack-space)' },
+  },
+  style('--stack-space', 'space', 'space'),
   style('alignItems', 'align')
 )
 
