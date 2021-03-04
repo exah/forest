@@ -28,6 +28,8 @@ const modules = context.keys().map((key) => [key, context(key)])
 const components = modules.filter(([key]) => key.includes('/components/'))
 const primitives = modules.filter(([key]) => key.includes('/primitives/'))
 
+const getId = (input: string) => `s-${input.replace(/^(.+)\/(.+)\.mdx$/, '$2')}`
+
 function Index() {
   return (
     <ColorSchemeProvider>
@@ -70,7 +72,7 @@ function Index() {
               <List>
                 {components.map(([key, mod]) => (
                   <ListItem key={key}>
-                    <Link href={`#${mod.id}`} h="s.32" variant="article">
+                    <Link href={`#${getId(key)}`} h="s.32" variant="article">
                       <Text variant="secondary">{mod.title}</Text>
                     </Link>
                   </ListItem>
@@ -86,7 +88,7 @@ function Index() {
               <List>
                 {primitives.map(([key, mod]) => (
                   <ListItem key={key}>
-                    <Link href={`#${mod.id}`} variant="article">
+                    <Link href={`#${getId(key)}`} variant="article">
                       <Text variant="secondary">{mod.title}</Text>
                     </Link>
                   </ListItem>
@@ -101,7 +103,9 @@ function Index() {
                   Components
                 </Text>
                 {components.map(([key, mod]) => (
-                  <mod.default key={key} />
+                  <Box as="section" key={key} id={getId(key)}>
+                    <mod.default />
+                  </Box>
                 ))}
               </Box>
               <Box id="primitives" as="section">
@@ -109,7 +113,9 @@ function Index() {
                   Primitives
                 </Text>
                 {primitives.map(([key, mod]) => (
-                  <mod.default key={key} />
+                  <Box as="section" key={key} id={getId(key)}>
+                    <mod.default />
+                  </Box>
                 ))}
               </Box>
             </MDX>
