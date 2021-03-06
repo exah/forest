@@ -16,7 +16,7 @@ import {
 } from 'piny-forest/src'
 import {
   MDX,
-  Logo,
+  SiteLogo,
   ColorSchemeProvider,
   ColorSchemeRoot,
   ColorSchemeSelect,
@@ -56,7 +56,7 @@ function Index() {
             <Group>
               <Link href="#top">
                 <Box mb="s.20">
-                  <Logo role="img" aria-label="Forest" />
+                  <SiteLogo role="img" aria-label="Forest" />
                 </Box>
               </Link>
             </Group>

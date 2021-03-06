@@ -41,7 +41,5 @@ export const Text: TextComponent = styled<any>(Box)(
   style('whiteSpace')
 )
 
-Text.defaultProps = {
-  as: 'span',
-  __key: 'texts',
-}
+Text.displayName = 'Text'
+Text.defaultProps = { as: 'span', __key: 'texts' }

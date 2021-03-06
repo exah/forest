@@ -32,7 +32,7 @@ export const HeaderAction = <E extends string = 'button'>(
   props: HeaderActionProps<E>
 ) => (
   <Action
-    variant="small"
+    variant="tertiary"
     pss={{
       gridArea: 'action',
     }}

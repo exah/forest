@@ -1,27 +1,8 @@
-import { Button, ButtonProps, Text, TextProps } from '../../primitives'
+import { Button, ButtonProps } from '../../primitives'
 
 export interface ActionProps<E extends string = 'button'>
-  extends Omit<ButtonProps<E>, 'variant' | 'ref'>,
-    Pick<TextProps, 'variant'> {
-  accent?: string
-}
+  extends Omit<ButtonProps<E, 'actions'>, 'ref'> {}
 
-export const Action = <E extends string = 'button'>({
-  variant = 'secondary',
-  accent = 'grey.80',
-  children,
-  pss,
-  ...rest
-}: ActionProps<E>) => (
-  <Button
-    pss={{
-      color: 'grey.50',
-      transition: 'text',
-      ':hover': { color: accent },
-      ...pss,
-    }}
-    {...rest}
-  >
-    <Text variant={variant}>{children}</Text>
-  </Button>
+export const Action = <E extends string = 'button'>(props: ActionProps<E>) => (
+  <Button __key="actions" {...props} />
 )

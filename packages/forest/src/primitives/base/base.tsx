@@ -73,3 +73,5 @@ export const Base: BaseComponent = styled<any>('div')(
   key,
   pss
 )
+
+Base.displayName = 'Base'

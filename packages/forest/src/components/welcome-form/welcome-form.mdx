@@ -1,0 +1,25 @@
+export const title = 'WelcomeForm'
+
+# WelcomeForm
+
+```jsx live
+<WelcomeForm
+  onSubmit={(event) => {
+    event.preventDefault()
+  }}
+>
+  <WelcomeFormHeader logo={SiteLogo}>
+    Enter your details (you can register here)
+  </WelcomeFormHeader>
+  <WelcomeFormFields>
+    <Input type="text" name="username" placeholder="User" />
+    <Input type="password" name="password" placeholder="Password" />
+  </WelcomeFormFields>
+  <WelcomeFormActions>
+    <Button type="submit" variant="black">
+      Next
+    </Button>
+    <Action variant="primary">Send magic link</Action>
+  </WelcomeFormActions>
+</WelcomeForm>
+```

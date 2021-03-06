@@ -32,7 +32,5 @@ export const Box: BoxComponent = styled<any>(Base)(
   style('backgroundColor', 'bg')
 )
 
-Box.defaultProps = {
-  as: 'div',
-  __key: 'boxes',
-}
+Box.displayName = 'Box'
+Box.defaultProps = { as: 'div', __key: 'boxes' }

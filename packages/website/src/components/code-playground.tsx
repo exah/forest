@@ -5,13 +5,14 @@ import { LiveProvider, LivePreview, LiveEditor, LiveError } from 'react-live'
 import { useState, useEffect } from 'react'
 import { Box, Grid, Label } from 'piny-forest/src'
 import { Frame } from './frame'
+import { SiteLogo } from './site-logo'
 
 interface PlaygroundProps {
   code: string
   isolate?: boolean
 }
 
-export const SCOPE = { ...React, ...PinyForest }
+export const SCOPE = { ...React, ...PinyForest, SiteLogo }
 
 export function CodePlayground({
   code: defaultCode,

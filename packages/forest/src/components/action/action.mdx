@@ -9,9 +9,10 @@ import { Action } from 'piny-forest'
 Small text-like button component. Accepts same variants as [Text](#text),
 but behaves like [Button](#button).
 
-Color on `:hover` can be changed with `accent` prop.
-
 ```jsx live
-<Action>Normal</Action>
-<Action accent='danger'>Destructive</Action>
+<Action variant="primary">Primary</Action>
+<Action variant="tertiary">Tertiary</Action>
+<Action variant="secondary">Secondary (default)</Action>
+<Action variant="accent">Accent</Action>
+<Action variant="danger">Destructive</Action>
 ```

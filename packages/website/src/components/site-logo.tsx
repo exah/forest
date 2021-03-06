@@ -1,4 +1,4 @@
-export const Logo = (props: React.SVGAttributes<SVGElement>) => (
+export const SiteLogo = (props: React.SVGAttributes<SVGElement>) => (
   <svg
     width="112"
     height="27"

@@ -1,4 +1,4 @@
-import { em, rem } from 'pss'
+import { em, rem, px } from 'pss'
 
 const breakpoints = {
   /** all screens */
@@ -26,9 +26,10 @@ const dark = {
   '--colors-grey-70': '#cccccc',
   '--colors-grey-80': '#eeeeee',
   '--colors-grey-90': '#f6f8fa',
-  '--colors-elevated-button': '#222222',
   '--colors-foreground': '#ffffff',
   '--colors-background': '#000000',
+  '--colors-elevated-background': '#111111',
+  '--colors-elevated-button': '#222222',
 }
 
 const colorSchemes = {
@@ -55,7 +56,11 @@ const colors = {
     90: 'var(--colors-grey-90, #222222)',
   },
   elevated: {
+    background: 'var(--colors-elevated-background, #ffffff)',
     button: 'var(--colors-elevated-button, #ffffff)',
+  },
+  faded: {
+    danger: 'var(--colors-faded-danger, rgba(255, 77, 70, 0.10))',
   },
 } as const
 
@@ -70,7 +75,7 @@ const fontSizes = {
   h3: `var(--fontSizes-h3, ${rem(18)})`,
   primary: `var(--fontSizes-primary, ${rem(16)})`,
   secondary: `var(--fontSizes-secondary, ${rem(14)})`,
-  small: `var(--fontSizes-small, ${rem(12)})`,
+  tertiary: `var(--fontSizes-tertiary, ${rem(12)})`,
 } as const
 
 const fontWeights = {
@@ -85,15 +90,17 @@ const lineHeights = {
   h3: `var(--lineHeights-h3, ${24 / 18})`,
   primary: `var(--lineHeights-primary, ${24 / 16})`,
   secondary: `var(--lineHeights-secondary, ${20 / 14})`,
-  small: `var(--lineHeights-small, ${16 / 12})`,
+  tertiary: `var(--lineHeights-tertiary, ${16 / 12})`,
 } as const
 
 const shadows = {
   level: {
     10: 'var(--shadows-level-10, 0 0 8px rgba(0, 0, 0, 0.08))',
     20: 'var(--shadows-level-20, 0 0 16px rgba(0, 0, 0, 0.16))',
-    25: 'var(--shadows-level-25, 0 0 16px rgba(0, 0, 0, 0.20))',
+    25: 'var(--shadows-level-25, 0 0 16px rgba(0, 0, 0, 0.25))',
+    40: 'var(--shadows-level-40, 0 0 48px rgba(0, 0, 0, 0.10))',
   },
+  focus: `var(--shadows-focus, 0 0 0 2px ${colors.primary})`,
 } as const
 
 const space = {
@@ -122,8 +129,9 @@ const sizes = {
 } as const
 
 const radii = {
-  button: {
-    md: `var(--radii-button-md, ${sizes.button.md})`,
+  round: px(9999),
+  form: {
+    md: `var(--radii-form, ${rem(40)})`,
   },
   code: {
     block: `var(--radii-block-code, ${rem(4)})`,
@@ -137,7 +145,13 @@ const durations = {
 
 const transitions = {
   text: `var(--transitions-text, color ${durations.sm})`,
+  background: `var(--transitions-background, background-color ${durations.sm})`,
   shadow: `var(--transitions-shadow, box-shadow ${durations.sm})`,
+  button: [
+    `var(--transitions-text, color ${durations.sm})`,
+    `var(--transitions-background, background-color ${durations.sm})`,
+    `var(--transitions-shadow, box-shadow ${durations.sm})`,
+  ].join(),
 } as const
 
 const boxes = {
@@ -219,10 +233,10 @@ const texts = {
     lineHeight: 'secondary',
     fontWeight: 'body',
   },
-  small: {
+  tertiary: {
     fontFamily: 'primary',
-    fontSize: 'small',
-    lineHeight: 'small',
+    fontSize: 'tertiary',
+    lineHeight: 'tertiary',
     fontWeight: 'body',
   },
   code: {
@@ -232,21 +246,85 @@ const texts = {
 
 const inputs = {
   default: {
+    ...texts.primary,
+    display: 'block',
+    paddingX: 's.20',
+    paddingY: 's.8',
+    borderRadius: 'round',
+    backgroundColor: 'grey.10',
+    ':focus': {
+      outline: 'none',
+      boxShadow: 'focus',
+    },
+    ':invalid': {
+      boxShadow: 'none',
+      backgroundColor: 'faded.danger',
+    },
+  },
+} as const
+
+const textareas = {
+  default: {
     display: 'block',
   },
 } as const
 
-const textareas = { ...inputs } as const
-const labels = { ...inputs } as const
+const labels = {
+  default: {
+    display: 'block',
+    borderRadius: 'round',
+  },
+} as const
+
+const actions = {
+  default: {
+    ...texts.secondary,
+    display: 'block',
+    color: 'grey.50',
+    transition: 'text',
+    ':hover': { color: 'grey.80' },
+  },
+  primary: { color: 'primary', ':hover': { color: 'primary' } },
+  secondary: null,
+  tertiary: { ...texts.tertiary },
+  accent: { ':hover': { color: 'accent' } },
+  danger: { ':hover': { color: 'danger' } },
+} as const
 
 const buttons = {
-  ...inputs,
+  default: {
+    display: 'block',
+  },
+  black: {
+    ...texts.primary,
+    width: '100%',
+    height: 'button.md',
+    maxWidth: rem(304),
+    paddingX: 's.20',
+    paddingY: 's.8',
+    borderRadius: 'round',
+    boxShadow: 'level.25',
+    backgroundColor: 'foreground',
+    color: 'background',
+    textAlign: 'center',
+    transition: 'button',
+    ':active': {
+      color: 'grey.10',
+      boxShadow: 'level.10',
+      backgroundColor: 'grey.90',
+    },
+    ':focus': {
+      outline: 'none',
+      color: 'white',
+      backgroundColor: 'primary',
+    },
+  },
   round: {
     size: 'button.md',
-    borderRadius: 'button.md',
+    borderRadius: 'round',
     padding: 's.12',
     svg: { display: 'block' },
-    transition: 'shadow',
+    transition: 'button',
     boxShadow: 'level.20',
     ':hover': { boxShadow: 'level.25' },
     ':active': { boxShadow: 'level.10' },
@@ -289,6 +367,7 @@ export const Theme = {
   sizes,
   space: sizes,
   transitions,
+  actions,
   boxes,
   buttons,
   images,

@@ -27,7 +27,5 @@ export const VStack: VStackComponent = styled<any>(Flex)(
   style('alignItems', 'align')
 )
 
-VStack.defaultProps = {
-  as: 'div',
-  __key: 'vStacks',
-}
+VStack.displayName = 'VStack'
+VStack.defaultProps = { as: 'div', __key: 'vStacks' }
