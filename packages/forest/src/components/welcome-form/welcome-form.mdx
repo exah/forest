@@ -12,14 +12,95 @@ export const title = 'WelcomeForm'
     Enter your details (you can register here)
   </WelcomeFormHeader>
   <WelcomeFormFields>
-    <Input type="text" name="username" placeholder="User" />
-    <Input type="password" name="password" placeholder="Password" />
+    <Field
+      type="text"
+      name="username"
+      label="Username"
+      placeholder="Username"
+      helper={
+        <Button title="Generate" aria-label="Generate">
+          🎲
+        </Button>
+      }
+    />
   </WelcomeFormFields>
   <WelcomeFormActions>
     <Button type="submit" variant="black">
       Next
     </Button>
+  </WelcomeFormActions>
+</WelcomeForm>
+```
+
+```jsx live
+<WelcomeForm
+  onSubmit={(event) => {
+    event.preventDefault()
+  }}
+>
+  <WelcomeFormHeader logo={SiteLogo}>Welcome back 👋</WelcomeFormHeader>
+  <WelcomeFormFields>
+    <Field
+      type="text"
+      name="username"
+      label="Username"
+      placeholder="Username"
+    />
+    <Field
+      type="password"
+      name="password"
+      label="Password"
+      placeholder="Password"
+    />
+  </WelcomeFormFields>
+  <WelcomeFormActions>
+    <Button type="submit" variant="black">
+      Login
+    </Button>
     <Action variant="primary">Send magic link</Action>
+  </WelcomeFormActions>
+</WelcomeForm>
+```
+
+```jsx live
+<WelcomeForm
+  onSubmit={(event) => {
+    event.preventDefault()
+  }}
+>
+  <WelcomeFormHeader logo={SiteLogo}>Welcome 👋</WelcomeFormHeader>
+  <WelcomeFormFields>
+    <Field
+      type="text"
+      name="username"
+      label="Username"
+      placeholder="Username"
+      defaultValue="exah"
+    />
+    <Field
+      type="text"
+      name="email"
+      label="Email"
+      placeholder="Email"
+      defaultValue="r@exah.me"
+      validityMessage="try login"
+    />
+    <Field
+      type="password"
+      name="password"
+      label="Password"
+      placeholder="Password"
+      helper={
+        <Button title="Generate" aria-label="Generate">
+          🎲
+        </Button>
+      }
+    />
+  </WelcomeFormFields>
+  <WelcomeFormActions>
+    <Button type="submit" variant="black">
+      Create
+    </Button>
   </WelcomeFormActions>
 </WelcomeForm>
 ```

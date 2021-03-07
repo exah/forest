@@ -1,3 +1,4 @@
+export * from './base'
 export * from './box'
 export * from './button'
 export * from './flex'

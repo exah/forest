@@ -1,4 +1,4 @@
-import styled, { ComponentSelector } from '@emotion/styled'
+import styled from '@emotion/styled'
 import {
   colorScheme,
   ColorSchemeProps,
@@ -19,7 +19,7 @@ function key({ __key: key }: VariantKeyProps<string>) {
 
 type Cast<A, B> = A extends B ? A : B
 
-type ElementType<E extends string> = E extends keyof React.ReactHTML
+export type ElementType<E extends string> = E extends keyof React.ReactHTML
   ? React.ReactHTML[E] extends React.DetailedHTMLFactory<any, infer T>
     ? Cast<T, HTMLElement>
     : HTMLElement
@@ -46,8 +46,7 @@ export interface BaseComponent<
   Element extends string = 'div',
   Variant extends string = never,
   Props extends {} = {}
-> extends React.VFC<BaseProps<keyof React.ReactHTML, Variant> & Props>,
-    ComponentSelector {
+> extends React.VFC<BaseProps<keyof React.ReactHTML, Variant> & Props> {
   <T extends string = Element, V extends string = Variant>(
     props: BaseProps<T, V> & Props
   ): React.ReactElement | null

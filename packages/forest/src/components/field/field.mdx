@@ -1,0 +1,29 @@
+export const title = 'Field'
+
+# Field
+
+```jsx live
+<Field as="input" label="Username" placeholder="Username" />
+```
+
+```jsx live
+<Field
+  as="input"
+  label="Username"
+  placeholder="Username"
+  validityMessage="sorry"
+/>
+```
+
+```jsx live
+<Field
+  as="input"
+  label="Username"
+  placeholder="Username"
+  helper={
+    <Button title="Generate" aria-label="Generate">
+      🎲
+    </Button>
+  }
+/>
+```

@@ -15,21 +15,41 @@ const breakpoints = {
   $dark: '(prefers-color-scheme: dark)',
 } as const
 
+const literalColor = {
+  blue: 'hsla(208, 100%, 50%, 1)',
+  blue50: 'hsla(208, 100%, 50%, 0.50)',
+  pink: 'hsla(302, 100%, 47%, 1)',
+  red: 'hsla(2, 100%, 64%, 1)',
+  red10: 'hsla(2, 100%, 64%, 0.1)',
+  black: 'hsla(0, 0%, 0%, 1)',
+  white: 'hsla(0, 0%, 100%, 1)',
+  grey10: 'hsla(210, 29%, 97%, 1)',
+  grey20: 'hsla(0, 0%, 93%, 1)',
+  grey30: 'hsla(0, 0%, 80%, 1)',
+  grey40: 'hsla(0, 0%, 73%, 1)',
+  grey50: 'hsla(0, 0%, 60%, 1)',
+  grey60: 'hsla(0, 0%, 47%, 1)',
+  grey70: 'hsla(0, 0%, 33%, 1)',
+  grey80: 'hsla(0, 0%, 27%, 1)',
+  grey90: 'hsla(0, 0%, 13%, 1)',
+  grey95: 'hsla(0, 0%, 7%, 1)',
+} as const
+
 const light = null
 const dark = {
-  '--colors-grey-10': '#222222',
-  '--colors-grey-20': '#444444',
-  '--colors-grey-30': '#555555',
-  '--colors-grey-40': '#777777',
-  '--colors-grey-50': '#999999',
-  '--colors-grey-60': '#bbbbbb',
-  '--colors-grey-70': '#cccccc',
-  '--colors-grey-80': '#eeeeee',
-  '--colors-grey-90': '#f6f8fa',
-  '--colors-foreground': '#ffffff',
-  '--colors-background': '#000000',
-  '--colors-elevated-background': '#111111',
-  '--colors-elevated-button': '#222222',
+  '--colors-grey-10': literalColor.grey90,
+  '--colors-grey-20': literalColor.grey80,
+  '--colors-grey-30': literalColor.grey70,
+  '--colors-grey-40': literalColor.grey60,
+  '--colors-grey-50': literalColor.grey50,
+  '--colors-grey-60': literalColor.grey40,
+  '--colors-grey-70': literalColor.grey30,
+  '--colors-grey-80': literalColor.grey20,
+  '--colors-grey-90': literalColor.grey10,
+  '--colors-foreground': literalColor.white,
+  '--colors-background': literalColor.black,
+  '--colors-elevated-background': literalColor.grey95,
+  '--colors-elevated-button': literalColor.grey90,
 }
 
 const colorSchemes = {
@@ -39,28 +59,28 @@ const colorSchemes = {
 }
 
 const colors = {
-  primary: 'var(--colors-primary, #0089ff)',
-  accent: 'var(--colors-accent, #f100e8)',
-  danger: 'var(--colors-danger, #ff4d46)',
-  foreground: 'var(--colors-foreground, #000000)',
-  background: 'var(--colors-background, #ffffff)',
+  primary: `var(--colors-primary, ${literalColor.blue})`,
+  accent: `var(--colors-accent, ${literalColor.pink})`,
+  danger: `var(--colors-danger, ${literalColor.red})`,
+  foreground: `var(--colors-foreground, ${literalColor.black})`,
+  background: `var(--colors-background, ${literalColor.white})`,
   grey: {
-    10: 'var(--colors-grey-10, #f6f8fa)',
-    20: 'var(--colors-grey-20, #eeeeee)',
-    30: 'var(--colors-grey-30, #cccccc)',
-    40: 'var(--colors-grey-40, #bbbbbb)',
-    50: 'var(--colors-grey-50, #999999)',
-    60: 'var(--colors-grey-60, #777777)',
-    70: 'var(--colors-grey-70, #555555)',
-    80: 'var(--colors-grey-80, #444444)',
-    90: 'var(--colors-grey-90, #222222)',
+    10: `var(--colors-grey-10, ${literalColor.grey10})`,
+    20: `var(--colors-grey-20, ${literalColor.grey20})`,
+    30: `var(--colors-grey-30, ${literalColor.grey30})`,
+    40: `var(--colors-grey-40, ${literalColor.grey40})`,
+    50: `var(--colors-grey-50, ${literalColor.grey50})`,
+    60: `var(--colors-grey-60, ${literalColor.grey60})`,
+    70: `var(--colors-grey-70, ${literalColor.grey70})`,
+    80: `var(--colors-grey-80, ${literalColor.grey80})`,
+    90: `var(--colors-grey-90, ${literalColor.grey90})`,
   },
   elevated: {
-    background: 'var(--colors-elevated-background, #ffffff)',
-    button: 'var(--colors-elevated-button, #ffffff)',
+    background: `var(--colors-elevated-background, ${literalColor.white})`,
+    button: `var(--colors-elevated-button, ${literalColor.white})`,
   },
   faded: {
-    danger: 'var(--colors-faded-danger, rgba(255, 77, 70, 0.10))',
+    danger: `var(--colors-faded-danger, ${literalColor.red10})`,
   },
 } as const
 
@@ -94,13 +114,16 @@ const lineHeights = {
 } as const
 
 const shadows = {
-  level: {
-    10: 'var(--shadows-level-10, 0 0 8px rgba(0, 0, 0, 0.08))',
-    20: 'var(--shadows-level-20, 0 0 16px rgba(0, 0, 0, 0.16))',
-    25: 'var(--shadows-level-25, 0 0 16px rgba(0, 0, 0, 0.25))',
-    40: 'var(--shadows-level-40, 0 0 48px rgba(0, 0, 0, 0.10))',
+  black: {
+    10: 'var(--shadows-black-10, 0 0 8px hsla(0, 0%, 0%, 0.08))',
+    20: 'var(--shadows-black-20, 0 0 16px hsla(0, 0%, 0%, 0.16))',
+    25: 'var(--shadows-black-25, 0 0 16px hsla(0, 0%, 0%, 0.25))',
+    40: 'var(--shadows-black-40, 0 0 48px hsla(0, 0%, 0%, 0.1))',
   },
-  focus: `var(--shadows-focus, 0 0 0 2px ${colors.primary})`,
+  blue: {
+    20: `var(--shadows-blue-50, 0 0 16px ${literalColor.blue50})`,
+  },
+  focus: `var(--shadows-focus, 0 0 0 2px ${literalColor.blue})`,
 } as const
 
 const space = {
@@ -147,6 +170,7 @@ const transitions = {
   text: `var(--transitions-text, color ${durations.sm})`,
   background: `var(--transitions-background, background-color ${durations.sm})`,
   shadow: `var(--transitions-shadow, box-shadow ${durations.sm})`,
+  opacity: `var(--transitions-shadow, opacity ${durations.sm})`,
   button: [
     `var(--transitions-text, color ${durations.sm})`,
     `var(--transitions-background, background-color ${durations.sm})`,
@@ -251,10 +275,14 @@ const inputs = {
     paddingX: 's.20',
     paddingY: 's.8',
     borderRadius: 'round',
+    textOverflow: 'ellipsis',
     backgroundColor: 'grey.10',
-    ':focus': {
+    ':focus, :focus-within': {
       outline: 'none',
       boxShadow: 'focus',
+    },
+    ':focus-within :focus': {
+      outline: 'none',
     },
     ':invalid': {
       boxShadow: 'none',
@@ -282,13 +310,35 @@ const actions = {
     display: 'block',
     color: 'grey.50',
     transition: 'text',
-    ':hover': { color: 'grey.80' },
+    ':hover': {
+      color: 'grey.80',
+    },
   },
-  primary: { color: 'primary', ':hover': { color: 'primary' } },
+  primary: {
+    color: 'primary',
+    ':hover': {
+      color: 'primary',
+    },
+    ':focus': {
+      backgroundColor: 'primary',
+      color: 'white',
+      outline: 'none',
+    },
+  },
   secondary: null,
-  tertiary: { ...texts.tertiary },
-  accent: { ':hover': { color: 'accent' } },
-  danger: { ':hover': { color: 'danger' } },
+  tertiary: {
+    ...texts.tertiary,
+  },
+  accent: {
+    ':hover': {
+      color: 'accent',
+    },
+  },
+  danger: {
+    ':hover': {
+      color: 'danger',
+    },
+  },
 } as const
 
 const buttons = {
@@ -303,19 +353,20 @@ const buttons = {
     paddingX: 's.20',
     paddingY: 's.8',
     borderRadius: 'round',
-    boxShadow: 'level.25',
+    boxShadow: 'black.25',
     backgroundColor: 'foreground',
     color: 'background',
     textAlign: 'center',
     transition: 'button',
     ':active': {
       color: 'grey.10',
-      boxShadow: 'level.10',
+      boxShadow: 'black.10',
       backgroundColor: 'grey.90',
     },
     ':focus': {
       outline: 'none',
       color: 'white',
+      boxShadow: 'blue.20',
       backgroundColor: 'primary',
     },
   },
@@ -325,9 +376,9 @@ const buttons = {
     padding: 's.12',
     svg: { display: 'block' },
     transition: 'button',
-    boxShadow: 'level.20',
-    ':hover': { boxShadow: 'level.25' },
-    ':active': { boxShadow: 'level.10' },
+    boxShadow: 'black.20',
+    ':hover': { boxShadow: 'black.25' },
+    ':active': { boxShadow: 'black.10' },
     color: 'foreground',
     backgroundColor: 'elevated.button',
   },

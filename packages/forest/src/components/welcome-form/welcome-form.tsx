@@ -1,3 +1,4 @@
+import { rem } from 'pss'
 import { VStack, VStackProps, Text } from '../../primitives'
 
 export interface WelcomeFormProps extends VStackProps<'form'> {}
@@ -12,7 +13,9 @@ export function WelcomeForm({ pss, ...rest }: WelcomeFormProps) {
         backgroundColor: 'elevated.background',
         padding: 's.32',
         borderRadius: 'form.md',
-        boxShadow: 'level.40',
+        boxShadow: 'black.40',
+        maxWidth: rem(450),
+        marginX: 'auto',
         ...pss,
       }}
       {...rest}
