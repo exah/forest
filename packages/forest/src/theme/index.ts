@@ -122,8 +122,11 @@ const shadows = {
   },
   blue: {
     20: `var(--shadows-blue-50, 0 0 16px ${literalColor.blue50})`,
+    focus: `var(--shadows-blue-focus, 0 0 0 2px ${literalColor.blue})`,
   },
-  focus: `var(--shadows-focus, 0 0 0 2px ${literalColor.blue})`,
+  red: {
+    focus: `var(--shadows-red-focus, 0 0 0 2px ${literalColor.red})`,
+  },
 } as const
 
 const space = {
@@ -279,7 +282,7 @@ const inputs = {
     backgroundColor: 'grey.10',
     ':focus, :focus-within': {
       outline: 'none',
-      boxShadow: 'focus',
+      boxShadow: 'blue.focus',
     },
     ':focus-within :focus': {
       outline: 'none',
@@ -287,6 +290,9 @@ const inputs = {
     ':invalid': {
       boxShadow: 'none',
       backgroundColor: 'faded.danger',
+    },
+    ':invalid:focus': {
+      boxShadow: 'red.focus',
     },
   },
 } as const
