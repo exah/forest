@@ -32,7 +32,7 @@ export const WelcomeFormHeader = ({
   logo: Logo,
   children,
 }: WelcomeFormHeaderProps) => (
-  <VStack space="s.16" align="center">
+  <VStack space="s.12" align="center">
     <Logo />
     <Text variant="secondary" textAlign="center" fg="grey.50">
       {children}
@@ -45,7 +45,7 @@ export interface WelcomeFormFieldsProps {
 }
 
 export const WelcomeFormFields = ({ children }: WelcomeFormFieldsProps) => (
-  <VStack space="s.16">{children}</VStack>
+  <VStack space="s.12">{children}</VStack>
 )
 
 export interface WelcomeFormActionsProps {
@@ -53,7 +53,7 @@ export interface WelcomeFormActionsProps {
 }
 
 export const WelcomeFormActions = ({ children }: WelcomeFormActionsProps) => (
-  <VStack space="s.16" align="center">
+  <VStack space="s.12" align="center">
     {children}
   </VStack>
 )
