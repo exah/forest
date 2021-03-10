@@ -19,7 +19,5 @@ export const Scroll: ScrollComponent = styled<any>(Box)({
   overflow: 'auto',
 })
 
-Scroll.defaultProps = {
-  as: 'div',
-  __key: 'scrolls',
-}
+Scroll.displayName = 'Scroll'
+Scroll.defaultProps = { as: 'div', __key: 'scrolls' }

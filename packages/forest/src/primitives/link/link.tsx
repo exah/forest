@@ -15,7 +15,5 @@ export interface LinkComponent<
 
 export const Link: LinkComponent = styled<any>(Text)()
 
-Link.defaultProps = {
-  as: 'a',
-  __key: 'links',
-}
+Link.displayName = 'Link'
+Link.defaultProps = { as: 'a', __key: 'links' }

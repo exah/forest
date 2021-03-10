@@ -16,7 +16,5 @@ export interface ImageComponent<
 
 export const Image: ImageComponent = styled<any>(Box)()
 
-Image.defaultProps = {
-  as: 'img',
-  __key: 'images',
-}
+Image.displayName = 'Image'
+Image.defaultProps = { as: 'img', __key: 'images' }

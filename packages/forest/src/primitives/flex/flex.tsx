@@ -20,7 +20,5 @@ export const Flex: FlexComponent = styled<any>(Box)({
   display: 'flex',
 })
 
-Flex.defaultProps = {
-  as: 'div',
-  __key: 'flexes',
-}
+Flex.displayName = 'Flex'
+Flex.defaultProps = { as: 'div', __key: 'flexes' }

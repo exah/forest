@@ -17,7 +17,5 @@ export interface SelectComponent<
 
 export const Select: SelectComponent = styled<any>(Input)()
 
-Select.defaultProps = {
-  as: 'select',
-  __key: 'selects',
-}
+Select.displayName = 'Select'
+Select.defaultProps = { as: 'select', __key: 'selects' }

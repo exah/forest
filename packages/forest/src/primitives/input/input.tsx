@@ -18,7 +18,5 @@ export interface InputComponent<
 
 export const Input: InputComponent = styled<any>(Text)()
 
-Input.defaultProps = {
-  as: 'input',
-  __key: 'inputs',
-}
+Input.displayName = 'Input'
+Input.defaultProps = { as: 'input', __key: 'inputs' }

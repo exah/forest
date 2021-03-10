@@ -18,7 +18,5 @@ export interface TextareaComponent<
 
 export const Textarea: TextareaComponent = styled<any>(Input)()
 
-Textarea.defaultProps = {
-  as: 'textarea',
-  __key: 'textareas',
-}
+Textarea.displayName = 'Textarea'
+Textarea.defaultProps = { as: 'textarea', __key: 'textareas' }

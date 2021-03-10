@@ -33,7 +33,5 @@ export const Grid: GridComponent = styled<any>(Box)(
   style('placeContent')
 )
 
-Grid.defaultProps = {
-  as: 'div',
-  __key: 'grids',
-}
+Grid.displayName = 'Grid'
+Grid.defaultProps = { as: 'div', __key: 'grids' }
