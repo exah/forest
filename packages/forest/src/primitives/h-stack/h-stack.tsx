@@ -1,33 +1,18 @@
 import styled from '@emotion/styled'
-import { style, StyleProps } from 'pss'
-import { Flex, FlexComponent, FlexProps } from '../flex'
+import { Stack, StackComponent, StackProps } from '../stack'
 
-export interface HStackProps<
-  E extends string = 'div',
-  V extends string = 'hStacks'
-> extends Omit<FlexProps<E, V>, keyof HStackInnerProps>,
-    HStackInnerProps {}
-
-export interface HStackInnerProps
-  extends StyleProps<'columnGap', 'space'>,
-    StyleProps<'alignItems', 'align'> {}
+export interface HStackProps<E extends string = 'div'> extends StackProps<E> {}
 
 /** @private */
-export interface HStackComponent<
-  E extends string = 'div',
-  V extends string = 'hStacks'
-> extends FlexComponent<E, V, HStackInnerProps> {}
+export interface HStackComponent<E extends string = 'div'>
+  extends StackComponent<E> {}
 
-export const HStack: HStackComponent = styled<any>(Flex)(
-  {
-    flexDirection: 'row',
-    '> :not(:last-child):not(style)': { marginInlineEnd: 'var(--stack-space)' },
-  },
-  style('--stack-space', 'space', 'space'),
-  style('alignItems', 'align')
-)
+export const HStack: HStackComponent = styled<any>(Stack)`
+  flex-direction: row;
 
-HStack.defaultProps = {
-  as: 'div',
-  __key: 'hStacks',
-}
+  > :not(:last-child) {
+    margin-inline-end: var(--stack-space);
+  }
+`
+
+HStack.displayName = 'HStack'

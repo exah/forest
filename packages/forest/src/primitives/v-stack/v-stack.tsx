@@ -1,31 +1,18 @@
 import styled from '@emotion/styled'
-import { style, StyleProps } from 'pss'
-import { Flex, FlexComponent, FlexProps } from '../flex'
+import { Stack, StackComponent, StackProps } from '../stack'
 
-export interface VStackProps<
-  E extends string = 'div',
-  V extends string = 'vStacks'
-> extends Omit<FlexProps<E, V>, keyof VStackInnerProps>,
-    VStackInnerProps {}
-
-export interface VStackInnerProps
-  extends StyleProps<'rowGap', 'space'>,
-    StyleProps<'alignItems', 'align'> {}
+export interface VStackProps<E extends string = 'div'> extends StackProps<E> {}
 
 /** @private */
-export interface VStackComponent<
-  E extends string = 'div',
-  V extends string = 'vStacks'
-> extends FlexComponent<E, V, VStackInnerProps> {}
+export interface VStackComponent<E extends string = 'div'>
+  extends StackComponent<E> {}
 
-export const VStack: VStackComponent = styled<any>(Flex)(
-  {
-    flexDirection: 'column',
-    '> :not(:last-child):not(style)': { marginBlockEnd: 'var(--stack-space)' },
-  },
-  style('--stack-space', 'space', 'space'),
-  style('alignItems', 'align')
-)
+export const VStack: VStackComponent = styled<any>(Stack)`
+  flex-direction: column;
+
+  > :not(:last-child) {
+    margin-block-end: var(--stack-space);
+  }
+`
 
 VStack.displayName = 'VStack'
-VStack.defaultProps = { as: 'div', __key: 'vStacks' }

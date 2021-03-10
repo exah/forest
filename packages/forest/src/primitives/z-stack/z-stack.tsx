@@ -23,7 +23,5 @@ export const ZStack: ZStackComponent = styled<any>(Grid)(
   style('placeItems')
 )
 
-ZStack.defaultProps = {
-  as: 'div',
-  __key: 'zStacks',
-}
+ZStack.displayName = 'ZStack'
+ZStack.defaultProps = { as: 'div', __key: 'zStacks' }
