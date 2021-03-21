@@ -15,41 +15,57 @@ const breakpoints = {
   $dark: '(prefers-color-scheme: dark)',
 } as const
 
-const literalColor = {
-  blue: 'hsla(208, 100%, 50%, 1)',
-  blue50: 'hsla(208, 100%, 50%, 0.50)',
-  pink: 'hsla(302, 100%, 47%, 1)',
-  red: 'hsla(2, 100%, 64%, 1)',
-  red10: 'hsla(2, 100%, 64%, 0.1)',
-  black: 'hsla(0, 0%, 0%, 1)',
-  white: 'hsla(0, 0%, 100%, 1)',
-  grey10: 'hsla(210, 29%, 97%, 1)',
-  grey20: 'hsla(0, 0%, 93%, 1)',
-  grey30: 'hsla(0, 0%, 80%, 1)',
-  grey40: 'hsla(0, 0%, 73%, 1)',
-  grey50: 'hsla(0, 0%, 60%, 1)',
-  grey60: 'hsla(0, 0%, 47%, 1)',
-  grey70: 'hsla(0, 0%, 33%, 1)',
-  grey80: 'hsla(0, 0%, 27%, 1)',
-  grey90: 'hsla(0, 0%, 13%, 1)',
-  grey95: 'hsla(0, 0%, 7%, 1)',
+const shades = {
+  blue: {
+    100: 'hsla(208, 100%, 50%, 1)',
+    50: 'hsla(208, 100%, 50%, 0.50)',
+  },
+  pink: {
+    100: 'hsla(302, 100%, 47%, 1)',
+  },
+  red: {
+    100: 'hsla(2, 100%, 64%, 1)',
+    10: 'hsla(2, 100%, 64%, 0.1)',
+  },
+  black: {
+    100: 'hsla(0, 0%, 0%, 1)',
+    25: 'hsla(0, 0%, 0%, 0.25)',
+    16: 'hsla(0, 0%, 0%, 0.16)',
+    10: 'hsla(0, 0%, 0%, 0.1)',
+    8: 'hsla(0, 0%, 0%, 0.08)',
+  },
+  white: {
+    100: 'hsla(0, 0%, 100%, 1)',
+  },
+  grey: {
+    95: 'hsla(0, 0%, 7%, 1)',
+    90: 'hsla(0, 0%, 13%, 1)',
+    80: 'hsla(0, 0%, 27%, 1)',
+    70: 'hsla(0, 0%, 33%, 1)',
+    60: 'hsla(0, 0%, 47%, 1)',
+    50: 'hsla(0, 0%, 60%, 1)',
+    40: 'hsla(0, 0%, 73%, 1)',
+    30: 'hsla(0, 0%, 80%, 1)',
+    20: 'hsla(0, 0%, 93%, 1)',
+    10: 'hsla(210, 29%, 97%, 1)',
+  },
 } as const
 
 const light = null
 const dark = {
-  '--colors-grey-10': literalColor.grey90,
-  '--colors-grey-20': literalColor.grey80,
-  '--colors-grey-30': literalColor.grey70,
-  '--colors-grey-40': literalColor.grey60,
-  '--colors-grey-50': literalColor.grey50,
-  '--colors-grey-60': literalColor.grey40,
-  '--colors-grey-70': literalColor.grey30,
-  '--colors-grey-80': literalColor.grey20,
-  '--colors-grey-90': literalColor.grey10,
-  '--colors-foreground': literalColor.white,
-  '--colors-background': literalColor.black,
-  '--colors-elevated-background': literalColor.grey95,
-  '--colors-elevated-button': literalColor.grey90,
+  '--colors-grey-10': shades.grey[90],
+  '--colors-grey-20': shades.grey[80],
+  '--colors-grey-30': shades.grey[70],
+  '--colors-grey-40': shades.grey[60],
+  '--colors-grey-50': shades.grey[50],
+  '--colors-grey-60': shades.grey[40],
+  '--colors-grey-70': shades.grey[30],
+  '--colors-grey-80': shades.grey[20],
+  '--colors-grey-90': shades.grey[10],
+  '--colors-foreground': shades.white[100],
+  '--colors-background': shades.black[100],
+  '--colors-elevated-background': shades.grey[95],
+  '--colors-elevated-button': shades.grey[90],
 }
 
 const colorSchemes = {
@@ -59,28 +75,28 @@ const colorSchemes = {
 }
 
 const colors = {
-  primary: `var(--colors-primary, ${literalColor.blue})`,
-  accent: `var(--colors-accent, ${literalColor.pink})`,
-  danger: `var(--colors-danger, ${literalColor.red})`,
-  foreground: `var(--colors-foreground, ${literalColor.black})`,
-  background: `var(--colors-background, ${literalColor.white})`,
+  primary: `var(--colors-primary, ${shades.blue[100]})`,
+  accent: `var(--colors-accent, ${shades.pink[100]})`,
+  negative: `var(--colors-negative, ${shades.red[100]})`,
+  foreground: `var(--colors-foreground, ${shades.black[100]})`,
+  background: `var(--colors-background, ${shades.white[100]})`,
   grey: {
-    10: `var(--colors-grey-10, ${literalColor.grey10})`,
-    20: `var(--colors-grey-20, ${literalColor.grey20})`,
-    30: `var(--colors-grey-30, ${literalColor.grey30})`,
-    40: `var(--colors-grey-40, ${literalColor.grey40})`,
-    50: `var(--colors-grey-50, ${literalColor.grey50})`,
-    60: `var(--colors-grey-60, ${literalColor.grey60})`,
-    70: `var(--colors-grey-70, ${literalColor.grey70})`,
-    80: `var(--colors-grey-80, ${literalColor.grey80})`,
-    90: `var(--colors-grey-90, ${literalColor.grey90})`,
+    10: `var(--colors-grey-10, ${shades.grey[10]})`,
+    20: `var(--colors-grey-20, ${shades.grey[20]})`,
+    30: `var(--colors-grey-30, ${shades.grey[30]})`,
+    40: `var(--colors-grey-40, ${shades.grey[40]})`,
+    50: `var(--colors-grey-50, ${shades.grey[50]})`,
+    60: `var(--colors-grey-60, ${shades.grey[60]})`,
+    70: `var(--colors-grey-70, ${shades.grey[70]})`,
+    80: `var(--colors-grey-80, ${shades.grey[80]})`,
+    90: `var(--colors-grey-90, ${shades.grey[90]})`,
   },
   elevated: {
-    background: `var(--colors-elevated-background, ${literalColor.white})`,
-    button: `var(--colors-elevated-button, ${literalColor.white})`,
+    background: `var(--colors-elevated-background, ${shades.white[100]})`,
+    button: `var(--colors-elevated-button, ${shades.white[100]})`,
   },
   faded: {
-    danger: `var(--colors-faded-danger, ${literalColor.red10})`,
+    negative: `var(--colors-faded-negative, ${shades.red[10]})`,
   },
 } as const
 
@@ -115,17 +131,17 @@ const lineHeights = {
 
 const shadows = {
   black: {
-    10: 'var(--shadows-black-10, 0 0 8px hsla(0, 0%, 0%, 0.08))',
-    20: 'var(--shadows-black-20, 0 0 16px hsla(0, 0%, 0%, 0.16))',
-    25: 'var(--shadows-black-25, 0 0 16px hsla(0, 0%, 0%, 0.25))',
-    40: 'var(--shadows-black-40, 0 0 48px hsla(0, 0%, 0%, 0.1))',
+    10: `var(--shadows-black-10, 0 0 8px ${shades.black[8]})`,
+    20: `var(--shadows-black-20, 0 0 16px ${shades.black[16]})`,
+    25: `var(--shadows-black-25, 0 0 16px ${shades.black[25]})`,
+    40: `var(--shadows-black-40, 0 0 48px ${shades.black[10]})`,
   },
   blue: {
-    20: `var(--shadows-blue-50, 0 0 16px ${literalColor.blue50})`,
-    focus: `var(--shadows-blue-focus, 0 0 0 2px ${literalColor.blue})`,
+    20: `var(--shadows-blue-50, 0 0 16px ${shades.blue[50]})`,
+    focus: `var(--shadows-blue-focus, 0 0 0 2px ${shades.blue[100]})`,
   },
   red: {
-    focus: `var(--shadows-red-focus, 0 0 0 2px ${literalColor.red})`,
+    focus: `var(--shadows-red-focus, 0 0 0 2px ${shades.red[100]})`,
   },
 } as const
 
@@ -150,7 +166,7 @@ const sizes = {
     md: `var(--sizes-button-md, ${rem(40)})`,
   },
   layout: {
-    side: `var(--sizes-layout-side, ${rem(160)})`,
+    side: `var(--sizes-layout-side, ${rem(208)})`,
   },
 } as const
 
@@ -200,7 +216,6 @@ const links = {
     ':any-link:hover': { color: 'primary' },
   },
   article: {
-    ':visited:not([href^="#"])': { color: 'grey.50' },
     ':any-link': { textDecoration: 'underline' },
   },
 } as const
@@ -289,7 +304,7 @@ const inputs = {
     },
     ':invalid': {
       boxShadow: 'none',
-      backgroundColor: 'faded.danger',
+      backgroundColor: 'faded.negative',
     },
     ':invalid:focus': {
       boxShadow: 'red.focus',
@@ -340,9 +355,9 @@ const actions = {
       color: 'accent',
     },
   },
-  danger: {
+  negative: {
     ':hover': {
-      color: 'danger',
+      color: 'negative',
     },
   },
 } as const
@@ -351,7 +366,7 @@ const buttons = {
   default: {
     display: 'block',
   },
-  black: {
+  contrast: {
     ...texts.primary,
     width: '100%',
     height: 'button.md',
@@ -377,7 +392,12 @@ const buttons = {
     },
   },
   round: {
-    size: 'button.md',
+    display: 'grid',
+    gridAutoFlow: 'column',
+    gridAutoColumns: 'max-content',
+    maxWidth: 'max-content',
+    gridGap: 's.12',
+    height: 'button.md',
     borderRadius: 'round',
     padding: 's.12',
     svg: { display: 'block' },
@@ -387,6 +407,12 @@ const buttons = {
     ':active': { boxShadow: 'black.10' },
     color: 'foreground',
     backgroundColor: 'elevated.button',
+    ...texts.primary,
+    lineHeight: 1,
+    textAlign: 'left',
+    '> :last-child:not(:first-child)': {
+      marginRight: 's.4',
+    },
   },
 } as const
 

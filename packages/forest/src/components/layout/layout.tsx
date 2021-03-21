@@ -7,6 +7,41 @@ export interface LayoutProps<E extends string>
   variant?: Variant
 }
 
+const AUTO_VARIANT = {
+  gridTemplate: `
+    "nav" auto
+    "aside" auto
+    "main" 1fr
+  `,
+  $md: {
+    gridTemplate: `
+      "nav main aside" auto / auto 1fr auto
+    `,
+  },
+}
+
+const HORIZONTAL_VARIANT = {
+  ...AUTO_VARIANT,
+  gridTemplate: `
+    "nav main aside" auto / 100% 100% 100%
+  `,
+  height: '100vh',
+  overflowX: 'auto',
+  overflowY: 'hidden',
+  scrollSnapType: 'x mandatory',
+  scrollBehavior: 'smooth',
+  main: {
+    overflow: 'auto',
+  },
+  $md: {
+    ...AUTO_VARIANT.$md,
+    height: 'auto',
+    overflowX: 'visible',
+    overflowY: 'visible',
+    scrollSnapType: 'normal',
+  },
+}
+
 export const Layout = <E extends string = 'div'>({
   pss,
   children,
@@ -15,34 +50,7 @@ export const Layout = <E extends string = 'div'>({
 }: LayoutProps<E>) => (
   <Grid
     pss={{
-      gridTemplate: `
-        "nav"
-        "aside"
-        "main"
-      `,
-      ...(variant === 'keep-horizontal'
-        ? {
-            gridTemplate: `
-              "nav main aside" auto / 100% 100% 100%
-            `,
-            height: '100vh',
-            overflowX: 'auto',
-            overflowY: 'hidden',
-            scrollSnapType: 'x mandatory',
-            scrollBehavior: 'smooth',
-            $md: {
-              height: 'auto',
-              overflowX: 'visible',
-              overflowY: 'visible',
-              scrollSnapType: 'normal',
-            },
-          }
-        : {}),
-      $md: {
-        gridTemplate: `
-          "nav main aside" auto / auto 1fr auto
-        `,
-      },
+      ...(variant === 'keep-horizontal' ? HORIZONTAL_VARIANT : AUTO_VARIANT),
       ...pss,
     }}
     {...rest}
@@ -62,7 +70,6 @@ export const LayoutMain = <E extends string = 'main'>({
     as="main"
     pss={{
       gridArea: 'main',
-      overflow: 'auto',
       scrollSnapAlign: 'start',
       scrollBehavior: 'smooth',
       padding: 's.16',

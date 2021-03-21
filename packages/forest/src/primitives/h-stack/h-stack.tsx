@@ -7,12 +7,14 @@ export interface HStackProps<E extends string = 'div'> extends StackProps<E> {}
 export interface HStackComponent<E extends string = 'div'>
   extends StackComponent<E> {}
 
-export const HStack: HStackComponent = styled<any>(Stack)`
-  flex-direction: row;
-
-  > :not(:last-child) {
-    margin-inline-end: var(--stack-space);
-  }
-`
+export const HStack: HStackComponent = styled<any>(Stack)(
+  { flexDirection: 'row' },
+  (props) =>
+    props.space != null && {
+      '> :not(:last-child)': {
+        marginInlineEnd: 'var(--stack-space)',
+      },
+    }
+)
 
 HStack.displayName = 'HStack'

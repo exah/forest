@@ -87,7 +87,7 @@ export function Field<E extends 'input' | 'select' | 'textarea' = 'input'>({
         {...rest}
       />
       {validityMessage ? (
-        <FieldHelper fg="danger">{validityMessage}</FieldHelper>
+        <FieldHelper fg="negative">{validityMessage}</FieldHelper>
       ) : helper ? (
         <FieldHelper>{helper}</FieldHelper>
       ) : null}
