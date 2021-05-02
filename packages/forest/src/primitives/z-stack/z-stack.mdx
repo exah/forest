@@ -12,13 +12,28 @@ Based on [Grid](#grid). Items placed one after another.
 ```jsx live
 <ZStack>
   {['red', 'orange', 'yellow', 'green', 'blue'].map((color, index) => (
-    <Box key={color} s={100} bg={color} mt={index * 10} ml={index * 10} />
+    <Box
+      key={color}
+      pss={{
+        size: 100,
+        backgroundColor: color,
+        transform: `translate(${index}rem, ${index}rem)`,
+      }}
+    />
   ))}
 </ZStack>
 ```
 
 ```jsx live
-<ZStack placeItems="center" fg="white" bg="lime">
+<ZStack s={100}>
+  <Box bg="red" />
+  <Box bg="yellow" s={50} pss={{ placeSelf: 'start end' }} />
+  <Box bg="blue" s={50} pss={{ placeSelf: 'end end' }} />
+</ZStack>
+```
+
+```jsx live
+<ZStack align="center" fg="white" bg="lime">
   <Image
     src="https://placekitten.com/1600/800"
     width={800}
