@@ -201,7 +201,6 @@ export const shadows = {
 
 export const radii = {
   round: px(9999),
-  modal: px(20),
   form: {
     md: `var(--r-form-md, ${rem(40)})`,
   },

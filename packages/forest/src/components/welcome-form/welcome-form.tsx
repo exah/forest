@@ -11,9 +11,9 @@ export function WelcomeForm({ pss, ...rest }: WelcomeFormProps) {
       pss={{
         color: 'fg',
         backgroundColor: 'shadow.bg.48',
+        boxShadow: '48.black.8',
         padding: 's.32',
         borderRadius: 'form.md',
-        boxShadow: '48.black.8',
         maxWidth: rem(450),
         marginX: 'auto',
         ...pss,

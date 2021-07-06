@@ -1,0 +1,47 @@
+export const title = 'Portal'
+
+# Portal
+
+```js
+import { Portal } from 'piny-forest'
+```
+
+```jsx live isolate
+<Portal>I'm outside my parent node</Portal>
+```
+
+```jsx live isolate
+<Portal
+  getContainer={(doc) => {
+    const element = doc.createElement('div')
+    doc.body.appendChild(element)
+    return element
+  }}
+  onCleanup={(element) => element.remove()}
+>
+  I'm outside my parent node
+</Portal>
+```
+
+```jsx live
+<>
+  <div id="target" />
+  <Portal getContainer={(doc) => doc.querySelector('#target')}>
+    I'm outside my parent node
+  </Portal>
+</>
+```
+
+```jsx live
+function Demo() {
+  const ref = useRef(null)
+  return (
+    <>
+      <span ref={ref} />
+      <Portal getContainer={() => ref.current}>
+        I'm outside my parent node
+      </Portal>
+    </>
+  )
+}
+```

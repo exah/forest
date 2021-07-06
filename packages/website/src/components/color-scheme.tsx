@@ -1,15 +1,12 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  useLayoutEffect,
-  useEffect,
-} from 'react'
-import { Select, Root, RootProps, Label } from 'piny-forest/src'
+import { createContext, useContext, useState } from 'react'
 import Theme from 'piny-theme/src'
-
-const useUniversalLayoutEffect =
-  typeof window === 'undefined' ? useEffect : useLayoutEffect
+import {
+  Select,
+  Root,
+  RootProps,
+  Label,
+  useUniversalLayoutEffect,
+} from 'piny-forest/src'
 
 function useLocalState<S extends string>(key: string, initial: S) {
   const state = useState<S>(initial)

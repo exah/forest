@@ -1,0 +1,49 @@
+export const title = 'Dialog'
+
+# Dialog
+
+```js
+import { Dialog } from 'piny-forest'
+```
+
+```jsx live
+function Demo() {
+  const [isOpen, setOpen] = useState(false)
+  return (
+    <>
+      <Button variant="round" aria-label="Open" onClick={() => setOpen(true)}>
+        <GearIcon />
+      </Button>
+      <Dialog open={isOpen} onRequestClose={() => setOpen(false)}>
+        <VStack
+          pss={{
+            placeSelf: 'center',
+            color: 'fg',
+            backgroundColor: 'shadow.bg.48',
+            boxShadow: '48.black.8',
+            marginTop: 's.32',
+            paddingX: 's.24',
+            paddingY: 's.16',
+            width: 'stretch',
+            height: '100%',
+            $md: {
+              marginX: 's.8',
+              marginBottom: 's.32',
+              height: 'auto',
+              maxWidth: 576,
+              minHeight: 500,
+              borderRadius: 'form.md',
+            },
+          }}
+        >
+          <Field as="input" label="Username" placeholder="Username" />
+          <Spacer />
+          <Button type="submit" variant="contrast" autoFocus>
+            Save
+          </Button>
+        </VStack>
+      </Dialog>
+    </>
+  )
+}
+```
