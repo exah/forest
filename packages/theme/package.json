@@ -1,0 +1,32 @@
+{
+  "name": "piny-theme",
+  "version": "0.0.0",
+  "description": "Theme for piny-forest component library",
+  "main": "out/index.js",
+  "type": "module",
+  "files": [
+    "out",
+    "ref"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "rm -rf out && tsc --outDir out",
+    "test": "jest",
+    "size": "size-limit",
+    "release": "np",
+    "preversion": "npm run build",
+    "prebuild": "rm -rf out"
+  },
+  "keywords": [],
+  "author": "John Grishin <hi@johngrish.in>",
+  "license": "MIT",
+  "size-limit": [
+    {
+      "path": "./out/index.js",
+      "limit": "2.5 KB"
+    }
+  ],
+  "peerDependencies": {
+    "pss": "^6.0.0"
+  }
+}

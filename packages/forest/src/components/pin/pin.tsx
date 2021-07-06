@@ -39,13 +39,15 @@ const Variant = {
   },
 } as const
 
-export interface PinProps extends Omit<GridProps, 'ref' | 'variant'> {
+export interface PinProps<E extends string>
+  extends Omit<GridProps<E>, 'ref' | 'variant'> {
   variant?: keyof typeof Variant
 }
 
-export const Pin = ({ variant: key = 'horizontal', ...rest }: PinProps) => (
-  <Grid as="article" pss={Variant[key]} {...rest} />
-)
+export const Pin = <E extends string>({
+  variant: key = 'horizontal',
+  ...rest
+}: PinProps<E>) => <Grid as="article" pss={Variant[key]} {...rest} />
 
 export interface PinMediaProps extends Omit<BoxProps, 'ref'> {}
 
@@ -92,7 +94,7 @@ export interface PinTagsProps extends Omit<HStackProps, 'ref'> {}
 
 export const PinTags = ({ children, ...rest }: PinTagsProps) => (
   <HStack
-    space="s.8"
+    space="s.12"
     pss={{ gridArea: 'tags', flexWrap: 'wrap', marginBottom: 's.8' }}
     {...rest}
   >
@@ -103,7 +105,11 @@ export const PinTags = ({ children, ...rest }: PinTagsProps) => (
 export interface PinActionsProps extends Omit<HStackProps, 'ref'> {}
 
 export const PinActions = ({ children, ...rest }: PinActionsProps) => (
-  <HStack space="s.8" pss={{ gridArea: 'actions', flexWrap: 'wrap' }} {...rest}>
+  <HStack
+    space="s.12"
+    pss={{ gridArea: 'actions', flexWrap: 'wrap' }}
+    {...rest}
+  >
     {children}
   </HStack>
 )

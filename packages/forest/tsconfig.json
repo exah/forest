@@ -5,5 +5,5 @@
     "outDir": "./out",
     "emitDeclarationOnly": true
   },
-  "include": ["./src"]
+  "include": ["env.d.ts", "./src"]
 }

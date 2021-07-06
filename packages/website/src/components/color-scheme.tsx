@@ -5,7 +5,8 @@ import {
   useLayoutEffect,
   useEffect,
 } from 'react'
-import { Select, Theme, Root, RootProps, Label } from 'piny-forest/src'
+import { Select, Root, RootProps, Label } from 'piny-forest/src'
+import Theme from 'piny-theme/src'
 
 const useUniversalLayoutEffect =
   typeof window === 'undefined' ? useEffect : useLayoutEffect

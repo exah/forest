@@ -14,6 +14,7 @@ import {
   get,
   isObject,
   isPrimitive,
+  isNumber,
   isPropertyKey,
   isString,
   toArray,
@@ -90,12 +91,12 @@ function defaultTransform<V, Prop extends string>(
     case 'height':
     case 'minHeight':
     case 'maxHeight':
-      return typeof value === 'number' && value >= 0 && value <= 1
+      return isNumber(value) && value >= 0 && value <= 1
         ? `${value * 100}%`
         : value
     case 'gridTemplateColumns':
     case 'gridTemplateRows':
-      return typeof value === 'number' ? `repeat(${value}, 1fr)` : value
+      return isNumber(value) ? `repeat(${value}, 1fr)` : value
     default:
       return value
   }

@@ -46,7 +46,7 @@ export function CodePlayground({
             $md: { order: 1 },
           }}
         >
-          <Wrapper title="Live preview" pss={{ size: '100%' }}>
+          <Wrapper pss={{ size: '100%' }}>
             <LivePreview style={{ display: 'inline' }} />
           </Wrapper>
         </Box>

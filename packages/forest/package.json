@@ -32,13 +32,15 @@
   "size-limit": [
     {
       "path": "./out/index.js",
-      "limit": "2.5 KB"
+      "limit": "6 KB"
     }
   ],
   "peerDependencies": {
     "@emotion/react": "^11.0.0",
     "@emotion/styled": "^11.0.0",
+    "piny-theme": "^0.0.0",
     "pss": "^6.0.0",
-    "react": "^17.0.0"
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
   }
 }

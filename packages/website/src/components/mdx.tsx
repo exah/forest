@@ -104,7 +104,7 @@ const TH = (props: Props) => (
   <Text
     as="th"
     variant="secondary"
-    fontWeight="semi"
+    fontWeight={500}
     textAlign="left"
     pss={{
       paddingY: 's.4',

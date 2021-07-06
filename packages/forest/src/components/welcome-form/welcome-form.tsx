@@ -9,11 +9,11 @@ export function WelcomeForm({ pss, ...rest }: WelcomeFormProps) {
       as="form"
       space="s.24"
       pss={{
-        color: 'foreground',
-        backgroundColor: 'elevated.background',
+        color: 'fg',
+        backgroundColor: 'shadow.bg.48',
         padding: 's.32',
         borderRadius: 'form.md',
-        boxShadow: 'black.40',
+        boxShadow: '48.black.8',
         maxWidth: rem(450),
         marginX: 'auto',
         ...pss,

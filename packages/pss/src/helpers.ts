@@ -14,7 +14,7 @@ export const isObject = <T extends object, I>(input: T | I): input is T =>
 export const isString = (input: unknown): input is string =>
   typeof input === 'string'
 
-export const isNumber = (input: unknown): input is string =>
+export const isNumber = (input: unknown): input is number =>
   typeof input === 'number'
 
 export const isPropertyKey = (input: unknown): input is string | number =>

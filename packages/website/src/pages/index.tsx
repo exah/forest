@@ -12,8 +12,8 @@ import {
   ListItem,
   Provider,
   Text,
-  Theme,
 } from 'piny-forest/src'
+import Theme from 'piny-theme/src'
 import {
   MDX,
   SiteLogo,
@@ -66,7 +66,7 @@ function Index() {
             <Group>
               <Header>
                 <HeaderTitle>
-                  <Link href="#primitives">Components</Link>
+                  <Link href="#components">Components</Link>
                 </HeaderTitle>
               </Header>
               <List>
