@@ -73,6 +73,13 @@ export function isFocused(element: FocusableElement): boolean {
   return element.ownerDocument.activeElement === element
 }
 
+export function focusOnFirst(element: Element) {
+  const tabbable = getTabbable(element)
+  if (tabbable.length === 0 || tabbable.some(isFocused)) return
+
+  tabbable[0].focus()
+}
+
 export function focusTrapOnTab(event: React.KeyboardEvent): void {
   const tabbable = getTabbable(event.currentTarget)
 

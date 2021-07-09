@@ -1,5 +1,6 @@
-import { useScrollLock } from '../../hooks'
-import { focusTrapOnTab, noop } from '../../utils'
+import { useState } from 'react'
+import { useScrollLock, useUniversalLayoutEffect } from '../../hooks'
+import { focusTrapOnTab, focusOnFirst, noop } from '../../utils'
 import { Box, ZStackProps, ZStack } from '../../primitives'
 import { Portal, PortalProps } from '../portal'
 
@@ -21,12 +22,18 @@ export function Dialog({
   onRequestClose = noop,
   ...rest
 }: DialogProps) {
+  const [dialogEl, setDialogEl] = useState<HTMLElement | null>(null)
+
   useScrollLock(isOpen && hasScrollLock)
+  useUniversalLayoutEffect(() => {
+    if (dialogEl) focusOnFirst(dialogEl)
+  }, [dialogEl])
 
   return (
     isOpen && (
       <Portal getContainer={getContainer}>
         <ZStack
+          ref={setDialogEl}
           role="dialog"
           aria-modal
           $$={{
