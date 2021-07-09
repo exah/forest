@@ -1,6 +1,6 @@
 type View = Window & typeof globalThis
 
-export function noop() {}
+export function noop(): void {}
 
 export function getView(
   input?: HTMLDocument | HTMLElement | null
@@ -13,12 +13,14 @@ export function getView(
 
 const SCROLL_REGEX = /(auto|scroll|overlay)/
 
-export function hasScroll(view: View, input: HTMLElement) {
+export function hasScroll(view: View, input: HTMLElement): boolean {
   const style = view.getComputedStyle(input)
   return SCROLL_REGEX.test(style.overflowX + style.overflowY)
 }
 
-export function getScrollEventTarget(input: HTMLElement) {
+export function getScrollEventTarget(
+  input: HTMLElement
+): HTMLDocument | HTMLElement {
   return input === input.ownerDocument.documentElement
     ? input.ownerDocument
     : input
@@ -48,18 +50,35 @@ export function scrollLock(element: HTMLElement) {
   }
 }
 
-export function isFocused(element: HTMLElement) {
+type FocusableElement = HTMLElement | SVGElement
+
+const FOCUSABLE = [
+  ':enabled',
+  ':any-link',
+  ':read-write',
+  'iframe',
+  '[tabIndex]',
+]
+
+export function getFocusable(element: Element): FocusableElement[] {
+  const nodeList = element.querySelectorAll<FocusableElement>(`${FOCUSABLE}`)
+  return Array.from(nodeList)
+}
+
+export function getTabbable(element: Element): FocusableElement[] {
+  return getFocusable(element).filter((el) => el.tabIndex > -1)
+}
+
+export function isFocused(element: FocusableElement): boolean {
   return element.ownerDocument.activeElement === element
 }
 
-export function focusTrapOnTab(event: React.KeyboardEvent) {
-  const focusable = event.currentTarget.querySelectorAll<HTMLElement>(
-    `:enabled, :any-link, [tabIndex]:not([tabIndex="-1"])`
-  )
+export function focusTrapOnTab(event: React.KeyboardEvent): void {
+  const tabbable = getTabbable(event.currentTarget)
 
-  if (focusable.length > 0) {
-    const first = focusable[0]
-    const last = focusable[focusable.length - 1]
+  if (tabbable.length > 0) {
+    const first = tabbable[0]
+    const last = tabbable[tabbable.length - 1]
 
     if (event.shiftKey) {
       if (isFocused(first)) {
