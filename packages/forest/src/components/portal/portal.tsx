@@ -11,13 +11,13 @@ interface Cleanup {
   (container: Element): void
 }
 
-const getDefaultContainer: GetContainer = (doc) => {
+const defaultGetContainer: GetContainer = (doc) => {
   const container = doc.createElement('div')
   doc.body.appendChild(container)
   return container
 }
 
-const handleCleanup: Cleanup = (container) => container.remove()
+const defaultCleanup: Cleanup = (container) => container.remove()
 
 export interface PortalProps {
   getContainer?: GetContainer
@@ -26,8 +26,8 @@ export interface PortalProps {
 }
 
 export function Portal({
-  getContainer = getDefaultContainer,
-  onCleanup = getContainer === getDefaultContainer ? handleCleanup : noop,
+  getContainer = defaultGetContainer,
+  onCleanup = getContainer === defaultGetContainer ? defaultCleanup : noop,
   children,
 }: PortalProps) {
   const doc = useDocument()
