@@ -43,32 +43,24 @@ const HORIZONTAL_VARIANT = {
 }
 
 export const Layout = <E extends string = 'div'>({
-  pss,
-  children,
   variant = 'auto',
   ...rest
 }: LayoutProps<E>) => (
   <Grid
-    pss={{
-      ...(variant === 'keep-horizontal' ? HORIZONTAL_VARIANT : AUTO_VARIANT),
-      ...pss,
-    }}
+    $$={variant === 'keep-horizontal' ? HORIZONTAL_VARIANT : AUTO_VARIANT}
     {...rest}
-  >
-    {children}
-  </Grid>
+  />
 )
 
 export interface LayoutMainProps<E extends string>
   extends Omit<BoxProps<E>, 'ref'> {}
 
-export const LayoutMain = <E extends string = 'main'>({
-  pss,
-  ...rest
-}: LayoutMainProps<E>) => (
+export const LayoutMain = <E extends string = 'main'>(
+  props: LayoutMainProps<E>
+) => (
   <Box
     as="main"
-    pss={{
+    $$={{
       gridArea: 'main',
       scrollSnapAlign: 'start',
       scrollBehavior: 'smooth',
@@ -77,23 +69,20 @@ export const LayoutMain = <E extends string = 'main'>({
         paddingX: 's.24',
         paddingY: 's.32',
       },
-      ...pss,
     }}
-    {...rest}
+    {...props}
   />
 )
 
 export interface LayoutNavProps<E extends string>
   extends Omit<BoxProps<E>, 'ref'> {}
 
-export const LayoutNav = <E extends string = 'nav'>({
-  pss,
-  children,
-  ...rest
-}: LayoutNavProps<E>) => (
+export const LayoutNav = <E extends string = 'nav'>(
+  props: LayoutNavProps<E>
+) => (
   <LayoutMain
     as="nav"
-    pss={{
+    $$={{
       gridArea: 'nav',
       overflow: 'auto',
       scrollSnapAlign: 'start',
@@ -106,19 +95,13 @@ export const LayoutNav = <E extends string = 'nav'>({
         paddingX: 's.24',
         paddingY: 's.32',
       },
-      ...pss,
     }}
-    {...rest}
-  >
-    {children}
-  </LayoutMain>
+    {...props}
+  />
 )
 
 export interface LayoutAsideProps<E extends string> extends LayoutNavProps<E> {}
 
-export const LayoutAside = <E extends string = 'aside'>({
-  pss,
-  ...rest
-}: LayoutAsideProps<E>) => (
-  <LayoutNav as="aside" pss={{ gridArea: 'aside', ...pss }} {...rest} />
-)
+export const LayoutAside = <E extends string = 'aside'>(
+  props: LayoutAsideProps<E>
+) => <LayoutNav as="aside" $$={{ gridArea: 'aside' }} {...props} />

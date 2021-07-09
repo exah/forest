@@ -15,33 +15,32 @@ function Demo() {
         <GearIcon />
       </Button>
       <Dialog open={isOpen} onRequestClose={() => setOpen(false)}>
-        <VStack
-          pss={{
-            placeSelf: 'center',
-            color: 'fg',
-            backgroundColor: 'shadow.bg.48',
-            boxShadow: '48.black.8',
-            marginTop: 's.32',
-            paddingX: 's.24',
-            paddingY: 's.16',
-            width: 'stretch',
-            height: '100%',
-            $md: {
-              marginX: 's.8',
-              marginBottom: 's.32',
-              height: 'auto',
-              maxWidth: 576,
-              minHeight: 500,
-              borderRadius: 'form.md',
-            },
-          }}
+        <WelcomeForm
+          onSubmit={(event) => event.preventDefault()}
+          pss={{ placeSelf: 'center', margin: 's.8' }}
         >
-          <Field as="input" label="Username" placeholder="Username" />
-          <Spacer />
-          <Button type="submit" variant="contrast" autoFocus>
-            Save
-          </Button>
-        </VStack>
+          <WelcomeFormHeader logo={SiteLogo}>
+            Enter your details (you can register here)
+          </WelcomeFormHeader>
+          <WelcomeFormFields>
+            <Field
+              type="text"
+              name="username"
+              label="Username"
+              placeholder="Username"
+              helper={
+                <Button title="Generate" aria-label="Generate">
+                  🎲
+                </Button>
+              }
+            />
+          </WelcomeFormFields>
+          <WelcomeFormActions>
+            <Button type="submit" variant="contrast">
+              Next
+            </Button>
+          </WelcomeFormActions>
+        </WelcomeForm>
       </Dialog>
     </>
   )

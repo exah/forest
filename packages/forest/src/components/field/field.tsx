@@ -10,7 +10,7 @@ import {
 
 interface FieldHelperProps extends Omit<TextProps, 'ref'> {}
 
-function FieldHelper({ children, ...rest }: FieldHelperProps) {
+function FieldHelper(props: FieldHelperProps) {
   const ref = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -22,13 +22,13 @@ function FieldHelper({ children, ...rest }: FieldHelperProps) {
         element.style.setProperty('--field-helper-width', `${rect.width}px`)
       }
     }
-  }, [ref, children])
+  }, [ref, props.children])
 
   return (
     <Text
       ref={ref}
       variant="secondary"
-      pss={{
+      $$={{
         whiteSpace: 'nowrap',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
@@ -44,10 +44,8 @@ function FieldHelper({ children, ...rest }: FieldHelperProps) {
           pointerEvents: 'auto',
         },
       }}
-      {...rest}
-    >
-      {children}
-    </Text>
+      {...props}
+    />
   )
 }
 
@@ -79,7 +77,7 @@ export function Field<E extends 'input' | 'select' | 'textarea' = 'input'>({
     <ZStack as="label" aria-label={label} title={label}>
       <Input
         ref={ref}
-        pss={{
+        $$={{
           ':not(:focus)': {
             paddingRight: 'min(var(--field-helper-width), 50%)',
           },

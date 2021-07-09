@@ -29,7 +29,7 @@ export function Dialog({
         <ZStack
           role="dialog"
           aria-modal
-          pss={{
+          $$={{
             position: 'fixed',
             size: '100%',
             top: 0,

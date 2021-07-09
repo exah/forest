@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import {
   colorScheme,
   ColorSchemeProps,
+  CSSObject,
   pss,
   PSS,
   variant,
@@ -15,6 +16,15 @@ interface VariantKeyProps<V> {
 
 function key({ __key: key }: VariantKeyProps<string>) {
   return key ? variant(key, 'default') : null
+}
+
+interface InternalPSS {
+  /** @private */
+  $$?: CSSObject
+}
+
+function internalPSS({ $$, ...rest }: InternalPSS) {
+  return pss({ ...rest, pss: $$ })
 }
 
 type Cast<A, B> = A extends B ? A : B
@@ -36,6 +46,7 @@ export interface BaseInnerProps<E extends string, V extends string>
   extends VariantKeyProps<V>,
     VariantProps<V>,
     ColorSchemeProps,
+    InternalPSS,
     PSS {
   as?: E | React.ComponentType<any>
   ref?: React.Ref<ElementType<E>>
@@ -70,6 +81,7 @@ export const Base: BaseComponent = styled<any>('div')(
   },
   colorScheme,
   key,
+  internalPSS,
   pss
 )
 

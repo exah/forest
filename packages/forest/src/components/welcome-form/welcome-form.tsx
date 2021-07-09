@@ -1,27 +1,16 @@
 import { rem } from 'pss'
-import { VStack, VStackProps, Text } from '../../primitives'
+import { VStack, Text } from '../../primitives'
+import { Form, FormProps } from '../form'
 
-export interface WelcomeFormProps extends VStackProps<'form'> {}
+export interface WelcomeFormProps extends FormProps {}
 
-export function WelcomeForm({ pss, ...rest }: WelcomeFormProps) {
-  return (
-    <VStack
-      as="form"
-      space="s.24"
-      pss={{
-        color: 'fg',
-        backgroundColor: 'shadow.bg.48',
-        boxShadow: '48.black.8',
-        padding: 's.32',
-        borderRadius: 'form.md',
-        maxWidth: rem(450),
-        marginX: 'auto',
-        ...pss,
-      }}
-      {...rest}
-    />
-  )
-}
+export const WelcomeForm = ({ children, $$, ...rest }: WelcomeFormProps) => (
+  <Form $$={{ maxWidth: rem(450), ...$$ }} {...rest}>
+    <VStack space="s.24" p="s.32">
+      {children}
+    </VStack>
+  </Form>
+)
 
 export interface WelcomeFormHeaderProps {
   logo: React.ComponentType

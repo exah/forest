@@ -21,7 +21,7 @@ export const HeaderTitle = <E extends string = 'div'>({
   children,
   ...rest
 }: HeaderTitleProps<E>) => (
-  <Box as="div" pss={{ color: 'grey.50', gridArea: 'title' }} {...rest}>
+  <Box as="div" $$={{ color: 'grey.50', gridArea: 'title' }} {...rest}>
     <Text variant="secondary">{children}</Text>
   </Box>
 )
@@ -33,7 +33,7 @@ export const HeaderAction = <E extends string = 'button'>(
 ) => (
   <Action
     variant="tertiary"
-    pss={{
+    $$={{
       gridArea: 'action',
     }}
     {...props}
