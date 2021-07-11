@@ -18,4 +18,4 @@ export interface LabelComponent<
 export const Label: LabelComponent = styled<any>(Text)()
 
 Label.displayName = 'Label'
-Label.defaultProps = { as: 'label', __key: 'labels' }
+Label.defaultProps = { as: 'label', $key: 'labels' }

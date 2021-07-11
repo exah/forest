@@ -33,4 +33,4 @@ export const Box: BoxComponent = styled<any>(Base)(
 )
 
 Box.displayName = 'Box'
-Box.defaultProps = { as: 'div', __key: 'boxes' }
+Box.defaultProps = { as: 'div', $key: 'boxes' }

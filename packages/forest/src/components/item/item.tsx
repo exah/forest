@@ -11,7 +11,7 @@ export const Item = <E extends string = 'button'>({
   children,
   ...rest
 }: ItemProps<E>) => (
-  <Button {...rest} __key="items">
+  <Button {...rest} $key="items">
     <Grid
       as="span"
       pss={{

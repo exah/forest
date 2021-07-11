@@ -16,7 +16,7 @@ export interface ListComponent<
 export const List: ListComponent = styled<any>(Text)()
 
 List.displayName = 'List'
-List.defaultProps = { as: 'ul', __key: 'lists' }
+List.defaultProps = { as: 'ul', $key: 'lists' }
 
 export interface ListItemProps<
   E extends string = 'li',
@@ -32,9 +32,8 @@ export interface ListItemComponent<
   V extends string = 'listItems'
 > extends TextComponent<E, V, ListItemInnerProps> {}
 
-export const ListItem: ListItemComponent = styled<any>(
-  Text
-)<ListItemInnerProps>()
+export const ListItem: ListItemComponent =
+  styled<any>(Text)<ListItemInnerProps>()
 
 ListItem.displayName = 'ListItem'
-ListItem.defaultProps = { as: 'li', __key: 'listItems' }
+ListItem.defaultProps = { as: 'li', $key: 'listItems' }

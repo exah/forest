@@ -4,5 +4,5 @@ export interface ActionProps<E extends string = 'button'>
   extends Omit<ButtonProps<E, 'actions'>, 'ref'> {}
 
 export const Action = <E extends string = 'button'>(props: ActionProps<E>) => (
-  <Button __key="actions" {...props} />
+  <Button $key="actions" {...props} />
 )

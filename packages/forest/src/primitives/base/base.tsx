@@ -11,10 +11,10 @@ import {
 
 interface VariantKeyProps<V> {
   /** @private */
-  __key?: V
+  $key?: V
 }
 
-function key({ __key: key }: VariantKeyProps<string>) {
+function key({ $key: key }: VariantKeyProps<string>) {
   return key ? variant(key, 'default') : null
 }
 

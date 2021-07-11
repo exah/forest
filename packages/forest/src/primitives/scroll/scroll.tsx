@@ -20,4 +20,4 @@ export const Scroll: ScrollComponent = styled<any>(Box)({
 })
 
 Scroll.displayName = 'Scroll'
-Scroll.defaultProps = { as: 'div', __key: 'scrolls' }
+Scroll.defaultProps = { as: 'div', $key: 'scrolls' }

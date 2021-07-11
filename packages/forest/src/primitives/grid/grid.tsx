@@ -34,4 +34,4 @@ export const Grid: GridComponent = styled<any>(Box)(
 )
 
 Grid.displayName = 'Grid'
-Grid.defaultProps = { as: 'div', __key: 'grids' }
+Grid.defaultProps = { as: 'div', $key: 'grids' }

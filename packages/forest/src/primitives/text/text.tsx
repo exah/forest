@@ -42,4 +42,4 @@ export const Text: TextComponent = styled<any>(Box)(
 )
 
 Text.displayName = 'Text'
-Text.defaultProps = { as: 'span', __key: 'texts' }
+Text.defaultProps = { as: 'span', $key: 'texts' }

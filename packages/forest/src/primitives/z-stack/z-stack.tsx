@@ -24,4 +24,4 @@ export const ZStack: ZStackComponent = styled<any>(Box)(
 )
 
 ZStack.displayName = 'ZStack'
-ZStack.defaultProps = { as: 'div', __key: 'zStacks' }
+ZStack.defaultProps = { as: 'div', $key: 'zStacks' }

@@ -18,4 +18,4 @@ export interface ButtonComponent<
 export const Button: ButtonComponent = styled<any>(Input)()
 
 Button.displayName = 'Button'
-Button.defaultProps = { as: 'button', type: 'button', __key: 'buttons' }
+Button.defaultProps = { as: 'button', type: 'button', $key: 'buttons' }

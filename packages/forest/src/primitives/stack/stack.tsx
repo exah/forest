@@ -22,4 +22,4 @@ export const Stack: StackComponent = styled<any>(Box)(
 )
 
 Stack.displayName = 'Stack'
-Stack.defaultProps = { as: 'div', __key: 'stacks' }
+Stack.defaultProps = { as: 'div', $key: 'stacks' }

@@ -19,4 +19,4 @@ export interface TextareaComponent<
 export const Textarea: TextareaComponent = styled<any>(Input)()
 
 Textarea.displayName = 'Textarea'
-Textarea.defaultProps = { as: 'textarea', __key: 'textareas' }
+Textarea.defaultProps = { as: 'textarea', $key: 'textareas' }
