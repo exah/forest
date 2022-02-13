@@ -145,41 +145,41 @@ export const pss = <Props extends PSS>(props: Props) =>
     theme: props.theme,
   })
 
-interface CreateStyleOptions<Prop extends string, Alias extends string = Prop> {
+interface CreateStyleOptions<Prop extends string, Alias extends string> {
   prop: Prop
-  alias?: Alias
+  alias?: Prop | Alias
   transform?: <V>(value: V, prop: Prop) => V | string | number | null
   getScale?: GetScale
 }
 
-export type StyleProps<Prop extends string, Alias extends string = Prop> = {
+export type StyleProps<Prop extends string, Alias extends string> = {
   theme?: SystemTheme
 } & {
   [P in Alias]?: Responsive<StyleValue<Prop>>
 }
 
-const createStyle = <Prop extends string, Alias extends string = Prop>({
-  prop,
-  // @ts-expect-error
-  alias = prop,
-  transform = defaultTransform,
-  getScale,
-}: CreateStyleOptions<Prop, Alias>) => <Props extends StyleProps<Prop, Alias>>(
-  props: Props
-): CSSInterpolation[] =>
-  core({
-    input: responsive(props[alias], (result) => {
-      if (isPrimitive(result)) {
-        return {
-          [prop]: transform(result, prop),
-        }
-      }
-
-      return null
-    }),
-    theme: props.theme,
+const createStyle =
+  <Prop extends string, Alias extends string = Prop>({
+    prop,
+    alias = prop,
+    transform = defaultTransform,
     getScale,
-  })
+  }: CreateStyleOptions<Prop, Alias>) =>
+  <Props extends StyleProps<Prop, Alias>>(props: Props): CSSInterpolation[] =>
+    core({
+      // @ts-expect-error
+      input: responsive(props[alias], (result) => {
+        if (isPrimitive(result)) {
+          return {
+            [prop]: transform(result, prop),
+          }
+        }
+
+        return null
+      }),
+      theme: props.theme,
+      getScale,
+    })
 
 export const style = <Prop extends string, Alias extends string = Prop>(
   prop: Prop,
@@ -200,19 +200,17 @@ export interface VariantProps<Key extends string> {
   variant?: Responsive<VariantValue<Key>> | Responsive<VariantValue<Key>>[]
 }
 
-export const variant = <Key extends string>(key: Key, base?: string) => <
-  Props extends VariantProps<Key>
->(
-  props: Props
-) =>
-  [...toArray(base), ...toArray(props.variant)].map((variant) =>
-    core({
-      input: responsive(variant, (result) =>
-        get(`${key}.${result}`, props.theme)
-      ),
-      theme: props.theme,
-    })
-  )
+export const variant =
+  <Key extends string>(key: Key, base?: string) =>
+  <Props extends VariantProps<Key>>(props: Props) =>
+    [...toArray(base), ...toArray(props.variant)].map((variant) =>
+      core({
+        input: responsive(variant, (result) =>
+          get(`${key}.${result}`, props.theme)
+        ),
+        theme: props.theme,
+      })
+    )
 
 type PropDirection<Base extends string> =
   | Base
@@ -272,6 +270,7 @@ export function colorScheme({
   return []
 }
 
-export const combine = <P extends {}, R>(...input: ((props: P) => R)[]) => (
-  props: P
-) => input.map((fn) => fn(props))
+export const combine =
+  <P, R>(...input: ((props: P) => R)[]) =>
+  (props: P) =>
+    input.map((fn) => fn(props))
