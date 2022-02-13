@@ -1,10 +1,8 @@
-type View = Window & typeof globalThis
+import { View, FocusableElement } from '../types'
 
 export function noop(): void {}
 
-export function getView(
-  input?: HTMLDocument | HTMLElement | null
-): View | null {
+export function getView(input?: Document | Element | null): View | null {
   if (input == null) return null
   if ('body' in input) return input.defaultView
 
@@ -20,15 +18,13 @@ export function hasScroll(view: View, input: HTMLElement): boolean {
 
 export function getScrollEventTarget(
   input: HTMLElement
-): HTMLDocument | HTMLElement {
+): Document | HTMLElement {
   return input === input.ownerDocument.documentElement
     ? input.ownerDocument
     : input
 }
 
-export function getScrollingElement(
-  doc?: HTMLDocument | null
-): HTMLElement | null {
+export function getScrollingElement(doc?: Document | null): HTMLElement | null {
   const view = getView(doc)
 
   if (view == null || doc == null) return null
@@ -39,18 +35,19 @@ export function getScrollingElement(
     : doc.documentElement
 }
 
-let locks: number = 0
+const lockLevel = new WeakMap<HTMLElement, number>()
 export function scrollLock(element: HTMLElement) {
-  if (locks === 0) element.style.overflow = 'hidden'
-  locks = locks + 1
+  const initial = lockLevel.get(element) ?? 0
+  if (initial === 0) element.style.overflow = 'hidden'
+  lockLevel.set(element, initial + 1)
 
   return () => {
-    locks = locks - 1
-    if (locks === 0) element.style.overflow = ''
+    const level = lockLevel.get(element) ?? 1
+    const next = level - 1
+    if (next === 0) element.style.overflow = ''
+    lockLevel.set(element, next)
   }
 }
-
-type FocusableElement = HTMLElement | SVGElement
 
 const FOCUSABLE = [
   ':enabled',
@@ -59,6 +56,16 @@ const FOCUSABLE = [
   'iframe',
   '[tabIndex]',
 ]
+
+export function isFocusable(
+  element: Element | null
+): element is FocusableElement {
+  const view = getView(element)
+  return (
+    view != null &&
+    (element instanceof view.HTMLElement || element instanceof view.SVGElement)
+  )
+}
 
 export function getFocusable(element: Element): FocusableElement[] {
   const nodeList = element.querySelectorAll<FocusableElement>(`${FOCUSABLE}`)

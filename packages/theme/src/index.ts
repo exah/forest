@@ -471,6 +471,16 @@ export const root = {
   },
 } as const
 
+export const modals = {
+  default: {
+    position: 'fixed',
+    size: '100%',
+    top: 0,
+    left: 0,
+    overflow: 'auto',
+  },
+} as const
+
 type Theme = typeof Theme
 const Theme = {
   breakpoints,
@@ -486,17 +496,18 @@ const Theme = {
   radii,
   durations,
   transitions,
+  actions,
   boxes,
+  buttons,
   images,
+  inputs,
+  items,
+  labels,
   links,
   lists,
-  texts,
-  inputs,
+  modals,
   textareas,
-  labels,
-  actions,
-  buttons,
-  items,
+  texts,
   root,
 } as const
 
